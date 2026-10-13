@@ -1,0 +1,25 @@
+name: Project task
+description: Scope a page, module, bug, or audit for a developer or AI
+title: "[Task] "
+body:
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: Describe the change and include the current behavior or reference.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Files and ownership
+      description: Name the page/module, owner, and shared files that need coordination.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance checks
+      description: List concrete checks. Separate code checks from staging/CMS checks.
+    validations:
+      required: true

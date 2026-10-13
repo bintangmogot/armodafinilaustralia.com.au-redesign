@@ -1,0 +1,2 @@
+<!-- Dummy file to ensure Tailwind compiles these classes used dynamically in the DB -->
+<div class="space-y-6 not-prose font-bold text-ink-900 mt-8 mb-4 border-b border-ink-200 pb-2 text-xl space-y-4 my-6 flex items-start gap-3 bg-slate-50 p-4 rounded-xl border border-slate-200 w-5 h-5 text-brand-600 shrink-0 mt-0.5 block text-ink-700 bg-amber-50 border-l-4 border-amber-500 rounded-r text-amber-900 text-sm leading-relaxed mt-4"></div>

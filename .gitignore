@@ -1,0 +1,14 @@
+node_modules/
+vendor/
+.env
+.DS_Store
+.env.*
+*.log
+*.sql
+*.sql.gz
+*.zip
+*.wpress
+*.pem
+*.key
+WORDPRESS-MIGRATION-GUIDE.md
+.agents/skills/agent.md
