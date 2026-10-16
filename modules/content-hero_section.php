@@ -165,7 +165,7 @@ $wrapper_classes = $has_text_content
 
                 <div class="mt-5 pt-5 border-t border-ink-100 flex flex-wrap items-end justify-between gap-4">
                     <div>
-                        <div class="text-[11px] font-bold uppercase tracking-widest text-ink-400 mb-1">Total Price</div>
+                        <div class="text-[11px] font-bold uppercase tracking-widest text-ink-400 mb-1">Price in AUD</div>
                         <div class="text-3xl font-bold text-brand-700 price-display tabular-nums tracking-tight">
                             <?php echo $p_price_html; ?>
                         </div>
