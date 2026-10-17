@@ -119,6 +119,31 @@ foreach($counts as $star => $count) {
                 $meta = get_field('reviewer_meta', $post_id) ?: "Verified";
                 $rating_val = get_field('rating', $post_id) ?: 5;
                 $initials = strtoupper(substr($reviewer, 0, 1) . (strpos($reviewer, ' ') ? substr(explode(' ', $reviewer)[1], 0, 1) : ''));
+
+                // Review Photo
+                $review_img_id = get_field('review_image', $post_id) ?: get_post_thumbnail_id($post_id);
+                $review_photo_url = '';
+                $review_photo_full = '';
+                if ($review_img_id) {
+                    if (is_array($review_img_id)) {
+                        $review_photo_url = !empty($review_img_id['sizes']['medium_large']) ? $review_img_id['sizes']['medium_large'] : (!empty($review_img_id['sizes']['medium']) ? $review_img_id['sizes']['medium'] : $review_img_id['url']);
+                        $review_photo_full = $review_img_id['url'];
+                    } elseif (is_numeric($review_img_id)) {
+                        $review_photo_url = wp_get_attachment_image_url($review_img_id, 'medium_large') ?: wp_get_attachment_image_url($review_img_id, 'full');
+                        $review_photo_full = wp_get_attachment_image_url($review_img_id, 'full');
+                    }
+                }
+
+                // Reviewer Avatar
+                $avatar_data = get_field('reviewer_avatar', $post_id);
+                $avatar_url = '';
+                if ($avatar_data) {
+                    if (is_array($avatar_data)) {
+                        $avatar_url = !empty($avatar_data['sizes']['thumbnail']) ? $avatar_data['sizes']['thumbnail'] : $avatar_data['url'];
+                    } elseif (is_numeric($avatar_data)) {
+                        $avatar_url = wp_get_attachment_image_url($avatar_data, 'thumbnail');
+                    }
+                }
             ?>
             <div class="snap-start shrink-0 w-full sm:w-[350px] bg-white border border-slate-200 rounded-[20px] p-6 shadow-sm flex flex-col">
                 <div class="flex gap-0.5 mb-4">
@@ -130,15 +155,33 @@ foreach($counts as $star => $count) {
                 </div>
                 
                 <h4 class="font-bold text-[15px] text-slate-900 mb-2 leading-snug"><?php echo esc_html($title); ?></h4>
-                <div class="text-[13px] text-slate-600 leading-relaxed mb-6 line-clamp-4 flex-1">
+                <div class="text-[13px] text-slate-600 leading-relaxed mb-4 line-clamp-4 flex-1">
                     <?php echo wp_kses_post($body); ?>
                 </div>
+
+                <?php if ($review_photo_url): ?>
+                <div class="mb-4 rounded-xl overflow-hidden border border-slate-200 bg-slate-50">
+                    <a href="<?php echo esc_url($review_photo_full ?: $review_photo_url); ?>" target="_blank" rel="noopener noreferrer" class="block relative aspect-video overflow-hidden group">
+                        <img src="<?php echo esc_url($review_photo_url); ?>" alt="<?php echo esc_attr($title); ?>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors flex items-center justify-center">
+                            <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 text-white text-[11px] font-bold px-2.5 py-1 rounded-full backdrop-blur-sm flex items-center gap-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+                                View Photo
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                <?php endif; ?>
                 
                 <div class="flex items-center justify-between mt-auto border-t border-slate-100 pt-4">
                     <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 shrink-0 rounded-full bg-brand-600 text-white flex items-center justify-center font-bold text-[11px] uppercase tracking-wider">
-                            <?php echo esc_html($initials); ?>
-                        </div>
+                        <?php if ($avatar_url): ?>
+                            <img src="<?php echo esc_url($avatar_url); ?>" alt="<?php echo esc_attr($reviewer); ?>" class="w-9 h-9 shrink-0 rounded-full object-cover border border-slate-200" loading="lazy">
+                        <?php else: ?>
+                            <div class="w-9 h-9 shrink-0 rounded-full bg-brand-600 text-white flex items-center justify-center font-bold text-[11px] uppercase tracking-wider">
+                                <?php echo esc_html($initials); ?>
+                            </div>
+                        <?php endif; ?>
                         <div class="flex flex-col">
                             <span class="font-bold text-[13px] text-slate-900 leading-tight"><?php echo esc_html($reviewer); ?></span>
                             <span class="text-[10px] text-slate-400 font-medium mt-0.5">
@@ -204,6 +247,11 @@ foreach($counts as $star => $count) {
                 <div>
                     <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1.5">Your Review</label>
                     <textarea name="review_content" required rows="4" placeholder="Share your experience..." class="w-full bg-white border border-slate-200 text-sm rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent placeholder-slate-400 resize-none"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1.5">Attach Photo <span class="text-slate-400 font-normal">(Optional - package, blister pack, or unboxing photo)</span></label>
+                    <input type="file" name="review_image" accept="image/*" class="w-full bg-white border border-slate-200 text-xs rounded-lg px-3 py-2 text-slate-600 focus:outline-none focus:ring-2 focus:ring-brand-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-700 hover:file:bg-brand-100">
                 </div>
 
                 <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">

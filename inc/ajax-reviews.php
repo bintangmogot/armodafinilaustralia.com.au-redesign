@@ -49,6 +49,21 @@ function handle_submit_product_review() {
         }
     }
 
+    // Handle uploaded image if present
+    if ( ! empty($_FILES['review_image']['name']) ) {
+        require_once(ABSPATH . 'wp-admin/includes/image.php');
+        require_once(ABSPATH . 'wp-admin/includes/file.php');
+        require_once(ABSPATH . 'wp-admin/includes/media.php');
+
+        $attachment_id = media_handle_upload('review_image', $post_id);
+        if ( ! is_wp_error($attachment_id) ) {
+            set_post_thumbnail($post_id, $attachment_id);
+            if ( function_exists('update_field') ) {
+                update_field('review_image', $attachment_id, $post_id);
+            }
+        }
+    }
+
     // Optional: save email as post meta so admin can see who submitted
     update_post_meta($post_id, '_reviewer_email', $email);
 

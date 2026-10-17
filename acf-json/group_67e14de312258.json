@@ -93,6 +93,56 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_67e14e30photo",
+            "label": "Review Image / Product Photo",
+            "name": "review_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Upload a photo for this review (e.g. delivered product, blister pack, or unboxing photo).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_67e14e40avatar",
+            "label": "Reviewer Avatar / Customer Photo (Optional)",
+            "name": "reviewer_avatar",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Optional customer face/profile photo. If empty, initials will be generated automatically.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "thumbnail"
         }
     ],
     "location": [

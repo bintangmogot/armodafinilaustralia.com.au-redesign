@@ -1099,6 +1099,28 @@ acf_add_local_field_group(array(
                 "instructions" => "E.g. 'Verified Buyer' or 'Sydney, NSW'",
                 "required" => 0,
             ),
+            array(
+                "key" => "field_review_image",
+                "label" => "Review Image / Product Photo",
+                "name" => "review_image",
+                "type" => "image",
+                "instructions" => "Upload a photo for this review (e.g. delivered product, blister pack, or unboxing photo).",
+                "required" => 0,
+                "return_format" => "array",
+                "preview_size" => "medium",
+                "library" => "all",
+            ),
+            array(
+                "key" => "field_review_avatar",
+                "label" => "Reviewer Avatar / Customer Photo (Optional)",
+                "name" => "reviewer_avatar",
+                "type" => "image",
+                "instructions" => "Optional customer face/profile photo. If empty, initials will be generated automatically.",
+                "required" => 0,
+                "return_format" => "array",
+                "preview_size" => "thumbnail",
+                "library" => "all",
+            ),
         ),
         "location" => array(
             array(
