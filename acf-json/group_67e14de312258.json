@@ -1,7 +1,30 @@
 {
     "key": "group_67e14de312258",
-    "title": "Review",
+    "title": "Review Details",
     "fields": [
+        {
+            "key": "field_review_linked_product",
+            "label": "Linked Product",
+            "name": "linked_product",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "Select a product if this is a Product Review. Leave empty for General Reviews.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "product"
+            ],
+            "taxonomy": "",
+            "allow_null": 1,
+            "multiple": 0,
+            "return_format": "id",
+            "ui": 1
+        },
         {
             "key": "field_67e14e1944cf1",
             "label": "Rating",
@@ -75,7 +98,7 @@
         },
         {
             "key": "field_6a7cbe3a3c178",
-            "label": "Job \/ Location",
+            "label": "Job / Location",
             "name": "reviewer_meta",
             "aria-label": "",
             "type": "text",
