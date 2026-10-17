@@ -85,11 +85,11 @@ $colorways = array(
 <section class="py-14 md:py-18 text-white select-none border-y" data-module="delivery-cities" style="background: linear-gradient(180deg, #134e4a 0%, #115e59 50%, #0f4a43 100%); border-color: #0f766e;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <?php if ( ! empty($badge) ) : ?>
-        <!-- Compact Refined Shipping Nationwide Eyebrow Badge -->
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border shadow-xs mb-3.5 transition-transform hover:scale-[1.02]"
+        <!-- Micro-Proportioned Refined Shipping Nationwide Eyebrow Badge -->
+        <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border shadow-xs mb-3 transition-transform hover:scale-[1.02]"
              style="background-color: rgba(240, 253, 250, 0.10); border-color: rgba(94, 234, 212, 0.3); color: #ccfbf1;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #5eead4;"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
-            <span class="text-[10px] font-bold uppercase tracking-widest leading-none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #5eead4;"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+            <span class="text-[9px] font-bold uppercase tracking-widest leading-none">
                 <?php echo esc_html($badge); ?>
             </span>
         </div>
