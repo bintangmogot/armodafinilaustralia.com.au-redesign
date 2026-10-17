@@ -3662,6 +3662,238 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_delivery_cities": {
+                    "key": "layout_delivery_cities",
+                    "name": "delivery_cities",
+                    "label": "Delivery Cities / Nationwide",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_deliv_badge",
+                            "label": "Badge Text",
+                            "name": "badge",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "SHIPPING NATIONWIDE",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_deliv_title",
+                            "label": "Section Title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Delivered Everywhere in Australia",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_deliv_subtitle",
+                            "label": "Subtitle",
+                            "name": "subtitle",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Metro cities, regional towns, or remote FIFO camps \u2014 we ship to your address.",
+                            "rows": 2,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_deliv_cities",
+                            "label": "Cities / Locations",
+                            "name": "cities",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "Add or modify cities. If left empty, default Australian cities will be displayed automatically.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "table",
+                            "button_label": "Add City",
+                            "min": 0,
+                            "max": 0,
+                            "sub_fields": [
+                                {
+                                    "key": "field_deliv_city_name",
+                                    "label": "City Name",
+                                    "name": "city_name",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "75%",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": "e.g. Sydney NSW",
+                                    "parent_repeater": "field_deliv_cities"
+                                },
+                                {
+                                    "key": "field_deliv_city_highlight",
+                                    "label": "Highlight",
+                                    "name": "highlight",
+                                    "aria-label": "",
+                                    "type": "true_false",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "25%",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "Special highlight (e.g. Regional & Remote)",
+                                    "default_value": 0,
+                                    "parent_repeater": "field_deliv_cities"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "layout_city_sections": {
+                    "key": "layout_city_sections",
+                    "name": "city_sections",
+                    "label": "City Sections (Nationwide Delivery)",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_deliv_badge",
+                            "label": "Badge Text",
+                            "name": "badge",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "SHIPPING NATIONWIDE",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_deliv_title",
+                            "label": "Section Title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Delivered Everywhere in Australia",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_deliv_subtitle",
+                            "label": "Subtitle",
+                            "name": "subtitle",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Metro cities, regional towns, or remote FIFO camps \u2014 we ship to your address.",
+                            "rows": 2,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_deliv_cities",
+                            "label": "Cities / Locations",
+                            "name": "cities",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "Add or modify cities. If left empty, default Australian cities will be displayed automatically.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "table",
+                            "button_label": "Add City",
+                            "min": 0,
+                            "max": 0,
+                            "sub_fields": [
+                                {
+                                    "key": "field_deliv_city_name",
+                                    "label": "City Name",
+                                    "name": "city_name",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "75%",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": "e.g. Sydney NSW",
+                                    "parent_repeater": "field_deliv_cities"
+                                },
+                                {
+                                    "key": "field_deliv_city_highlight",
+                                    "label": "Highlight",
+                                    "name": "highlight",
+                                    "aria-label": "",
+                                    "type": "true_false",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "25%",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "Special highlight (e.g. Regional & Remote)",
+                                    "default_value": 0,
+                                    "parent_repeater": "field_deliv_cities"
+                                }
+                            ]
+                        }
+                    ]
                 }
             },
             "button_label": "Add Module",
@@ -3725,5 +3957,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792244382
+    "modified": 1792246326
 }
