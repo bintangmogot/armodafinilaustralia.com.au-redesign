@@ -26,7 +26,7 @@ if ( ! empty( $cities_field ) && is_array( $cities_field ) ) {
         if ( ! empty($name) ) {
             $is_special = $highlight || ( strpos($name, '✓') !== false );
 
-            // Provide intelligent fallback status for special highlighted cities if empty
+            // Provide natural fallback status for special highlighted cities if empty
             if ( $is_special && empty($status) ) {
                 if ( stripos($name, 'Sydney') !== false || stripos($name, 'Melbourne') !== false ) {
                     $status = 'Same-Day Dispatch';
@@ -48,7 +48,7 @@ if ( ! empty( $cities_field ) && is_array( $cities_field ) ) {
     }
 }
 
-// Fallback to rich Australian coverage list if empty
+// Fallback to natural Australian coverage list if empty
 if ( empty( $cities ) ) {
     $cities = array(
         array('name' => 'Sydney NSW', 'highlight' => true, 'status' => 'Same-Day Dispatch'),
@@ -70,30 +70,21 @@ if ( empty( $cities ) ) {
 }
 ?>
 
-<section class="delivery-cities-section relative py-16 md:py-24 overflow-hidden select-none" data-module="delivery-cities" style="background: radial-gradient(ellipse 80% 60% at 50% -10%, #0d4231 0%, #062b1e 50%, #031710 100%); border-top: 1px solid rgba(52, 211, 153, 0.25); border-bottom: 1px solid rgba(0, 0, 0, 0.45);">
-    
-    <!-- Ambient Dynamic Lighting & Gradients -->
-    <div class="absolute -top-36 left-1/2 -translate-x-1/2 w-[700px] h-[350px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, transparent 70%); filter: blur(50px);" aria-hidden="true"></div>
-    <div class="absolute -bottom-24 -left-20 w-80 h-80 rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(20, 184, 166, 0.16) 0%, transparent 70%); filter: blur(60px);" aria-hidden="true"></div>
-    <div class="absolute -bottom-24 -right-20 w-80 h-80 rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, transparent 70%); filter: blur(60px);" aria-hidden="true"></div>
-
-    <!-- Micro-dot texture overlay for rich tactile depth -->
-    <div class="absolute inset-0 pointer-events-none opacity-20" style="background-image: radial-gradient(rgba(255, 255, 255, 0.35) 1px, transparent 1px); background-size: 24px 24px; mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%); -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);" aria-hidden="true"></div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+<section class="py-16 md:py-20 text-white select-none" data-module="delivery-cities" style="background-color: #123428;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <?php if ( ! empty($badge) ) : ?>
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-widest mb-4 shadow-sm" style="background: rgba(16, 185, 129, 0.14); border: 1px solid rgba(52, 211, 153, 0.35); color: #6ee7b7; backdrop-filter: blur(8px);">
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #34d399;"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider mb-4 border" style="background-color: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.16); color: rgba(255, 255, 255, 0.9);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-300 shrink-0"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
             <span><?php echo esc_html($badge); ?></span>
         </div>
         <?php endif; ?>
 
-        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-3" style="text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-3">
             <?php echo esc_html($title); ?>
         </h2>
 
         <?php if ( ! empty($subtitle) ) : ?>
-        <p class="text-sm sm:text-base max-w-2xl mx-auto leading-relaxed mb-10 font-normal" style="color: rgba(209, 250, 229, 0.85);">
+        <p class="text-sm sm:text-base max-w-2xl mx-auto leading-relaxed mb-10 font-normal" style="color: rgba(236, 253, 245, 0.75);">
             <?php echo esc_html($subtitle); ?>
         </p>
         <?php endif; ?>
@@ -106,35 +97,28 @@ if ( empty( $cities ) ) {
                 $c_status = !empty($c['status']) ? $c['status'] : '';
             ?>
                 <?php if ( $is_special ) : ?>
-                <!-- Special Highlight City Card (Prominent Glowing Gradient + Live Pulse Beacon + Status Tag) -->
-                <div class="delivery-cities-pill-special inline-flex items-center gap-2 sm:gap-2.5 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full border text-xs sm:text-sm font-semibold transition-all duration-200 cursor-default shadow-md"
-                     style="background: linear-gradient(135deg, rgba(251, 191, 36, 0.16) 0%, rgba(16, 185, 129, 0.22) 100%); border-color: rgba(251, 191, 36, 0.55); color: #ffffff; backdrop-filter: blur(12px); box-shadow: 0 4px 18px -2px rgba(0, 0, 0, 0.4), 0 0 14px rgba(251, 191, 36, 0.2);">
+                <!-- Special Highlight City Card: Crisp Solid White Pill with Status Chip -->
+                <div class="delivery-cities-pill-special inline-flex items-center gap-2 sm:gap-2.5 px-3.5 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-transform duration-150 cursor-default shadow-sm hover:-translate-y-0.5"
+                     style="background-color: #ffffff; color: #0f172a; border: 1px solid #ffffff;">
                     
-                    <!-- Live Pulse Radar Beacon -->
-                    <span class="relative flex h-2.5 w-2.5 shrink-0">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background-color: #fbbf24;"></span>
-                        <span class="relative inline-flex rounded-full h-2.5 w-2.5" style="background-color: #fbbf24; box-shadow: 0 0 10px rgba(251, 191, 36, 0.9);"></span>
-                    </span>
+                    <span class="w-1.5 h-1.5 rounded-full shrink-0" style="background-color: #059669;"></span>
 
-                    <!-- City Name -->
-                    <span class="font-bold text-white tracking-wide"><?php echo esc_html($c_name); ?></span>
+                    <span class="font-bold text-slate-900"><?php echo esc_html($c_name); ?></span>
 
-                    <!-- Status Text Indicator Badge -->
                     <?php if ( ! empty($c_status) ) : ?>
-                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider shrink-0"
-                          style="background: rgba(251, 191, 36, 0.22); color: #fef08a; border: 1px solid rgba(251, 191, 36, 0.45);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="color: #fbbf24;"><polyline points="20 6 9 17 4 12"/></svg>
-                        <span><?php echo esc_html($c_status); ?></span>
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wide shrink-0"
+                          style="background-color: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0;">
+                        <?php echo esc_html($c_status); ?>
                     </span>
                     <?php endif; ?>
                 </div>
 
                 <?php else : ?>
-                <!-- Normal City Pill (Matches Previous Highlight: Polished Frosted Glass Badge + Glowing Emerald Indicator Dot) -->
-                <div class="delivery-cities-pill-normal inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-full border text-xs sm:text-sm font-semibold transition-all duration-200 shadow-sm cursor-default"
-                     style="background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.18); color: #f1f5f9; backdrop-filter: blur(8px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);">
-                    <span class="w-1.5 h-1.5 rounded-full shrink-0" style="background-color: #34d399; box-shadow: 0 0 8px rgba(52, 211, 153, 0.8);"></span>
-                    <span class="text-white/90 font-medium"><?php echo esc_html($c_name); ?></span>
+                <!-- Normal City Pill: Subtle Translucent Capsule with Clean Dot -->
+                <div class="delivery-cities-pill-normal inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-colors duration-150 cursor-default"
+                     style="background-color: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.16); color: rgba(255, 255, 255, 0.9);">
+                    <span class="w-1.5 h-1.5 rounded-full shrink-0" style="background-color: #34d399;"></span>
+                    <span><?php echo esc_html($c_name); ?></span>
                 </div>
                 <?php endif; ?>
             <?php endforeach; ?>
@@ -144,14 +128,8 @@ if ( empty( $cities ) ) {
 
 <style>
 .delivery-cities-pill-normal:hover {
-    background: rgba(255, 255, 255, 0.14) !important;
-    border-color: rgba(52, 211, 153, 0.45) !important;
+    background-color: rgba(255, 255, 255, 0.14) !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
     color: #ffffff !important;
-    transform: translateY(-1px);
-}
-.delivery-cities-pill-special:hover {
-    border-color: rgba(251, 191, 36, 0.8) !important;
-    box-shadow: 0 6px 24px -2px rgba(0, 0, 0, 0.45), 0 0 20px rgba(251, 191, 36, 0.35) !important;
-    transform: translateY(-2px);
 }
 </style>
