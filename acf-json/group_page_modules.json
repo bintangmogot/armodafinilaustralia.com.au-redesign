@@ -3750,7 +3750,7 @@
                                     "required": false,
                                     "conditional_logic": false,
                                     "wrapper": {
-                                        "width": "75%",
+                                        "width": "45%",
                                         "class": "",
                                         "id": ""
                                     },
@@ -3767,12 +3767,29 @@
                                     "required": false,
                                     "conditional_logic": false,
                                     "wrapper": {
-                                        "width": "25%",
+                                        "width": "20%",
                                         "class": "",
                                         "id": ""
                                     },
-                                    "message": "Special highlight (e.g. Regional & Remote)",
+                                    "message": "Special highlight",
                                     "default_value": 0,
+                                    "parent_repeater": "field_deliv_cities"
+                                },
+                                {
+                                    "key": "field_deliv_city_status",
+                                    "label": "Status Badge",
+                                    "name": "status",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "35%",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": "e.g. Same-Day Dispatch",
                                     "parent_repeater": "field_deliv_cities"
                                 }
                             ]
@@ -3866,7 +3883,7 @@
                                     "required": false,
                                     "conditional_logic": false,
                                     "wrapper": {
-                                        "width": "75%",
+                                        "width": "45%",
                                         "class": "",
                                         "id": ""
                                     },
@@ -3883,12 +3900,29 @@
                                     "required": false,
                                     "conditional_logic": false,
                                     "wrapper": {
-                                        "width": "25%",
+                                        "width": "20%",
                                         "class": "",
                                         "id": ""
                                     },
-                                    "message": "Special highlight (e.g. Regional & Remote)",
+                                    "message": "Special highlight",
                                     "default_value": 0,
+                                    "parent_repeater": "field_deliv_cities"
+                                },
+                                {
+                                    "key": "field_deliv_city_status",
+                                    "label": "Status Badge",
+                                    "name": "status",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "35%",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": "e.g. Same-Day Dispatch",
                                     "parent_repeater": "field_deliv_cities"
                                 }
                             ]
