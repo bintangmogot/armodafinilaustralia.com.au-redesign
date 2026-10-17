@@ -52,51 +52,36 @@ if ( empty( $cities ) ) {
 }
 ?>
 
-<section class="py-16 md:py-24 bg-[#082017] text-white relative overflow-hidden" data-module="delivery-cities">
-    <!-- Subtle gradient glow -->
-    <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 pointer-events-none"></div>
-    
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+<section class="py-16 md:py-20 bg-stone-50 border-y border-ink-100" data-module="delivery-cities">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <?php if ( ! empty($badge) ) : ?>
-        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-widest bg-amber-400/10 text-amber-300 border border-amber-400/25 mb-4 shadow-sm">
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-widest bg-brand-50 text-brand-700 border border-brand-200 mb-4 shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-truck text-brand-600"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
             <?php echo esc_html($badge); ?>
         </div>
         <?php endif; ?>
 
-        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-3">
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-ink-900 mb-3">
             <?php echo esc_html($title); ?>
         </h2>
 
         <?php if ( ! empty($subtitle) ) : ?>
-        <p class="text-emerald-100/75 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed mb-10 font-normal">
+        <p class="text-ink-500 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed mb-10 font-normal">
             <?php echo esc_html($subtitle); ?>
         </p>
         <?php endif; ?>
 
-        <!-- Cities Badges Container -->
-        <div class="relative max-w-5xl mx-auto flex items-center justify-center">
-            <!-- Left arrow indicator -->
-            <div class="hidden xl:flex absolute -left-6 w-9 h-9 rounded-full bg-white/5 border border-white/10 items-center justify-center text-white/40 pointer-events-none select-none">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        <!-- Cities Badges Container (wrapped, non-clickable pills) -->
+        <div class="flex flex-wrap justify-center items-center gap-2.5 sm:gap-3 max-w-4xl mx-auto">
+            <?php foreach ( $cities as $c ) : 
+                $c_name = $c['name'];
+                $is_special = !empty($c['highlight']) || strpos($c_name, '✓') !== false;
+            ?>
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full <?php echo $is_special ? 'bg-brand-50 border-brand-300 text-brand-800' : 'bg-white border-ink-200 text-ink-800 hover:border-brand-400 hover:text-brand-700'; ?> border text-xs sm:text-sm font-semibold transition-all shadow-sm select-none cursor-default">
+                <span class="w-1.5 h-1.5 rounded-full <?php echo $is_special ? 'bg-brand-600' : 'bg-emerald-500'; ?> shrink-0"></span>
+                <span><?php echo esc_html($c_name); ?></span>
             </div>
-
-            <!-- Cities list (wrapped, non-clickable pills) -->
-            <div class="flex flex-wrap justify-center items-center gap-2.5 sm:gap-3 max-w-4xl mx-auto px-2">
-                <?php foreach ( $cities as $c ) : 
-                    $c_name = $c['name'];
-                    $is_special = !empty($c['highlight']) || strpos($c_name, '✓') !== false;
-                ?>
-                <div class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-full <?php echo $is_special ? 'bg-amber-400/15 border-amber-400/30 text-amber-200' : 'bg-white/[0.06] border-white/15 text-white/90 hover:bg-white/10 hover:border-white/25'; ?> border text-xs sm:text-sm font-semibold transition-all select-none shadow-sm backdrop-blur-sm cursor-default">
-                    <span class="w-1.5 h-1.5 rounded-full <?php echo $is_special ? 'bg-amber-300' : 'bg-amber-400'; ?> shrink-0"></span>
-                    <span><?php echo esc_html($c_name); ?></span>
-                </div>
-                <?php endforeach; ?>
-            </div>
-
-            <!-- Right arrow indicator -->
-            <div class="hidden xl:flex absolute -right-6 w-9 h-9 rounded-full bg-white/5 border border-white/10 items-center justify-center text-white/40 pointer-events-none select-none">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
