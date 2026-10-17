@@ -118,6 +118,24 @@
             "append": ""
         },
         {
+            "key": "field_review_date",
+            "label": "Review Date",
+            "name": "review_date",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "Select the date of this review. If left blank, the WordPress publish date will be used.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d/m/Y",
+            "return_format": "Y-m-d",
+            "first_day": 1
+        },
+        {
             "key": "field_67e14e30photo",
             "label": "Review Image / Product Photo",
             "name": "review_image",
@@ -189,5 +207,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1786560321
+    "modified": 1792244382
 }

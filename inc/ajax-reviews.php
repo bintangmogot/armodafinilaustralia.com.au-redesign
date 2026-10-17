@@ -42,6 +42,7 @@ function handle_submit_product_review() {
         update_field('name', $name, $post_id);
         update_field('email', $email, $post_id);
         update_field('reviewer_meta', $meta, $post_id);
+        update_field('review_date', current_time('Y-m-d'), $post_id);
         if ( $product_id > 0 ) {
             update_field('linked_product', $product_id, $post_id);
         } else {

@@ -370,11 +370,11 @@
                         },
                         {
                             "key": "field_testi_reviews",
-                            "label": "Reviews",
+                            "label": "Selected Reviews",
                             "name": "reviews",
                             "aria-label": "",
-                            "type": "repeater",
-                            "instructions": "",
+                            "type": "relationship",
+                            "instructions": "Pick reviews to display on the homepage. If left empty, the latest published reviews will be shown automatically.",
                             "required": false,
                             "conditional_logic": false,
                             "wrapper": {
@@ -382,106 +382,18 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "layout": "block",
-                            "button_label": "Add Review",
+                            "post_type": [
+                                "review"
+                            ],
+                            "taxonomy": [],
+                            "filters": [
+                                "search"
+                            ],
+                            "return_format": "object",
                             "min": 0,
                             "max": 0,
-                            "rows_per_page": 20,
-                            "collapsed": "",
-                            "sub_fields": [
-                                {
-                                    "key": "field_testi_rev_title",
-                                    "label": "Review Title",
-                                    "name": "title",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_testi_reviews"
-                                },
-                                {
-                                    "key": "field_testi_rev_body",
-                                    "label": "Review Body",
-                                    "name": "body",
-                                    "aria-label": "",
-                                    "type": "textarea",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "new_lines": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "rows": "",
-                                    "parent_repeater": "field_testi_reviews"
-                                },
-                                {
-                                    "key": "field_testi_rev_name",
-                                    "label": "Customer Name",
-                                    "name": "name",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_testi_reviews"
-                                },
-                                {
-                                    "key": "field_testi_rev_city",
-                                    "label": "City\/Location",
-                                    "name": "city",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_testi_reviews"
-                                },
-                                {
-                                    "key": "field_testi_rev_date",
-                                    "label": "Review Date",
-                                    "name": "date",
-                                    "type": "text",
-                                    "instructions": "e.g. 12 October 2023",
-                                    "parent_repeater": "field_testi_reviews"
-                                }
-                            ]
+                            "elements": [],
+                            "bidirectional_target": []
                         }
                     ],
                     "min": "",
@@ -1388,7 +1300,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "\/contact",
+                            "default_value": "/contact",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -3419,7 +3331,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "{product_name} is a Schedule 4 (prescription-only) medicine in Australia. Effects, dosage, and possible side effects can differ from person to person. Taking this medicine without a doctor's advice may be harmful. This website does not encourage self-medication. For official Australian prescription-medicine guidance, see the <a href=\"https:\/\/www.tga.gov.au\/\" target=\"_blank\" rel=\"noopener\" class=\"text-brand-700 hover:underline\">Therapeutic Goods Administration (TGA)<\/a>.",
+                            "default_value": "{product_name} is a Schedule 4 (prescription-only) medicine in Australia. Effects, dosage, and possible side effects can differ from person to person. Taking this medicine without a doctor's advice may be harmful. This website does not encourage self-medication. For official Australian prescription-medicine guidance, see the <a href=\"https://www.tga.gov.au/\" target=\"_blank\" rel=\"noopener\" class=\"text-brand-700 hover:underline\">Therapeutic Goods Administration (TGA)</a>.",
                             "new_lines": "",
                             "maxlength": "",
                             "placeholder": "",
@@ -3439,7 +3351,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "This website is for informational purposes only and does not constitute medical advice. Always consult a qualified healthcare professional before starting, stopping, or changing any medication. <a href=\"\/medical-disclaimer\" class=\"font-semibold text-brand-800 hover:underline\">Read our full medical disclaimer.<\/a>",
+                            "default_value": "This website is for informational purposes only and does not constitute medical advice. Always consult a qualified healthcare professional before starting, stopping, or changing any medication. <a href=\"/medical-disclaimer\" class=\"font-semibold text-brand-800 hover:underline\">Read our full medical disclaimer.</a>",
                             "new_lines": "",
                             "maxlength": "",
                             "placeholder": "",
@@ -3459,7 +3371,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "https:\/\/armodafinildirect.com.au\/medical-team\/dr-ginni-mansberg\/",
+                            "default_value": "https://armodafinildirect.com.au/medical-team/dr-ginni-mansberg/",
                             "placeholder": ""
                         },
                         {
@@ -3489,7 +3401,7 @@
                 "layout_rich_text": {
                     "key": "layout_rich_text",
                     "name": "rich_text",
-                    "label": "Rich Text (Top\/Bottom Content)",
+                    "label": "Rich Text (Top/Bottom Content)",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -3813,5 +3725,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1790079185
+    "modified": 1792244382
 }

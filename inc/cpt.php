@@ -86,6 +86,9 @@ add_filter("manage_review_posts_columns", function($columns) {
             $new_columns['title'] = $title;
             $new_columns['rating'] = 'Rating';
             $new_columns['linked_product'] = 'Linked Product';
+            $new_columns['review_date'] = 'Review Date';
+        } elseif ($key == 'date') {
+            continue; // Replaced by review_date
         } else {
             $new_columns[$key] = $title;
         }
@@ -119,5 +122,31 @@ add_action("manage_review_posts_custom_column", function($column, $post_id) {
         } else {
             echo '<span style="color:#999;">General Review</span>';
         }
+    } elseif ($column === "review_date") {
+        $custom_date = get_field('review_date', $post_id);
+        if ($custom_date) {
+            echo '<strong>' . esc_html(date_i18n('j M Y', strtotime($custom_date))) . '</strong>';
+            echo '<br><span style="color:#888;font-size:11px;">Published: ' . esc_html(get_the_date('j M Y', $post_id)) . '</span>';
+        } else {
+            echo esc_html(get_the_date('j M Y', $post_id));
+        }
     }
 }, 10, 2);
+
+// Helper function to get formatted review date
+if ( ! function_exists('armd_get_review_date') ) {
+    function armd_get_review_date( $post_id = 0, $format = 'j F Y' ) {
+        if ( ! $post_id ) {
+            $post_id = get_the_ID();
+        }
+        $custom_date = get_field('review_date', $post_id);
+        if ( ! empty($custom_date) ) {
+            $timestamp = strtotime($custom_date);
+            if ( $timestamp ) {
+                return date_i18n($format, $timestamp);
+            }
+            return $custom_date;
+        }
+        return get_the_date($format, $post_id);
+    }
+}

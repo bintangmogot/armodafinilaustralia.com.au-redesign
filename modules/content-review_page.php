@@ -141,7 +141,7 @@ $review_count = count($reviews);
                                     </div>
                                     <?php endif; ?>
                                     <div class="text-xs text-ink-400 mt-1">
-                                        <?php echo get_the_date('j F Y', $post_id); ?>
+                                        <?php echo function_exists('armd_get_review_date') ? armd_get_review_date($post_id, 'j F Y') : get_the_date('j F Y', $post_id); ?>
                                     </div>
                                 </div>
                             </div>
