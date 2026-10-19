@@ -70,7 +70,7 @@ function armd_register_cpts() {
         'hierarchical'       => false,
         'menu_position'      => 20,
         'menu_icon'          => 'dashicons-star-filled',
-        'supports'           => array( 'title', 'editor' ),
+        'supports'           => array( 'title', 'editor', 'thumbnail' ),
     );
 
     register_post_type( 'review', $review_args );
@@ -79,12 +79,18 @@ add_action( 'init', 'armd_register_cpts', 0 );
 
 // Add Custom Columns to Review CPT
 add_filter("manage_review_posts_columns", function($columns) {
-    // Optional: we can adjust order here, e.g. put linked product after title
     $new_columns = [];
     foreach ($columns as $key => $title) {
-        $new_columns[$key] = $title;
         if ($key == 'title') {
+            $new_columns['review_thumb'] = 'Image';
+            $new_columns['title'] = $title;
+            $new_columns['rating'] = 'Rating';
             $new_columns['linked_product'] = 'Linked Product';
+            $new_columns['review_date'] = 'Review Date';
+        } elseif ($key == 'date') {
+            continue; // Replaced by review_date
+        } else {
+            $new_columns[$key] = $title;
         }
     }
     return $new_columns;
@@ -92,12 +98,55 @@ add_filter("manage_review_posts_columns", function($columns) {
 
 // Populate Custom Columns
 add_action("manage_review_posts_custom_column", function($column, $post_id) {
-    if ($column === "linked_product") {
+    if ($column === "review_thumb") {
+        $img_id = get_field("review_image", $post_id);
+        if (!$img_id) {
+            $img_id = get_field("reviewer_avatar", $post_id);
+        }
+        if (!$img_id) {
+            $img_id = get_post_thumbnail_id($post_id);
+        }
+        if ($img_id) {
+            $img_url = is_array($img_id) ? $img_id['url'] : wp_get_attachment_image_url($img_id, 'thumbnail');
+            echo '<img src="' . esc_url($img_url) . '" style="width:44px;height:44px;object-fit:cover;border-radius:8px;border:1px solid #ddd;" />';
+        } else {
+            echo '<span style="color:#ccc;">—</span>';
+        }
+    } elseif ($column === "rating") {
+        $rating = get_field("rating", $post_id) ?: 5;
+        echo esc_html($rating) . ' &#9733;';
+    } elseif ($column === "linked_product") {
         $product_id = get_field("linked_product", $post_id);
         if ($product_id) {
-            echo get_the_title($product_id);
+            echo '<a href="' . esc_url(get_edit_post_link($product_id)) . '">' . esc_html(get_the_title($product_id)) . '</a>';
         } else {
             echo '<span style="color:#999;">General Review</span>';
         }
+    } elseif ($column === "review_date") {
+        $custom_date = get_field('review_date', $post_id);
+        if ($custom_date) {
+            echo '<strong>' . esc_html(date_i18n('j M Y', strtotime($custom_date))) . '</strong>';
+            echo '<br><span style="color:#888;font-size:11px;">Published: ' . esc_html(get_the_date('j M Y', $post_id)) . '</span>';
+        } else {
+            echo esc_html(get_the_date('j M Y', $post_id));
+        }
     }
 }, 10, 2);
+
+// Helper function to get formatted review date
+if ( ! function_exists('armd_get_review_date') ) {
+    function armd_get_review_date( $post_id = 0, $format = 'j F Y' ) {
+        if ( ! $post_id ) {
+            $post_id = get_the_ID();
+        }
+        $custom_date = get_field('review_date', $post_id);
+        if ( ! empty($custom_date) ) {
+            $timestamp = strtotime($custom_date);
+            if ( $timestamp ) {
+                return date_i18n($format, $timestamp);
+            }
+            return $custom_date;
+        }
+        return get_the_date($format, $post_id);
+    }
+}

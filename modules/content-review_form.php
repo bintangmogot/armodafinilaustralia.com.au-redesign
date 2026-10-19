@@ -69,6 +69,13 @@ $heading = get_sub_field('heading') ?: 'Leave us a review ✍️';
                         placeholder="Tell us about your experience..."></textarea>
                 </div>
 
+                <!-- Attach Photo -->
+                <div>
+                    <label for="review_image" class="block text-sm font-medium text-ink-900 mb-2">Attach Photo <span class="text-ink-400 font-normal">(Optional - package, blister pack, or unboxing photo)</span></label>
+                    <input type="file" id="review_image" name="review_image" accept="image/*"
+                        class="w-full px-4 py-3 rounded-lg border border-ink-300 bg-white text-sm text-ink-700 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-colors file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-700 hover:file:bg-brand-100">
+                </div>
+
                 <!-- Security / Nonce -->
                 <input type="hidden" name="action" value="submit_product_review">
                 <?php wp_nonce_field('submit_review_nonce', 'review_nonce'); ?>

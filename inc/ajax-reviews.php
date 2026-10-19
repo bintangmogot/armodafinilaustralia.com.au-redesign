@@ -42,10 +42,26 @@ function handle_submit_product_review() {
         update_field('name', $name, $post_id);
         update_field('email', $email, $post_id);
         update_field('reviewer_meta', $meta, $post_id);
+        update_field('review_date', current_time('Y-m-d'), $post_id);
         if ( $product_id > 0 ) {
             update_field('linked_product', $product_id, $post_id);
         } else {
             update_field('linked_product', '', $post_id);
+        }
+    }
+
+    // Handle uploaded image if present
+    if ( ! empty($_FILES['review_image']['name']) ) {
+        require_once(ABSPATH . 'wp-admin/includes/image.php');
+        require_once(ABSPATH . 'wp-admin/includes/file.php');
+        require_once(ABSPATH . 'wp-admin/includes/media.php');
+
+        $attachment_id = media_handle_upload('review_image', $post_id);
+        if ( ! is_wp_error($attachment_id) ) {
+            set_post_thumbnail($post_id, $attachment_id);
+            if ( function_exists('update_field') ) {
+                update_field('review_image', $attachment_id, $post_id);
+            }
         }
     }
 

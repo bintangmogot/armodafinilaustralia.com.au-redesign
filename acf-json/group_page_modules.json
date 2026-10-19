@@ -24,6 +24,26 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_km_enabled_hero_section",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
+                        {
                             "key": "field_hero_eyebrow",
                             "label": "Eyebrow",
                             "name": "eyebrow",
@@ -124,6 +144,31 @@
                             "append": ""
                         },
                         {
+                            "key": "field_hero_background_image",
+                            "label": "Background Image",
+                            "name": "background_image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "Optional custom background image. If left empty, default warehouse dispatch landscape banner is used.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "id",
+                            "preview_size": "medium",
+                            "library": "all",
+                            "min_width": 0,
+                            "min_height": 0,
+                            "min_size": 0,
+                            "max_width": 0,
+                            "max_height": 0,
+                            "max_size": 0,
+                            "mime_types": ""
+                        },
+                        {
                             "key": "field_hero_featured_product",
                             "label": "Featured Product",
                             "name": "featured_product",
@@ -146,10 +191,865 @@
                             "multiple": 0,
                             "ui": 1,
                             "bidirectional_target": []
+                        },
+                        {
+                            "key": "field_hero_artwork",
+                            "label": "Hero Artwork Image",
+                            "name": "hero_artwork",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "Optional. Leave empty to show no illustration.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "id",
+                            "preview_size": "medium",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ""
+                        },
+                        {
+                            "key": "field_hero_artwork_decorative",
+                            "label": "Hero Artwork Image Is Decorative",
+                            "name": "hero_artwork_decorative",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "When enabled, assistive technology will ignore the image.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "Decorative image",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Yes",
+                            "ui_off_text": "No"
+                        },
+                        {
+                            "key": "field_hero_artwork_alt",
+                            "label": "Hero Artwork Image Alternative Text",
+                            "name": "hero_artwork_alt",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Used when the image is meaningful. Leave empty to use the media library alternative text.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_hero_eyebrow_icon",
+                            "label": "Eyebrow Icon",
+                            "name": "eyebrow_icon",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "none",
+                            "choices": {
+                                "none": "No icon",
+                                "package": "Package",
+                                "shield": "Shield",
+                                "heart": "Heart",
+                                "arrow": "Arrow",
+                                "search": "Search",
+                                "cart": "Cart",
+                                "menu": "Menu",
+                                "close": "Close",
+                                "shop": "Shop",
+                                "checkout": "Checkout",
+                                "message": "Message",
+                                "truck": "Truck",
+                                "check": "Check",
+                                "star": "Star",
+                                "zap": "Lightning",
+                                "flask": "Flask",
+                                "clock": "Clock",
+                                "plus": "Plus",
+                                "minus": "Minus",
+                                "map_pin": "Map pin",
+                                "mail": "Mail",
+                                "phone": "Phone",
+                                "help-circle": "Help circle",
+                                "credit-card": "Credit card",
+                                "user": "User",
+                                "flaticon_capsule": "Flaticon: Capsule (Abbasi Color Fill)",
+                                "flaticon_pills": "Flaticon: Pills (Abbasi Color Fill)",
+                                "flaticon_prescription": "Flaticon: Prescription (Abbasi Color Fill)",
+                                "flaticon_nurse": "Flaticon: Nurse (Abbasi Color Fill)",
+                                "flaticon_first_aid_kit": "Flaticon: First aid kit (Abbasi Color Fill)",
+                                "flaticon_hospital": "Flaticon: Hospital (Abbasi Color Fill)",
+                                "flaticon_medical_book": "Flaticon: Medical book (Abbasi Color Fill)",
+                                "flaticon_medical_report": "Flaticon: Medical report (Abbasi Color Fill)"
+                            },
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value"
+                        },
+                        {
+                            "key": "field_hero_product_badge",
+                            "label": "Product Badge",
+                            "name": "product_badge",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_hero_product_badge_icon",
+                            "label": "Product Badge Icon",
+                            "name": "product_badge_icon",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "none",
+                            "choices": {
+                                "none": "No icon",
+                                "package": "Package",
+                                "shield": "Shield",
+                                "heart": "Heart",
+                                "arrow": "Arrow",
+                                "search": "Search",
+                                "cart": "Cart",
+                                "menu": "Menu",
+                                "close": "Close",
+                                "shop": "Shop",
+                                "checkout": "Checkout",
+                                "message": "Message",
+                                "truck": "Truck",
+                                "check": "Check",
+                                "star": "Star",
+                                "zap": "Lightning",
+                                "flask": "Flask",
+                                "clock": "Clock",
+                                "plus": "Plus",
+                                "minus": "Minus",
+                                "map_pin": "Map pin",
+                                "mail": "Mail",
+                                "phone": "Phone",
+                                "help-circle": "Help circle",
+                                "credit-card": "Credit card",
+                                "user": "User",
+                                "flaticon_capsule": "Flaticon: Capsule (Abbasi Color Fill)",
+                                "flaticon_pills": "Flaticon: Pills (Abbasi Color Fill)",
+                                "flaticon_prescription": "Flaticon: Prescription (Abbasi Color Fill)",
+                                "flaticon_nurse": "Flaticon: Nurse (Abbasi Color Fill)",
+                                "flaticon_first_aid_kit": "Flaticon: First aid kit (Abbasi Color Fill)",
+                                "flaticon_hospital": "Flaticon: Hospital (Abbasi Color Fill)",
+                                "flaticon_medical_book": "Flaticon: Medical book (Abbasi Color Fill)",
+                                "flaticon_medical_report": "Flaticon: Medical report (Abbasi Color Fill)"
+                            },
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value"
+                        },
+                        {
+                            "key": "field_hero_shipping_note",
+                            "label": "Optional Shipping Note",
+                            "name": "shipping_note",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "rows": 3,
+                            "new_lines": "",
+                            "maxlength": "",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_hero_shipping_note_icon",
+                            "label": "Shipping Note Icon",
+                            "name": "shipping_note_icon",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "none",
+                            "choices": {
+                                "none": "No icon",
+                                "package": "Package",
+                                "shield": "Shield",
+                                "heart": "Heart",
+                                "arrow": "Arrow",
+                                "search": "Search",
+                                "cart": "Cart",
+                                "menu": "Menu",
+                                "close": "Close",
+                                "shop": "Shop",
+                                "checkout": "Checkout",
+                                "message": "Message",
+                                "truck": "Truck",
+                                "check": "Check",
+                                "star": "Star",
+                                "zap": "Lightning",
+                                "flask": "Flask",
+                                "clock": "Clock",
+                                "plus": "Plus",
+                                "minus": "Minus",
+                                "map_pin": "Map pin",
+                                "mail": "Mail",
+                                "phone": "Phone",
+                                "help-circle": "Help circle",
+                                "credit-card": "Credit card",
+                                "user": "User",
+                                "flaticon_capsule": "Flaticon: Capsule (Abbasi Color Fill)",
+                                "flaticon_pills": "Flaticon: Pills (Abbasi Color Fill)",
+                                "flaticon_prescription": "Flaticon: Prescription (Abbasi Color Fill)",
+                                "flaticon_nurse": "Flaticon: Nurse (Abbasi Color Fill)",
+                                "flaticon_first_aid_kit": "Flaticon: First aid kit (Abbasi Color Fill)",
+                                "flaticon_hospital": "Flaticon: Hospital (Abbasi Color Fill)",
+                                "flaticon_medical_book": "Flaticon: Medical book (Abbasi Color Fill)",
+                                "flaticon_medical_report": "Flaticon: Medical report (Abbasi Color Fill)"
+                            },
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value"
+                        },
+                        {
+                            "key": "field_hero_price_label",
+                            "label": "Price Label",
+                            "name": "price_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Price",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_hero_add_to_cart_label",
+                            "label": "Add to Cart Button Label",
+                            "name": "add_to_cart_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Add to cart",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_hero_in_stock_label",
+                            "label": "In Stock Label",
+                            "name": "in_stock_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "In stock",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_hero_out_of_stock_label",
+                            "label": "Out of Stock Label",
+                            "name": "out_of_stock_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Out of stock",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_hero_quantity_label",
+                            "label": "Quantity Accessible Label",
+                            "name": "quantity_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Quantity",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_hero_pack_unit_label",
+                            "label": "Numeric Product Option Unit",
+                            "name": "pack_unit_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Tabs",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_hero_quantity_decrease_label",
+                            "label": "Decrease Quantity Accessible Label",
+                            "name": "quantity_decrease_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Decrease quantity",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_hero_quantity_increase_label",
+                            "label": "Increase Quantity Accessible Label",
+                            "name": "quantity_increase_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Increase quantity",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_hero_secondary_cta_label",
+                            "label": "Secondary CTA Label",
+                            "name": "secondary_cta_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_hero_secondary_cta_url",
+                            "label": "Secondary CTA URL",
+                            "name": "secondary_cta_url",
+                            "aria-label": "",
+                            "type": "url",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_hero_secondary_cta_icon",
+                            "label": "Secondary CTA Icon",
+                            "name": "secondary_cta_icon",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "none",
+                            "choices": {
+                                "none": "No icon",
+                                "package": "Package",
+                                "shield": "Shield",
+                                "heart": "Heart",
+                                "arrow": "Arrow",
+                                "search": "Search",
+                                "cart": "Cart",
+                                "menu": "Menu",
+                                "close": "Close",
+                                "shop": "Shop",
+                                "checkout": "Checkout",
+                                "message": "Message",
+                                "truck": "Truck",
+                                "check": "Check",
+                                "star": "Star",
+                                "zap": "Lightning",
+                                "flask": "Flask",
+                                "clock": "Clock",
+                                "plus": "Plus",
+                                "minus": "Minus",
+                                "map_pin": "Map pin",
+                                "mail": "Mail",
+                                "phone": "Phone",
+                                "help-circle": "Help circle",
+                                "credit-card": "Credit card",
+                                "user": "User",
+                                "flaticon_capsule": "Flaticon: Capsule (Abbasi Color Fill)",
+                                "flaticon_pills": "Flaticon: Pills (Abbasi Color Fill)",
+                                "flaticon_prescription": "Flaticon: Prescription (Abbasi Color Fill)",
+                                "flaticon_nurse": "Flaticon: Nurse (Abbasi Color Fill)",
+                                "flaticon_first_aid_kit": "Flaticon: First aid kit (Abbasi Color Fill)",
+                                "flaticon_hospital": "Flaticon: Hospital (Abbasi Color Fill)",
+                                "flaticon_medical_book": "Flaticon: Medical book (Abbasi Color Fill)",
+                                "flaticon_medical_report": "Flaticon: Medical report (Abbasi Color Fill)"
+                            },
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value"
                         }
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_category_discovery": {
+                    "key": "layout_category_discovery",
+                    "name": "category_discovery",
+                    "label": "Category Discovery",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_km_enabled_category_discovery",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
+                        {
+                            "key": "field_km_cd_eyebrow",
+                            "label": "Eyebrow",
+                            "name": "eyebrow",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_km_cd_title",
+                            "label": "Title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_km_cd_description",
+                            "label": "Description",
+                            "name": "description",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "rows": 3,
+                            "new_lines": "",
+                            "maxlength": "",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_km_cd_view_all_label",
+                            "label": "View All Label",
+                            "name": "view_all_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_km_cd_view_all_url",
+                            "label": "View All URL",
+                            "name": "view_all_url",
+                            "aria-label": "",
+                            "type": "url",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_km_cd_count_singular",
+                            "label": "Singular Product Count Label",
+                            "name": "count_singular_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "product",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_km_cd_count_plural",
+                            "label": "Plural Product Count Label",
+                            "name": "count_plural_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "products",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_km_cd_categories",
+                            "label": "Categories",
+                            "name": "categories",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "Choose existing WooCommerce product categories. Categories and links come from those terms.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "button_label": "Add Category",
+                            "min": 0,
+                            "max": 0,
+                            "rows_per_page": 20,
+                            "collapsed": "field_km_cd_term",
+                            "sub_fields": [
+                                {
+                                    "key": "field_km_cd_term",
+                                    "label": "Product Category",
+                                    "name": "term",
+                                    "aria-label": "",
+                                    "type": "taxonomy",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "taxonomy": "product_cat",
+                                    "field_type": "select",
+                                    "return_format": "id",
+                                    "multiple": 0,
+                                    "allow_null": 1,
+                                    "add_term": 0,
+                                    "load_terms": 0,
+                                    "save_terms": 0,
+                                    "bidirectional_target": [],
+                                    "parent_repeater": "field_km_cd_categories"
+                                },
+                                {
+                                    "key": "field_km_cd_media_mode",
+                                    "label": "Media",
+                                    "name": "media_mode",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "none",
+                                    "choices": {
+                                        "none": "No media",
+                                        "term_image": "WooCommerce category image",
+                                        "custom_image": "Custom image",
+                                        "icon": "Icon"
+                                    },
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "return_format": "value",
+                                    "parent_repeater": "field_km_cd_categories"
+                                },
+                                {
+                                    "key": "field_km_cd_image",
+                                    "label": "Custom Image",
+                                    "name": "image",
+                                    "aria-label": "",
+                                    "type": "image",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "return_format": "id",
+                                    "preview_size": "medium",
+                                    "library": "all",
+                                    "parent_repeater": "field_km_cd_categories"
+                                },
+                                {
+                                    "key": "field_km_cd_icon",
+                                    "label": "Icon",
+                                    "name": "icon",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "none",
+                                    "choices": {
+                                        "none": "No icon",
+                                        "package": "Package",
+                                        "shield": "Shield",
+                                        "heart": "Heart",
+                                        "arrow": "Arrow",
+                                        "search": "Search",
+                                        "cart": "Cart",
+                                        "menu": "Menu",
+                                        "close": "Close",
+                                        "shop": "Shop",
+                                        "checkout": "Checkout",
+                                        "message": "Message",
+                                        "truck": "Truck",
+                                        "check": "Check",
+                                        "star": "Star",
+                                        "plus": "Plus",
+                                        "minus": "Minus",
+                                        "map_pin": "Map pin",
+                                        "mail": "Mail",
+                                        "phone": "Phone"
+                                    },
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "return_format": "value",
+                                    "parent_repeater": "field_km_cd_categories"
+                                },
+                                {
+                                    "key": "field_km_cd_card_description",
+                                    "label": "Optional Description",
+                                    "name": "description",
+                                    "aria-label": "",
+                                    "type": "textarea",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "rows": 3,
+                                    "new_lines": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "parent_repeater": "field_km_cd_categories"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 "layout_trust_strip": {
                     "key": "layout_trust_strip",
@@ -157,6 +1057,148 @@
                     "label": "Trust Strip",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_km_enabled_trust_strip",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
+                        {
+                            "key": "field_km_trust_enabled",
+                            "label": "Show Trust Ribbon",
+                            "name": "enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Defaults to on so existing trust items remain visible.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": 1,
+                            "message": "",
+                            "ui": 1,
+                            "ui_on_text": "Visible",
+                            "ui_off_text": "Hidden"
+                        },
+                        {
+                            "key": "field_km_trust_animation_enabled",
+                            "label": "Animate Ribbon",
+                            "name": "animation_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Visitors can pause or resume the scrolling ribbon. Reduced-motion preferences show it as a static row.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": 0,
+                            "message": "",
+                            "ui": 1,
+                            "ui_on_text": "Animated",
+                            "ui_off_text": "Static"
+                        },
+                        {
+                            "key": "field_km_trust_animation_duration",
+                            "label": "Scroll Duration (seconds)",
+                            "name": "animation_duration",
+                            "aria-label": "",
+                            "type": "number",
+                            "instructions": "One full scroll cycle. Slower settings reduce movement speed.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": 30,
+                            "min": 20,
+                            "max": 90,
+                            "step": 1,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "seconds"
+                        },
+                        {
+                            "key": "field_km_trust_pause_label",
+                            "label": "Pause Button Accessible Label",
+                            "name": "pause_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Shown when the ribbon is moving.",
+                            "required": true,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Pause scrolling",
+                            "maxlength": 80,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_km_trust_resume_label",
+                            "label": "Resume Button Accessible Label",
+                            "name": "resume_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Shown when the ribbon is paused.",
+                            "required": true,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Resume scrolling",
+                            "maxlength": 80,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_km_trust_region_label",
+                            "label": "Ribbon Accessible Label",
+                            "name": "region_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Accessible name for the trust ribbon.",
+                            "required": true,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Product highlights",
+                            "maxlength": 80,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
                         {
                             "key": "field_trust_items",
                             "label": "Trust Items",
@@ -198,6 +1240,49 @@
                                     "prepend": "",
                                     "append": "",
                                     "parent_repeater": "field_trust_items"
+                                },
+                                {
+                                    "key": "field_km_trust_icon",
+                                    "label": "Icon",
+                                    "name": "icon",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "none",
+                                    "choices": {
+                                        "none": "No icon",
+                                        "package": "Package",
+                                        "shield": "Shield",
+                                        "heart": "Heart",
+                                        "arrow": "Arrow",
+                                        "search": "Search",
+                                        "cart": "Cart",
+                                        "menu": "Menu",
+                                        "close": "Close",
+                                        "shop": "Shop",
+                                        "checkout": "Checkout",
+                                        "message": "Message",
+                                        "truck": "Truck",
+                                        "check": "Check",
+                                        "star": "Star",
+                                        "plus": "Plus",
+                                        "minus": "Minus",
+                                        "map_pin": "Map pin",
+                                        "mail": "Mail",
+                                        "phone": "Phone"
+                                    },
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "return_format": "value",
+                                    "parent_repeater": "field_trust_items"
                                 }
                             ]
                         }
@@ -211,6 +1296,26 @@
                     "label": "Popular Products",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_km_enabled_popular_products",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
                         {
                             "key": "field_popular_title",
                             "label": "Title",
@@ -317,6 +1422,70 @@
                             "max": 0,
                             "elements": [],
                             "bidirectional_target": []
+                        },
+                        {
+                            "key": "field_km_popular_display_mode",
+                            "name": "display_mode",
+                            "label": "Product composition",
+                            "type": "select",
+                            "required": 0,
+                            "choices": {
+                                "grid": "All selected products as cards",
+                                "cards_with_index": "Featured cards and remaining product-name links"
+                            },
+                            "default_value": "grid",
+                            "return_format": "value",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0
+                        },
+                        {
+                            "key": "field_km_popular_featured_count",
+                            "name": "featured_count",
+                            "label": "Number of featured cards",
+                            "type": "number",
+                            "required": 0,
+                            "default_value": 4,
+                            "min": 1,
+                            "max": 12,
+                            "step": 1,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_km_popular_display_mode",
+                                        "operator": "==",
+                                        "value": "cards_with_index"
+                                    }
+                                ]
+                            ],
+                            "instructions": "The index includes all selected products in editor order. This control limits only the full cards."
+                        },
+                        {
+                            "key": "field_km_popular_index_title",
+                            "name": "name_index_title",
+                            "label": "Product-name index heading",
+                            "type": "text",
+                            "required": 0,
+                            "default_value": "",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_km_popular_display_mode",
+                                        "operator": "==",
+                                        "value": "cards_with_index"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "key": "field_km_popular_show_ratings",
+                            "name": "show_ratings",
+                            "label": "Show product ratings",
+                            "type": "true_false",
+                            "required": 0,
+                            "default_value": 1,
+                            "ui": 1,
+                            "instructions": "Show only reviews approved for this brand."
                         }
                     ],
                     "min": "",
@@ -328,6 +1497,26 @@
                     "label": "Testimonials",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_km_enabled_testimonials",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
                         {
                             "key": "field_testi_title",
                             "label": "Title",
@@ -370,11 +1559,11 @@
                         },
                         {
                             "key": "field_testi_reviews",
-                            "label": "Reviews",
+                            "label": "Selected Reviews",
                             "name": "reviews",
                             "aria-label": "",
-                            "type": "repeater",
-                            "instructions": "",
+                            "type": "relationship",
+                            "instructions": "Pick reviews to display on the homepage. If left empty, the latest published reviews will be shown automatically.",
                             "required": false,
                             "conditional_logic": false,
                             "wrapper": {
@@ -382,106 +1571,18 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "layout": "block",
-                            "button_label": "Add Review",
+                            "post_type": [
+                                "review"
+                            ],
+                            "taxonomy": [],
+                            "filters": [
+                                "search"
+                            ],
+                            "return_format": "object",
                             "min": 0,
                             "max": 0,
-                            "rows_per_page": 20,
-                            "collapsed": "",
-                            "sub_fields": [
-                                {
-                                    "key": "field_testi_rev_title",
-                                    "label": "Review Title",
-                                    "name": "title",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_testi_reviews"
-                                },
-                                {
-                                    "key": "field_testi_rev_body",
-                                    "label": "Review Body",
-                                    "name": "body",
-                                    "aria-label": "",
-                                    "type": "textarea",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "new_lines": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "rows": "",
-                                    "parent_repeater": "field_testi_reviews"
-                                },
-                                {
-                                    "key": "field_testi_rev_name",
-                                    "label": "Customer Name",
-                                    "name": "name",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_testi_reviews"
-                                },
-                                {
-                                    "key": "field_testi_rev_city",
-                                    "label": "City\/Location",
-                                    "name": "city",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "parent_repeater": "field_testi_reviews"
-                                },
-                                {
-                                    "key": "field_testi_rev_date",
-                                    "label": "Review Date",
-                                    "name": "date",
-                                    "type": "text",
-                                    "instructions": "e.g. 12 October 2023",
-                                    "parent_repeater": "field_testi_reviews"
-                                }
-                            ]
+                            "elements": [],
+                            "bidirectional_target": []
                         }
                     ],
                     "min": "",
@@ -493,6 +1594,26 @@
                     "label": "Shipping Features",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_km_enabled_shipping_features",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
                         {
                             "key": "field_shipping_title",
                             "label": "Title",
@@ -630,6 +1751,26 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_km_enabled_why_choose",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
+                        {
                             "key": "field_why_title",
                             "label": "Title",
                             "name": "title",
@@ -766,6 +1907,26 @@
                     "label": "Audience Grid",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_km_enabled_audience_grid",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
                         {
                             "key": "field_audience_title",
                             "label": "Title",
@@ -966,6 +2127,26 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_km_enabled_how_it_works",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
+                        {
                             "key": "field_how_title",
                             "label": "Title",
                             "name": "title",
@@ -1111,6 +2292,64 @@
                                     "maxlength": "",
                                     "placeholder": "",
                                     "parent_repeater": "field_how_steps"
+                                },
+                                {
+                                    "key": "field_how_step_icon",
+                                    "label": "Step Icon",
+                                    "name": "step_icon",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "Optional colorful pharmacy illustration.",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "No icon",
+                                        "package": "Package",
+                                        "shield": "Shield",
+                                        "heart": "Heart",
+                                        "arrow": "Arrow",
+                                        "search": "Search",
+                                        "cart": "Cart",
+                                        "menu": "Menu",
+                                        "close": "Close",
+                                        "shop": "Shop",
+                                        "checkout": "Checkout",
+                                        "message": "Message",
+                                        "truck": "Truck",
+                                        "check": "Check",
+                                        "star": "Star",
+                                        "zap": "Lightning",
+                                        "flask": "Flask",
+                                        "clock": "Clock",
+                                        "plus": "Plus",
+                                        "minus": "Minus",
+                                        "map_pin": "Map pin",
+                                        "mail": "Mail",
+                                        "phone": "Phone",
+                                        "help-circle": "Help circle",
+                                        "credit-card": "Credit card",
+                                        "user": "User",
+                                        "flaticon_capsule": "Flaticon: Capsule (Abbasi Color Fill)",
+                                        "flaticon_pills": "Flaticon: Pills (Abbasi Color Fill)",
+                                        "flaticon_prescription": "Flaticon: Prescription (Abbasi Color Fill)",
+                                        "flaticon_nurse": "Flaticon: Nurse (Abbasi Color Fill)",
+                                        "flaticon_first_aid_kit": "Flaticon: First aid kit (Abbasi Color Fill)",
+                                        "flaticon_hospital": "Flaticon: Hospital (Abbasi Color Fill)",
+                                        "flaticon_medical_book": "Flaticon: Medical book (Abbasi Color Fill)",
+                                        "flaticon_medical_report": "Flaticon: Medical report (Abbasi Color Fill)"
+                                    },
+                                    "default_value": "none",
+                                    "return_format": "value",
+                                    "multiple": false,
+                                    "allow_null": false,
+                                    "ui": false,
+                                    "ajax": false,
+                                    "placeholder": ""
                                 }
                             ]
                         }
@@ -1124,6 +2363,26 @@
                     "label": "FAQ Block",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_km_enabled_faq",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
                         {
                             "key": "field_faq_title",
                             "label": "Title",
@@ -1208,10 +2467,10 @@
                                 },
                                 {
                                     "key": "field_faq_cat_icon",
-                                    "label": "Lucide Icon Name",
+                                    "label": "Category Icon",
                                     "name": "cat_icon",
                                     "aria-label": "",
-                                    "type": "text",
+                                    "type": "select",
                                     "instructions": "e.g., package, credit-card, truck, user",
                                     "required": false,
                                     "conditional_logic": false,
@@ -1220,12 +2479,52 @@
                                         "class": "",
                                         "id": ""
                                     },
-                                    "default_value": "help-circle",
+                                    "default_value": "none",
                                     "maxlength": "",
                                     "placeholder": "",
                                     "prepend": "",
                                     "append": "",
-                                    "parent_repeater": "field_faq_categories"
+                                    "parent_repeater": "field_faq_categories",
+                                    "choices": {
+                                        "none": "No icon",
+                                        "package": "Package",
+                                        "shield": "Shield",
+                                        "heart": "Heart",
+                                        "arrow": "Arrow",
+                                        "search": "Search",
+                                        "cart": "Cart",
+                                        "menu": "Menu",
+                                        "close": "Close",
+                                        "shop": "Shop",
+                                        "checkout": "Checkout",
+                                        "message": "Message",
+                                        "truck": "Truck",
+                                        "check": "Check",
+                                        "star": "Star",
+                                        "zap": "Lightning",
+                                        "flask": "Flask",
+                                        "clock": "Clock",
+                                        "plus": "Plus",
+                                        "minus": "Minus",
+                                        "map_pin": "Map pin",
+                                        "mail": "Mail",
+                                        "phone": "Phone",
+                                        "help-circle": "Help circle",
+                                        "credit-card": "Credit card",
+                                        "user": "User",
+                                        "flaticon_capsule": "Flaticon: Capsule (Abbasi Color Fill)",
+                                        "flaticon_pills": "Flaticon: Pills (Abbasi Color Fill)",
+                                        "flaticon_prescription": "Flaticon: Prescription (Abbasi Color Fill)",
+                                        "flaticon_nurse": "Flaticon: Nurse (Abbasi Color Fill)",
+                                        "flaticon_first_aid_kit": "Flaticon: First aid kit (Abbasi Color Fill)",
+                                        "flaticon_hospital": "Flaticon: Hospital (Abbasi Color Fill)",
+                                        "flaticon_medical_book": "Flaticon: Medical book (Abbasi Color Fill)",
+                                        "flaticon_medical_report": "Flaticon: Medical report (Abbasi Color Fill)"
+                                    },
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "return_format": "value"
                                 },
                                 {
                                     "key": "field_faq_items",
@@ -1309,7 +2608,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Still need help?",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -1329,7 +2628,72 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Our pharmacy support team typically responds within one business day.",
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_faq_support_artwork",
+                            "label": "FAQ Support Artwork Image",
+                            "name": "faq_support_artwork",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "Optional. Leave empty to show no illustration.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "id",
+                            "preview_size": "medium",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ""
+                        },
+                        {
+                            "key": "field_faq_support_artwork_decorative",
+                            "label": "FAQ Support Artwork Image Is Decorative",
+                            "name": "faq_support_artwork_decorative",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "When enabled, assistive technology will ignore the image.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "Decorative image",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Yes",
+                            "ui_off_text": "No"
+                        },
+                        {
+                            "key": "field_faq_support_artwork_alt",
+                            "label": "FAQ Support Artwork Image Alternative Text",
+                            "name": "faq_support_artwork_alt",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Used when the image is meaningful. Leave empty to use the media library alternative text.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -1349,7 +2713,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "support@armodafinilaustralia.com.au",
+                            "default_value": "",
                             "placeholder": "",
                             "prepend": "",
                             "append": ""
@@ -1388,7 +2752,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "\/contact",
+                            "default_value": "/contact",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -1404,6 +2768,26 @@
                     "label": "FAQ Block (No Categories)",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_km_enabled_faq_simple",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
                         {
                             "key": "field_faq_simple_title",
                             "label": "Title",
@@ -1519,6 +2903,26 @@
                     "label": "Contact Block",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_km_enabled_contact",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
                         {
                             "key": "field_contact_form_title",
                             "label": "Form Title",
@@ -1676,6 +3080,26 @@
                     "label": "Advanced Hero",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_km_enabled_advanced_hero",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
                         {
                             "key": "field_ah_badge",
                             "label": "Badge",
@@ -1841,6 +3265,26 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_km_enabled_timeline",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
+                        {
                             "key": "field_tl_badge",
                             "label": "Badge",
                             "name": "badge",
@@ -1998,6 +3442,66 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_km_enabled_features_grid",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
+                        {
+                            "key": "field_fg_eyebrow",
+                            "label": "Eyebrow",
+                            "name": "eyebrow",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_fg_introduction",
+                            "label": "Introduction",
+                            "name": "introduction",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_fg_title",
                             "label": "Section Title",
                             "name": "title",
@@ -2063,8 +3567,8 @@
                                     "label": "Lucide Icon",
                                     "name": "icon",
                                     "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
+                                    "type": "select",
+                                    "instructions": "Select a decorative icon. Existing icon values remain supported; choose No icon to hide it.",
                                     "required": false,
                                     "conditional_logic": false,
                                     "wrapper": {
@@ -2072,11 +3576,76 @@
                                         "class": "",
                                         "id": ""
                                     },
-                                    "default_value": "",
+                                    "default_value": "pulse",
                                     "maxlength": "",
                                     "placeholder": "",
                                     "prepend": "",
                                     "append": "",
+                                    "parent_repeater": "field_fg_features",
+                                    "choices": {
+                                        "none": "No icon",
+                                        "package": "Package",
+                                        "shield": "Shield",
+                                        "heart": "Heart",
+                                        "arrow": "Arrow",
+                                        "search": "Search",
+                                        "cart": "Cart",
+                                        "menu": "Menu",
+                                        "close": "Close",
+                                        "shop": "Shop",
+                                        "checkout": "Checkout",
+                                        "message": "Message",
+                                        "truck": "Truck",
+                                        "check": "Check",
+                                        "star": "Star",
+                                        "zap": "Lightning",
+                                        "flask": "Flask",
+                                        "clock": "Clock",
+                                        "plus": "Plus",
+                                        "minus": "Minus",
+                                        "map_pin": "Map pin",
+                                        "mail": "Mail",
+                                        "phone": "Phone",
+                                        "help-circle": "Help circle",
+                                        "credit-card": "Credit card",
+                                        "user": "User",
+                                        "percent": "Percent",
+                                        "info": "Info",
+                                        "shield-check": "Shield check",
+                                        "heart-handshake": "Heart handshake",
+                                        "pulse": "Pulse"
+                                    },
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "return_format": "value"
+                                },
+                                {
+                                    "key": "field_fg_feat_destination",
+                                    "label": "Link destination",
+                                    "name": "destination",
+                                    "aria-label": "",
+                                    "type": "post_object",
+                                    "instructions": "Choose a published public page, post, product, or guide. Private and draft content will not link.",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "post_type": [
+                                        "page",
+                                        "post",
+                                        "product",
+                                        "condition"
+                                    ],
+                                    "return_format": "object",
+                                    "taxonomy": [],
+                                    "allow_null": 1,
+                                    "multiple": 0,
+                                    "ui": 1,
+                                    "bidirectional_target": [],
                                     "parent_repeater": "field_fg_features"
                                 },
                                 {
@@ -2134,6 +3703,26 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_km_enabled_trust_signals",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
+                        {
                             "key": "field_ts_note",
                             "label": "Note",
                             "name": "",
@@ -2161,6 +3750,26 @@
                     "label": "Support CTA Inline",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_km_enabled_support_cta",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
                         {
                             "key": "field_sc_title",
                             "label": "Title",
@@ -2239,6 +3848,26 @@
                     "label": "Policy Page (TOC)",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_km_enabled_policy_page",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
                         {
                             "key": "field_pp_eyebrow",
                             "label": "Eyebrow",
@@ -2395,6 +4024,26 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_km_enabled_centered_hero",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
+                        {
                             "key": "field_ch_badge",
                             "label": "Badge",
                             "name": "badge",
@@ -2464,6 +4113,26 @@
                     "label": "Stats Grid",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_km_enabled_stats_grid",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
                         {
                             "key": "field_sg_stats",
                             "label": "Stats",
@@ -2539,6 +4208,26 @@
                     "label": "Split Story",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_km_enabled_split_story",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
                         {
                             "key": "field_ss_badge",
                             "label": "Left Badge",
@@ -2790,6 +4479,26 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_km_enabled_team_grid",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
+                        {
                             "key": "field_tg_title",
                             "label": "Title",
                             "name": "title",
@@ -2906,6 +4615,26 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_km_enabled_conditions_grid",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
+                        {
                             "key": "field_cond_title",
                             "label": "Title",
                             "name": "title",
@@ -2991,7 +4720,7 @@
                             "name": "posts",
                             "aria-label": "",
                             "type": "relationship",
-                            "instructions": "",
+                            "instructions": "Select published, publicly viewable guides. Draft, private, and unregistered content is skipped.",
                             "required": false,
                             "conditional_logic": false,
                             "wrapper": {
@@ -3000,7 +4729,9 @@
                                 "id": ""
                             },
                             "post_type": [
-                                "condition"
+                                "condition",
+                                "page",
+                                "post"
                             ],
                             "filters": [
                                 "search"
@@ -3011,6 +4742,99 @@
                             "max": 0,
                             "elements": [],
                             "bidirectional_target": []
+                        },
+                        {
+                            "key": "field_cond_action_label",
+                            "label": "Card action label",
+                            "name": "action_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Leave blank to omit the action label on every card.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_cond_fallback_icon",
+                            "label": "Icon when no image is available",
+                            "name": "fallback_icon",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Used only for cards without a featured image.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "none",
+                            "choices": {
+                                "none": "No icon",
+                                "package": "Package",
+                                "shield": "Shield",
+                                "heart": "Heart",
+                                "arrow": "Arrow",
+                                "search": "Search",
+                                "cart": "Cart",
+                                "menu": "Menu",
+                                "close": "Close",
+                                "shop": "Shop",
+                                "checkout": "Checkout",
+                                "message": "Message",
+                                "truck": "Truck",
+                                "check": "Check",
+                                "star": "Star",
+                                "zap": "Lightning",
+                                "flask": "Flask",
+                                "clock": "Clock",
+                                "plus": "Plus",
+                                "minus": "Minus",
+                                "map_pin": "Map pin",
+                                "mail": "Mail",
+                                "phone": "Phone",
+                                "help-circle": "Help circle",
+                                "credit-card": "Credit card",
+                                "user": "User",
+                                "percent": "Percent",
+                                "info": "Info",
+                                "shield-check": "Shield check",
+                                "heart-handshake": "Heart handshake",
+                                "pulse": "Pulse"
+                            },
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value"
+                        },
+                        {
+                            "key": "field_cond_show_images",
+                            "label": "Show featured images",
+                            "name": "show_images",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": 1,
+                            "message": "",
+                            "ui": 1,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
                         }
                     ],
                     "min": "",
@@ -3022,6 +4846,26 @@
                     "label": "Blog Grid",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_km_enabled_blog_grid",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
                         {
                             "key": "field_blog_title",
                             "label": "Title",
@@ -3128,6 +4972,65 @@
                             "max": 0,
                             "elements": [],
                             "bidirectional_target": []
+                        },
+                        {
+                            "key": "field_km_blog_display_mode",
+                            "name": "display_mode",
+                            "label": "Guide composition",
+                            "type": "select",
+                            "required": 0,
+                            "choices": {
+                                "grid": "Equal article cards",
+                                "featured_links": "First article featured, remaining articles as links"
+                            },
+                            "default_value": "grid",
+                            "return_format": "value",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0
+                        },
+                        {
+                            "key": "field_km_blog_show_images",
+                            "name": "show_images",
+                            "label": "Show article images",
+                            "type": "true_false",
+                            "required": 0,
+                            "default_value": 1,
+                            "ui": 1
+                        },
+                        {
+                            "key": "field_km_blog_fallback_icon",
+                            "name": "fallback_icon",
+                            "label": "Icon when an article has no image",
+                            "type": "select",
+                            "required": 0,
+                            "choices": {
+                                "none": "No icon",
+                                "package": "Package",
+                                "shield": "Shield",
+                                "heart": "Heart",
+                                "arrow": "Arrow",
+                                "search": "Search",
+                                "cart": "Cart",
+                                "menu": "Menu",
+                                "close": "Close",
+                                "shop": "Shop",
+                                "checkout": "Checkout",
+                                "message": "Message",
+                                "truck": "Truck",
+                                "check": "Check",
+                                "star": "Star",
+                                "plus": "Plus",
+                                "minus": "Minus",
+                                "map_pin": "Map pin",
+                                "mail": "Mail",
+                                "phone": "Phone"
+                            },
+                            "default_value": "none",
+                            "return_format": "value",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0
                         }
                     ],
                     "min": "",
@@ -3139,6 +5042,26 @@
                     "label": "Newsletter CTA",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_km_enabled_newsletter",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
                         {
                             "key": "field_news_title",
                             "label": "Title",
@@ -3210,6 +5133,26 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_km_enabled_simple_hero",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
+                        {
                             "key": "field_sh_tag",
                             "label": "Tag",
                             "name": "tag",
@@ -3280,6 +5223,26 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_km_enabled_blog_archive",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
+                        {
                             "key": "field_ba_info",
                             "label": "Info",
                             "name": "",
@@ -3308,6 +5271,26 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_km_enabled_conditions_archive",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
+                        {
                             "key": "field_ca_info",
                             "label": "Info",
                             "name": "",
@@ -3335,6 +5318,26 @@
                     "label": "Order CTA",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_km_enabled_order_cta",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
                         {
                             "key": "field_octa_tag",
                             "label": "Tag",
@@ -3406,6 +5409,26 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_km_enabled_important_notes",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
+                        {
                             "key": "field_mod_important_usage_note",
                             "label": "Important Usage Note",
                             "name": "important_usage_note",
@@ -3419,7 +5442,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "{product_name} is a Schedule 4 (prescription-only) medicine in Australia. Effects, dosage, and possible side effects can differ from person to person. Taking this medicine without a doctor's advice may be harmful. This website does not encourage self-medication. For official Australian prescription-medicine guidance, see the <a href=\"https:\/\/www.tga.gov.au\/\" target=\"_blank\" rel=\"noopener\" class=\"text-brand-700 hover:underline\">Therapeutic Goods Administration (TGA)<\/a>.",
+                            "default_value": "{product_name} is a Schedule 4 (prescription-only) medicine in Australia. Effects, dosage, and possible side effects can differ from person to person. Taking this medicine without a doctor's advice may be harmful. This website does not encourage self-medication. For official Australian prescription-medicine guidance, see the <a href=\"https://www.tga.gov.au/\" target=\"_blank\" rel=\"noopener\" class=\"text-brand-700 hover:underline\">Therapeutic Goods Administration (TGA)</a>.",
                             "new_lines": "",
                             "maxlength": "",
                             "placeholder": "",
@@ -3439,7 +5462,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "This website is for informational purposes only and does not constitute medical advice. Always consult a qualified healthcare professional before starting, stopping, or changing any medication. <a href=\"\/medical-disclaimer\" class=\"font-semibold text-brand-800 hover:underline\">Read our full medical disclaimer.<\/a>",
+                            "default_value": "This website is for informational purposes only and does not constitute medical advice. Always consult a qualified healthcare professional before starting, stopping, or changing any medication. <a href=\"/medical-disclaimer\" class=\"font-semibold text-brand-800 hover:underline\">Read our full medical disclaimer.</a>",
                             "new_lines": "",
                             "maxlength": "",
                             "placeholder": "",
@@ -3459,7 +5482,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "https:\/\/armodafinildirect.com.au\/medical-team\/dr-ginni-mansberg\/",
+                            "default_value": "https://armodafinildirect.com.au/medical-team/dr-ginni-mansberg/",
                             "placeholder": ""
                         },
                         {
@@ -3489,9 +5512,29 @@
                 "layout_rich_text": {
                     "key": "layout_rich_text",
                     "name": "rich_text",
-                    "label": "Rich Text (Top\/Bottom Content)",
+                    "label": "Rich Text (Top/Bottom Content)",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_km_enabled_rich_text",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
                         {
                             "key": "field_rt_content",
                             "label": "Content",
@@ -3552,6 +5595,26 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_km_enabled_archive_products",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
+                        {
                             "key": "field_ap_instructions",
                             "label": "Instructions",
                             "name": "",
@@ -3579,6 +5642,26 @@
                     "label": "Category Showcase",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_km_enabled_category_showcase",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
                         {
                             "key": "field_cs_sections",
                             "label": "Showcase Sections",
@@ -3638,6 +5721,26 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_km_enabled_review_page",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
+                        {
                             "key": "field_review_page_heading",
                             "label": "Heading",
                             "name": "heading",
@@ -3667,6 +5770,26 @@
                     "label": "Reviews Carousel",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_km_enabled_reviews_carousel",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
                         {
                             "key": "field_reviews_carousel_heading",
                             "label": "Heading",
@@ -3698,6 +5821,26 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_km_enabled_review_form",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
+                        {
                             "key": "field_review_form_heading",
                             "label": "Heading",
                             "name": "heading",
@@ -3711,7 +5854,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Leave us a review \ud83d\ude4f",
+                            "default_value": "Leave us a review 🙏",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -3727,6 +5870,26 @@
                     "label": "Reviews Carousel Grid (3 Col)",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_km_enabled_reviews_carousel_grid",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
                         {
                             "key": "field_reviews_carousel_grid_heading",
                             "label": "Heading",
@@ -3750,6 +5913,405 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_delivery_cities": {
+                    "key": "layout_delivery_cities",
+                    "name": "delivery_cities",
+                    "label": "Delivery Cities / Nationwide",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_km_enabled_delivery_cities",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
+                        {
+                            "key": "field_deliv_badge",
+                            "label": "Badge Text",
+                            "name": "badge",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "SHIPPING NATIONWIDE",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_deliv_title",
+                            "label": "Section Title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Delivered Everywhere in Australia",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_deliv_subtitle",
+                            "label": "Subtitle",
+                            "name": "subtitle",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Metro cities, regional towns, or remote FIFO camps — we ship to your address.",
+                            "rows": 2,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_deliv_cities",
+                            "label": "Cities / Locations",
+                            "name": "cities",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "Add or modify cities. If left empty, default Australian cities will be displayed automatically.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "table",
+                            "button_label": "Add City",
+                            "min": 0,
+                            "max": 0,
+                            "sub_fields": [
+                                {
+                                    "key": "field_deliv_city_name",
+                                    "label": "City Name",
+                                    "name": "city_name",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "45%",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": "e.g. Sydney NSW",
+                                    "parent_repeater": "field_deliv_cities"
+                                },
+                                {
+                                    "key": "field_deliv_city_highlight",
+                                    "label": "Highlight",
+                                    "name": "highlight",
+                                    "aria-label": "",
+                                    "type": "true_false",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "20%",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "Special highlight",
+                                    "default_value": 0,
+                                    "parent_repeater": "field_deliv_cities"
+                                },
+                                {
+                                    "key": "field_deliv_city_status",
+                                    "label": "Status Badge",
+                                    "name": "status",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "35%",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": "e.g. Same-Day Dispatch",
+                                    "parent_repeater": "field_deliv_cities"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "layout_city_sections": {
+                    "key": "layout_city_sections",
+                    "name": "city_sections",
+                    "label": "City Sections (Nationwide Delivery)",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_km_enabled_city_sections",
+                            "label": "Show This Section",
+                            "name": "km_module_enabled",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Turn off to hide this section on the rendered page. Existing sections remain visible unless you turn this off.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "km-module-visibility-control",
+                                "id": ""
+                            },
+                            "message": "Visible on page",
+                            "default_value": 1,
+                            "ui": true,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
+                        {
+                            "key": "field_deliv_badge",
+                            "label": "Badge Text",
+                            "name": "badge",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "SHIPPING NATIONWIDE",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_deliv_title",
+                            "label": "Section Title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Delivered Everywhere in Australia",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_deliv_subtitle",
+                            "label": "Subtitle",
+                            "name": "subtitle",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Metro cities, regional towns, or remote FIFO camps — we ship to your address.",
+                            "rows": 2,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_deliv_cities",
+                            "label": "Cities / Locations",
+                            "name": "cities",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "Add or modify cities. If left empty, default Australian cities will be displayed automatically.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "table",
+                            "button_label": "Add City",
+                            "min": 0,
+                            "max": 0,
+                            "sub_fields": [
+                                {
+                                    "key": "field_deliv_city_name",
+                                    "label": "City Name",
+                                    "name": "city_name",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "45%",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": "e.g. Sydney NSW",
+                                    "parent_repeater": "field_deliv_cities"
+                                },
+                                {
+                                    "key": "field_deliv_city_highlight",
+                                    "label": "Highlight",
+                                    "name": "highlight",
+                                    "aria-label": "",
+                                    "type": "true_false",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "20%",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "Special highlight",
+                                    "default_value": 0,
+                                    "parent_repeater": "field_deliv_cities"
+                                },
+                                {
+                                    "key": "field_deliv_city_status",
+                                    "label": "Status Badge",
+                                    "name": "status",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "35%",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "placeholder": "e.g. Same-Day Dispatch",
+                                    "parent_repeater": "field_deliv_cities"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "layout_payment_overview": {
+                    "key": "layout_payment_overview",
+                    "name": "payment_overview",
+                    "label": "Available payment methods",
+                    "display": "block",
+                    "min": "",
+                    "max": "",
+                    "sub_fields": [
+                        {
+                            "key": "field_km_enabled_payment_overview",
+                            "name": "km_module_enabled",
+                            "label": "Show this section",
+                            "type": "true_false",
+                            "required": 0,
+                            "default_value": 0,
+                            "ui": 1,
+                            "instructions": "Enable only after configuring and reviewing this section. Payment names come from currently available WooCommerce gateways."
+                        },
+                        {
+                            "key": "field_km_payment_title",
+                            "name": "title",
+                            "label": "Heading",
+                            "type": "text",
+                            "required": 0,
+                            "default_value": ""
+                        },
+                        {
+                            "key": "field_km_payment_introduction",
+                            "name": "introduction",
+                            "label": "Introduction",
+                            "type": "textarea",
+                            "required": 0,
+                            "default_value": "",
+                            "rows": 3
+                        },
+                        {
+                            "key": "field_km_payment_icon",
+                            "name": "icon",
+                            "label": "Section icon",
+                            "type": "select",
+                            "required": 0,
+                            "choices": {
+                                "none": "No icon",
+                                "package": "Package",
+                                "shield": "Shield",
+                                "heart": "Heart",
+                                "arrow": "Arrow",
+                                "search": "Search",
+                                "cart": "Cart",
+                                "menu": "Menu",
+                                "close": "Close",
+                                "shop": "Shop",
+                                "checkout": "Checkout",
+                                "message": "Message",
+                                "truck": "Truck",
+                                "check": "Check",
+                                "star": "Star",
+                                "plus": "Plus",
+                                "minus": "Minus",
+                                "map_pin": "Map pin",
+                                "mail": "Mail",
+                                "phone": "Phone"
+                            },
+                            "default_value": "none",
+                            "return_format": "value",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0
+                        },
+                        {
+                            "key": "field_km_payment_info_page",
+                            "name": "info_page",
+                            "label": "Payment information page",
+                            "type": "post_object",
+                            "required": 0,
+                            "post_type": [
+                                "page"
+                            ],
+                            "return_format": "id",
+                            "allow_null": 1,
+                            "multiple": 0,
+                            "ui": 1
+                        },
+                        {
+                            "key": "field_km_payment_action_label",
+                            "name": "action_label",
+                            "label": "Information link label",
+                            "type": "text",
+                            "required": 0,
+                            "default_value": ""
+                        }
+                    ]
                 }
             },
             "button_label": "Add Module",
@@ -3813,5 +6375,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1790079185
+    "modified": 1792262906
 }

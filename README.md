@@ -1,14 +1,14 @@
 # armodafinilaustralia.com.au-redesign
 
-Custom WordPress theme based on Armodafinil Australia Direct. Git tracks theme code only. The repository root maps to `wp-content/themes/armodafinil-australia-direct-wp` in WordPress.
+Custom WordPress theme based on Armodafinil Australia Direct. Git tracks theme code only. The repository root maps to `wp-content/themes/armodafinilaustralia.com.au-redesign` in WordPress.
 
 ## Setup
 
 Restore the shared UpdraftPlus baseline into your own Laragon site, then clone this repository into the theme directory. Keep wp-config.php, plugins, uploads, and the database outside Git. Activate the theme with ACF Pro and WooCommerce available.
 
 ```bash
-git clone https://github.com/bintangmogot/armodafinilaustralia.com.au-redesign.git armodafinil-australia-direct-wp
-cd armodafinil-australia-direct-wp
+git clone https://github.com/bintangmogot/armodafinilaustralia.com.au-redesign.git armodafinilaustralia.com.au-redesign
+cd armodafinilaustralia.com.au-redesign
 git switch dev
 npm ci
 npm run build
@@ -41,7 +41,6 @@ Example cloud request: "Work on issue #12 from origin/dev. Follow AGENTS.md, kee
 
 Cloud install command: `bash scripts/cloud-setup.sh`. Cloud checks cover theme syntax and CSS compilation. An actual WordPress runtime requires a separate database and plugins; do not publish the golden backup or licensed plugins in this public repository.
 
-InstaWP Git configuration: repository `https://github.com/bintangmogot/armodafinilaustralia.com.au-redesign.git`, branch `dev`, destination `wp-content/themes/armodafinil-australia-direct-wp`. Register the site's webhook in GitHub with push events. Do not publish webhook URLs or credentials in documentation.
+InstaWP Git configuration: repository `https://github.com/bintangmogot/armodafinilaustralia.com.au-redesign.git`, branch `dev`, destination `wp-content/themes/armodafinilaustralia.com.au-redesign`. Register the site's webhook in GitHub with push events. Do not publish webhook URLs or credentials in documentation.
 
 Read AGENTS.md for code and content rules. Existing copied theme behavior still requires the audits listed in GitHub Issues; these are acceptance tasks, not confirmed bugs.
-
