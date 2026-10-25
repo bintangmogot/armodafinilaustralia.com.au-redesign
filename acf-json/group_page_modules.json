@@ -44,9 +44,9 @@
                             "ui_off_text": "Hide"
                         },
                         {
-                            "key": "field_hero_eyebrow",
-                            "label": "Eyebrow",
-                            "name": "eyebrow",
+                            "key": "field_hero_badge",
+                            "label": "Badge",
+                            "name": "badge",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -258,9 +258,9 @@
                             "append": ""
                         },
                         {
-                            "key": "field_hero_eyebrow_icon",
-                            "label": "Eyebrow Icon",
-                            "name": "eyebrow_icon",
+                            "key": "field_hero_badge_icon",
+                            "label": "Badge Icon",
+                            "name": "badge_icon",
                             "aria-label": "",
                             "type": "select",
                             "instructions": "",
@@ -751,9 +751,9 @@
                             "ui_off_text": "Hide"
                         },
                         {
-                            "key": "field_km_cd_eyebrow",
-                            "label": "Eyebrow",
-                            "name": "eyebrow",
+                            "key": "field_km_cd_badge",
+                            "label": "Badge",
+                            "name": "badge",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -3462,9 +3462,9 @@
                             "ui_off_text": "Hide"
                         },
                         {
-                            "key": "field_fg_eyebrow",
-                            "label": "Eyebrow",
-                            "name": "eyebrow",
+                            "key": "field_fg_badge",
+                            "label": "Badge",
+                            "name": "badge",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -3869,9 +3869,9 @@
                             "ui_off_text": "Hide"
                         },
                         {
-                            "key": "field_pp_eyebrow",
-                            "label": "Eyebrow",
-                            "name": "eyebrow",
+                            "key": "field_pp_badge",
+                            "label": "Badge",
+                            "name": "badge",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",

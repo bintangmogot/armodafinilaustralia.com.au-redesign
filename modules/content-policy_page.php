@@ -1,5 +1,5 @@
 <?php
-$eyebrow = get_sub_field('eyebrow') ?: 'Legal';
+$badge = get_sub_field('badge') ?: 'Legal';
 $title = get_sub_field('title');
 $intro = get_sub_field('intro');
 $updated = get_sub_field('updated') ?: date('F Y');
@@ -39,7 +39,7 @@ $sections = get_sub_field('sections');
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
                 <?php echo esc_html($back_text); ?>
             </a>
-                <div class="text-[11px] uppercase tracking-widest text-brand-700 font-semibold bg-brand-100 rounded-full px-3 py-1.5 inline-block"><?php echo esc_html($eyebrow); ?></div>
+                <div class="text-[11px] uppercase tracking-widest text-brand-700 font-semibold bg-brand-100 rounded-full px-3 py-1.5 inline-block"><?php echo esc_html($badge); ?></div>
             </div>
             <h1 class="mt-4 font-serif text-4xl md:text-5xl font-semibold text-ink-900 leading-tight"><?php echo esc_html($title); ?></h1>
             <?php if ($intro) : ?>
