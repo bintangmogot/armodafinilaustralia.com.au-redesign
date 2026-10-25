@@ -7,7 +7,7 @@
 
 $badge = get_sub_field('badge') ?: 'SHIPPING NATIONWIDE';
 $title = get_sub_field('title') ?: 'Delivered Everywhere in Australia';
-$subtitle = get_sub_field('subtitle') ?: 'Metro cities, regional towns, or remote FIFO camps — we ship to your address.';
+$subtitle = get_sub_field('subtitle') ?: 'Metro cities, regional towns, or remote FIFO camps - we ship to your address.';
 $cities_field = get_sub_field('cities');
 
 $cities = array();
@@ -25,7 +25,7 @@ if ( ! empty( $cities_field ) && is_array( $cities_field ) ) {
             $status = '';
         }
         if ( ! empty($name) ) {
-            $is_special = $highlight || ( strpos($name, '✓') !== false );
+            $is_special = $highlight || ( strpos($name, '') !== false );
 
             // Provide natural fallback status for special highlighted cities if empty
             if ( $is_special && $status === '' ) {
@@ -33,7 +33,7 @@ if ( ! empty( $cities_field ) && is_array( $cities_field ) ) {
                     $status = 'Same-Day Dispatch';
                 } elseif ( stripos($name, 'Brisbane') !== false ) {
                     $status = 'Express Metro';
-                } elseif ( stripos($name, 'Remote') !== false || stripos($name, 'Regional') !== false || strpos($name, '✓') !== false ) {
+                } elseif ( stripos($name, 'Remote') !== false || stripos($name, 'Regional') !== false || strpos($name, '') !== false ) {
                     $status = '100% AU-Wide';
                 } else {
                     $status = 'Express Hub';
@@ -66,7 +66,7 @@ if ( empty( $cities ) ) {
         array('name' => 'Geelong VIC', 'highlight' => false, 'status' => ''),
         array('name' => 'Townsville QLD', 'highlight' => false, 'status' => ''),
         array('name' => 'Wollongong NSW', 'highlight' => false, 'status' => ''),
-        array('name' => 'Regional & Remote ✓', 'highlight' => true, 'status' => '100% AU-Wide'),
+        array('name' => 'Regional & Remote ', 'highlight' => true, 'status' => '100% AU-Wide'),
     );
 }
 

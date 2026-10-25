@@ -108,7 +108,7 @@ usort($methods, function($a, $b) {
                     <textarea required rows="5" class="mt-1 w-full rounded-lg border border-ink-200 px-3 py-2 outline-none focus:border-brand-600"></textarea>
                 </label>
                 <button type="submit" class="h-11 px-6 rounded-full bg-brand-600 hover:bg-brand-700 text-white font-semibold transition-colors">Send message</button>
-                <p class="success-msg text-sm text-brand-700 hidden mt-2">Thanks — we'll reply within one business day.</p>
+                <p class="success-msg text-sm text-brand-700 hidden mt-2">Thanks - we'll reply within one business day.</p>
             </form>
         <?php endif; ?>
     </div>

@@ -6,7 +6,7 @@
  */
 
 $title = get_sub_field('title') ?: 'Fast, discreet delivery';
-$subtitle = get_sub_field('subtitle') ?: 'Care built into every step — from checkout to your doorstep.';
+$subtitle = get_sub_field('subtitle') ?: 'Care built into every step - from checkout to your doorstep.';
 $features = get_sub_field('features');
 
 if ( empty( $features ) ) {

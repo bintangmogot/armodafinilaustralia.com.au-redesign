@@ -6,7 +6,7 @@
  */
 
 $title = get_sub_field('title') ?: 'Built for your goals';
-$subtitle = get_sub_field('subtitle') ?: 'Choose the profile that fits your day — we’ll guide the rest.';
+$subtitle = get_sub_field('subtitle') ?: 'Choose the profile that fits your day - we’ll guide the rest.';
 $audiences = get_sub_field('audiences');
 
 if ( empty( $audiences ) ) {

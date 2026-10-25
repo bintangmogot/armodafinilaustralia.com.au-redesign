@@ -7,7 +7,7 @@ $heading = get_sub_field('heading') ?: 'Reviews Grid';
 
 // Fetch General Reviews (no linked product)
 $reviews = get_posts([
-    "post_type" => "review",
+    "post_type" => "reviews",
     "posts_per_page" => 9,
     "orderby" => "date",
     "order" => "DESC",

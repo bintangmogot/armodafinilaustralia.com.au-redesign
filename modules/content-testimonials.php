@@ -130,7 +130,7 @@ if ( ! empty( $selected_reviews ) ) {
 // If no reviews selected, automatically fetch latest published reviews from CPT
 if ( empty( $review_items ) ) {
     $fallback_posts = get_posts(array(
-        'post_type'      => 'review',
+        'post_type'      => 'reviews',
         'posts_per_page' => 6,
         'post_status'    => 'publish',
         'orderby'        => 'date',

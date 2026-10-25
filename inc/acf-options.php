@@ -19,21 +19,18 @@ add_action('acf/init', function() {
                 'label' => 'Top Bar Left Text',
                 'name' => 'topbar_left',
                 'type' => 'text',
-                'default_value' => 'Premium cognitive support â€” Australia-wide dispatch',
             ),
             array(
                 'key' => 'field_topbar_center',
                 'label' => 'Top Bar Center Text',
                 'name' => 'topbar_center',
                 'type' => 'text',
-                'default_value' => '6â€“12 business days â€” discreet packaging',
             ),
             array(
                 'key' => 'field_topbar_right',
                 'label' => 'Top Bar Right Text',
                 'name' => 'topbar_right',
                 'type' => 'text',
-                'default_value' => 'Support',
             ),
 
 
@@ -76,7 +73,6 @@ add_action('acf/init', function() {
                 'label' => 'Support Email',
                 'name' => 'support_email',
                 'type' => 'email',
-                'default_value' => 'support@armodafinil-australia-direct.com',
                 'instructions' => 'Used in the top bar and footer. Leave blank to hide from the footer.',
             ),
             array(
@@ -84,7 +80,6 @@ add_action('acf/init', function() {
                 'label' => 'Support Phone Number',
                 'name' => 'whatsapp_number',
                 'type' => 'text',
-                'default_value' => '+61 4 8999 5839',
                 'instructions' => 'Leave blank to hide from the footer.',
             ),
 
@@ -102,42 +97,36 @@ add_action('acf/init', function() {
                 'label' => 'Footer Description',
                 'name' => 'footer_description',
                 'type' => 'textarea',
-                'default_value' => 'Steady focus, cleaner clarity, and dependable dispatch &mdash; built for Australian customers who take their day seriously.',
             ),
             array(
                 'key' => 'field_ssl_text',
                 'label' => 'SSL Text',
                 'name' => 'ssl_text',
                 'type' => 'text',
-                'default_value' => 'SSL secured',
             ),
             array(
                 'key' => 'field_dispatch_text',
                 'label' => 'Dispatch Text',
                 'name' => 'dispatch_text',
                 'type' => 'text',
-                'default_value' => 'AU-wide dispatch',
             ),
             array(
                 'key' => 'field_checkout_text',
                 'label' => 'Checkout Text',
                 'name' => 'checkout_text',
                 'type' => 'text',
-                'default_value' => 'Encrypted checkout',
             ),
             array(
                 'key' => 'field_location_text',
                 'label' => 'Location Text',
                 'name' => 'location_text',
                 'type' => 'text',
-                'default_value' => 'Sydney, AU',
             ),
             array(
                 'key' => 'field_copyright_text',
                 'label' => 'Copyright Text',
                 'name' => 'copyright_text',
                 'type' => 'text',
-                'default_value' => '© 2026 Armodafinil. Information only &mdash; not medical advice.',
             ),
 
         ),

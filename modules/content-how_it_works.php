@@ -11,10 +11,10 @@ $steps = get_sub_field('steps');
 
 if ( empty( $steps ) ) {
     $steps = array(
-        array('step_number' => 1, 'time' => '15–30 mins', 'title' => 'Rapid Absorption', 'desc' => 'Fast-acting profile begins its work within the first half hour of the dose.'),
-        array('step_number' => 2, 'time' => '1–2 hours', 'title' => 'Neural Activation', 'desc' => 'Supports dopamine and norepinephrine pathways for cleaner cognitive throughput.'),
-        array('step_number' => 3, 'time' => '2–4 hours', 'title' => 'Peak Focus', 'desc' => 'Attention and mental stamina reach their strongest window.'),
-        array('step_number' => 4, 'time' => '12+ hours', 'title' => 'Extended Clarity', 'desc' => 'Comfortable mental energy through the rest of the day — no abrupt drop.'),
+        array('step_number' => 1, 'time' => '15-30 mins', 'title' => 'Rapid Absorption', 'desc' => 'Fast-acting profile begins its work within the first half hour of the dose.'),
+        array('step_number' => 2, 'time' => '1-2 hours', 'title' => 'Neural Activation', 'desc' => 'Supports dopamine and norepinephrine pathways for cleaner cognitive throughput.'),
+        array('step_number' => 3, 'time' => '2-4 hours', 'title' => 'Peak Focus', 'desc' => 'Attention and mental stamina reach their strongest window.'),
+        array('step_number' => 4, 'time' => '12+ hours', 'title' => 'Extended Clarity', 'desc' => 'Comfortable mental energy through the rest of the day - no abrupt drop.'),
     );
 }
 ?>

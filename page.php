@@ -15,11 +15,8 @@ get_header(); ?>
         $page_id = get_option('page_for_posts');
     }
 
-    if( have_rows('page_modules', $page_id) ):
-        while( have_rows('page_modules', $page_id) ) : the_row();
-            $layout = get_row_layout();
-            get_template_part('modules/content', $layout);
-        endwhile;
+    if ( armo_render_modules( $page_id ) ) :
+        // Modules were printed above.
     else: ?>
         <?php 
         while ( have_posts() ) : the_post();

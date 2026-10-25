@@ -1,11 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
-  content: ["./*.php", "./template-parts/**/*.php", "./inc/**/*.php", "./woocommerce/**/*.php", "./modules/**/*.php"],
+  content: ["./*.php", "./template-parts/**/*.php", "./inc/**/*.php", "./woocommerce/**/*.php", "./modules/**/*.php", "./modules-legacy/**/*.php"],
   theme: {
     extend: {
       fontFamily: {
-        serif: ['"Playfair Display"', 'ui-serif', 'Georgia', 'serif'],
+        // Headings use Poppins. `serif` stays as an alias so older templates pick it up.
+        heading: ['Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
@@ -48,16 +50,21 @@ module.exports = {
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         brand: {
-          50:  '#f0fdfa',
-          100: '#ccfbf1',
-          200: '#99f6e4',
-          300: '#5eead4',
-          400: '#2dd4bf',
-          500: '#14b8a6',
-          600: '#0d9488',
-          700: '#0f766e',
-          800: '#115e59',
-          900: '#134e4a',
+          50:  '#eaf2ff',
+          100: '#e1edff',
+          200: '#b9cee8',
+          300: '#7fa3d6',
+          400: '#3f72b8',
+          500: '#1b4f93',
+          600: '#073980',
+          700: '#00125e',
+          800: '#0a1045',
+          900: '#070b30',
+        },
+        surface: {
+          DEFAULT: '#e1edff',
+          light: '#eaf2ff',
+          dark: '#b9cee8',
         },
         ink: {
           50:  '#f8fafc',

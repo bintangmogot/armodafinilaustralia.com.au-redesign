@@ -20,7 +20,7 @@ $price_html = $product->get_price_html();
 
 
 $reviews = get_posts([
-    'post_type' => 'review',
+    'post_type' => 'reviews',
     'posts_per_page' => -1,
     'meta_query' => array(
         array(

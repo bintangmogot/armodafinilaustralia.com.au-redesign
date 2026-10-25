@@ -191,7 +191,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "review"
+                "value": "reviews"
             }
         ]
     ],

@@ -7,7 +7,7 @@ $heading = get_sub_field('heading') ?: 'Customer Reviews';
 
 // Fetch General Reviews (no linked product)
 $reviews = get_posts([
-    "post_type" => "review",
+    "post_type" => "reviews",
     "posts_per_page" => -1,
     "orderby" => "date",
     "order" => "DESC",

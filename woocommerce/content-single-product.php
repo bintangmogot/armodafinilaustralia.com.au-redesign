@@ -57,7 +57,7 @@ $currency = html_entity_decode(get_woocommerce_currency_symbol());
 
 // Fetch Custom Reviews
 $reviews = get_posts([
-    'post_type' => 'review',
+    'post_type' => 'reviews',
     'posts_per_page' => -1,
     'meta_query' => array(
         array(

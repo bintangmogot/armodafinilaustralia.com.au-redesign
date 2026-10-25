@@ -64,7 +64,7 @@ function armd_register_cpts() {
         'show_ui'            => true,
         'show_in_menu'       => true,
         'query_var'          => true,
-        'rewrite'            => array( 'slug' => 'review' ),
+        'rewrite'            => false,
         'capability_type'    => 'post',
         'has_archive'        => false,
         'hierarchical'       => false,
@@ -73,12 +73,12 @@ function armd_register_cpts() {
         'supports'           => array( 'title', 'editor', 'thumbnail' ),
     );
 
-    register_post_type( 'review', $review_args );
+    register_post_type( 'reviews', $review_args );
 }
 add_action( 'init', 'armd_register_cpts', 0 );
 
 // Add Custom Columns to Review CPT
-add_filter("manage_review_posts_columns", function($columns) {
+add_filter("manage_reviews_posts_columns", function($columns) {
     $new_columns = [];
     foreach ($columns as $key => $title) {
         if ($key == 'title') {
@@ -97,7 +97,7 @@ add_filter("manage_review_posts_columns", function($columns) {
 });
 
 // Populate Custom Columns
-add_action("manage_review_posts_custom_column", function($column, $post_id) {
+add_action("manage_reviews_posts_custom_column", function($column, $post_id) {
     if ($column === "review_thumb") {
         $img_id = get_field("review_image", $post_id);
         if (!$img_id) {
@@ -110,7 +110,7 @@ add_action("manage_review_posts_custom_column", function($column, $post_id) {
             $img_url = is_array($img_id) ? $img_id['url'] : wp_get_attachment_image_url($img_id, 'thumbnail');
             echo '<img src="' . esc_url($img_url) . '" style="width:44px;height:44px;object-fit:cover;border-radius:8px;border:1px solid #ddd;" />';
         } else {
-            echo '<span style="color:#ccc;">—</span>';
+            echo '<span style="color:#ccc;"> - </span>';
         }
     } elseif ($column === "rating") {
         $rating = get_field("rating", $post_id) ?: 5;

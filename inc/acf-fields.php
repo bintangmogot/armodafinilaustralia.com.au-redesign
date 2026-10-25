@@ -901,7 +901,7 @@ acf_add_local_field_group(array(
 					'label' => 'Heading',
 					'name' => 'heading',
 					'type' => 'text',
-					'default_value' => 'Leave us a review ✍️',
+					'default_value' => 'Leave us a review ',
 				),
 			),
 		),

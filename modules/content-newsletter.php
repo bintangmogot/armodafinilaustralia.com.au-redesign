@@ -4,7 +4,7 @@
  */
 
 $title = get_sub_field('title') ?: 'Stay in the loop';
-$subtitle = get_sub_field('subtitle') ?: 'Focus tips, dosage explainers, and exclusive Australian-only offers — straight to your inbox. Unsubscribe anytime.';
+$subtitle = get_sub_field('subtitle') ?: 'Focus tips, dosage explainers, and exclusive Australian-only offers - straight to your inbox. Unsubscribe anytime.';
 $shortcode = get_sub_field('shortcode');
 ?>
 

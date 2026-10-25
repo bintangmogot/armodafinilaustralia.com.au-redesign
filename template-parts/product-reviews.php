@@ -7,7 +7,7 @@ $product_id = get_the_ID();
 $product_name = get_the_title();
 
 $reviews = get_posts([
-    'post_type' => 'review',
+    'post_type' => 'reviews',
     'posts_per_page' => -1,
     'orderby' => 'date',
     'order' => 'DESC',

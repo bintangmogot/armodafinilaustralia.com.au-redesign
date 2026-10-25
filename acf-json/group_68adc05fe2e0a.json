@@ -2219,7 +2219,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "What Is Armodafinil?\r\nArmodafinil is a popular wakefulness-support medication commonly used by adults looking to improve alertness, focus, concentration, and mental performance during long working hours or demanding schedules.\r\n\r\nMany Australians choose Armodafinil because it is known for:\r\n✅ Long-lasting wakefulness support\r\n✅ Smoother focus throughout the day\r\n✅ Reduced mental fatigue\r\n✅ Improved productivity\r\n✅ Better concentration during study or work\r\nArmodafinil is commonly preferred by professionals, shift workers, university students, business owners, remote workers, gamers, developers, and creatives who need sustained mental clarity without the heavy crash associated with traditional stimulants.",
+                            "default_value": "What Is Armodafinil?\r\nArmodafinil is a popular wakefulness-support medication commonly used by adults looking to improve alertness, focus, concentration, and mental performance during long working hours or demanding schedules.\r\n\r\nMany Australians choose Armodafinil because it is known for:\r\n Long-lasting wakefulness support\r\n Smoother focus throughout the day\r\n Reduced mental fatigue\r\n Improved productivity\r\n Better concentration during study or work\r\nArmodafinil is commonly preferred by professionals, shift workers, university students, business owners, remote workers, gamers, developers, and creatives who need sustained mental clarity without the heavy crash associated with traditional stimulants.",
                             "allow_in_bindings": 0,
                             "tabs": "all",
                             "toolbar": "full",
@@ -2250,7 +2250,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Leave us a review 🙏",
+                            "default_value": "Leave us a review ",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -2280,7 +2280,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Why Australians Choose Armodafinil 👍",
+                            "default_value": "Why Australians Choose Armodafinil ",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",

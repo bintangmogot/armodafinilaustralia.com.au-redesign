@@ -45,7 +45,7 @@ $products = get_sub_field('products');
                     
                                         // Fetch rating from custom 'review' CPT
                     $reviews = get_posts([
-                        'post_type' => 'review',
+                        'post_type' => 'reviews',
                         'posts_per_page' => -1,
                         'fields' => 'ids',
                         'meta_query' => array(

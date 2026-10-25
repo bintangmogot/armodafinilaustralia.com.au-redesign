@@ -27,7 +27,7 @@ function handle_submit_product_review() {
         'post_title'   => $title ? $title : 'Review by ' . $name,
         'post_content' => $content,
         'post_status'  => 'draft', // Requires admin approval
-        'post_type'    => 'review',
+        'post_type'    => 'reviews',
     );
 
     $post_id = wp_insert_post($post_data);
