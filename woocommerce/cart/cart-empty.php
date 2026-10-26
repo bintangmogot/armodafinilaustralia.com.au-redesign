@@ -13,9 +13,9 @@ defined( 'ABSPATH' ) || exit;
     <?php do_action( 'woocommerce_cart_is_empty' ); ?>
     
     <?php if ( wc_get_page_id( 'shop' ) > 0 ) : ?>
-        <p class="mt-2 text-ink-500">Browse the catalogue and add something to get started.</p>
+        <p class="mt-2 text-ink-500"><?php echo esc_html( armo_label( 'label_cart_empty_text' ) ); ?></p>
         <a class="mt-6 inline-flex items-center gap-2 h-11 px-5 rounded-full bg-brand-600 hover:bg-brand-700 text-white font-semibold transition-colors" href="<?php echo esc_url( apply_filters( 'woocommerce_return_to_shop_redirect', wc_get_page_permalink( 'shop' ) ) ); ?>">
-            Explore products 
+            <?php echo esc_html( armo_label( 'label_explore_products' ) ); ?>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
     <?php endif; ?>

@@ -50,11 +50,12 @@ defined( 'ABSPATH' ) || exit;
     
     <?php
     $subtotal = WC()->cart->get_displayed_subtotal();
-    if ($subtotal < 299) {
-        $needed = 299 - $subtotal;
+    $free_threshold = (float) get_field( 'free_shipping_threshold', 'option' );
+    if ( $free_threshold > 0 && $subtotal < $free_threshold ) {
+        $needed = $free_threshold - $subtotal;
         ?>
         <p class="mt-4 text-xs text-brand-700 bg-brand-50 border border-brand-100 rounded-lg p-3 leading-relaxed">
-            Add <?php echo wc_price($needed); ?> more to unlock free shipping.
+            <?php echo wp_kses_post( str_replace( '{amount}', wc_price( $needed ), esc_html( armo_label( 'label_free_shipping_more' ) ) ) ); ?>
         </p>
         <?php
     }
@@ -64,7 +65,7 @@ defined( 'ABSPATH' ) || exit;
         <?php do_action( 'woocommerce_proceed_to_checkout' ); ?>
     </div>
     
-    <p class="mt-3 text-xs text-ink-500 text-center">Secure, encrypted checkout &amp; discreet packaging</p>
+    <p class="mt-3 text-xs text-ink-500 text-center"><?php echo esc_html( armo_label( 'label_cart_secure_note' ) ); ?></p>
 
     <?php do_action( 'woocommerce_after_cart_totals' ); ?>
 

@@ -18,7 +18,7 @@ if ( ! wc_coupons_enabled() ) {
     </div>
 
     <form class="checkout_coupon woocommerce-form-coupon bg-white border border-ink-200 rounded-xl p-5 mb-8 shadow-sm lg:w-1/2" method="post" style="display:none" id="woocommerce-checkout-form-coupon">
-        <p class="text-sm font-semibold text-ink-900 mb-1">Enter your coupon</p>
+        <p class="text-sm font-semibold text-ink-900 mb-1"><?php echo esc_html( armo_label( 'label_coupon_title' ) ); ?></p>
         <p class="text-xs text-ink-500 mb-4"><?php esc_html_e( 'If you have a promo code, please apply it below.', 'woocommerce' ); ?></p>
         
         <div class="flex gap-2 w-full">

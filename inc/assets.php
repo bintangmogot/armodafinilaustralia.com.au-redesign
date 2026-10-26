@@ -25,6 +25,14 @@ add_action( 'wp_enqueue_scripts', function () {
 	if ( function_exists( 'is_product' ) && ( is_product() || is_cart() ) ) {
 		wp_enqueue_script( 'armo-product-total', $uri . '/assets/js/product-total.js', array( 'jquery' ), (string) filemtime( $dir . '/assets/js/product-total.js' ), true );
 	}
+
+	if ( function_exists( 'is_checkout' ) && is_checkout() && ! is_wc_endpoint_url( 'order-received' ) ) {
+		wp_enqueue_script( 'armo-checkout', $uri . '/assets/js/checkout.js', array( 'jquery' ), (string) filemtime( $dir . '/assets/js/checkout.js' ), true );
+	}
+
+	if ( function_exists( 'is_product' ) && is_product() ) {
+		wp_enqueue_script( 'armo-product-page', $uri . '/assets/js/product-page.js', array(), (string) filemtime( $dir . '/assets/js/product-page.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
+	}
 } );
 
 /**

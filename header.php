@@ -43,7 +43,7 @@ $svg_allowed   = array(
 			</a>
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex shrink-0 items-center">
 				<?php if ( $logo_id ) : ?>
-					<?php echo wp_get_attachment_image( $logo_id, 'medium', false, array( 'alt' => $logo_alt, 'class' => 'h-9 w-auto', 'loading' => 'eager', 'decoding' => 'async' ) ); ?>
+					<?php echo wp_get_attachment_image( $logo_id, 'medium', false, array( 'alt' => $logo_alt, 'class' => 'site-logo', 'loading' => 'eager', 'decoding' => 'async' ) ); ?>
 				<?php else : ?>
 					<span class="font-heading text-lg font-bold text-primary"><?php bloginfo( 'name' ); ?></span>
 				<?php endif; ?>
@@ -65,7 +65,7 @@ $svg_allowed   = array(
 		<div class="container-site flex h-[68px] items-center gap-3">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="mr-2 flex shrink-0 items-center">
 				<?php if ( $logo_id ) : ?>
-					<?php echo wp_get_attachment_image( $logo_id, 'medium', false, array( 'alt' => $logo_alt, 'class' => 'h-10 w-auto md:h-11', 'loading' => 'eager', 'decoding' => 'async', 'fetchpriority' => 'high' ) ); ?>
+					<?php echo wp_get_attachment_image( $logo_id, 'medium', false, array( 'alt' => $logo_alt, 'class' => 'site-logo', 'loading' => 'eager', 'decoding' => 'async', 'fetchpriority' => 'high' ) ); ?>
 				<?php else : ?>
 					<span class="font-heading text-xl font-bold text-primary"><?php bloginfo( 'name' ); ?></span>
 				<?php endif; ?>

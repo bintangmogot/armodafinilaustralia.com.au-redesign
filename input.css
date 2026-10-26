@@ -614,3 +614,309 @@ body {
   .armo-prose th, .armo-prose td { @apply border border-border px-3 py-2; }
   .armo-table-wrapper { @apply my-6 w-full overflow-x-auto; }
 }
+
+@layer components {
+  .variant-btn.is-active { @apply border-primary bg-primary text-white; }
+  .variant-btn.is-active .price-label { @apply text-white/80; }
+  .variant-btn:not(.is-active) .price-label { @apply text-muted-foreground; }
+}
+
+/* WooCommerce sets `.woocommerce img { height: auto }` on its pages; keep the logo size. */
+body #site-header img.site-logo, body footer img.site-logo, body header img.site-logo { height: 2.5rem; width: auto; max-width: 220px; }
+
+/* Checkout (moved from woocommerce/checkout/form-checkout.php) */
+/* Hide the summary inside Step 3, so it only appears in sidebar */
+#step-3 .review-order-summary-wrapper {
+    display: none !important;
+}
+/* Strip WooCommerce default grey background from #payment */
+#payment.woocommerce-checkout-payment {
+    background: transparent !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+}
+#payment.woocommerce-checkout-payment ul.payment_methods {
+    border-bottom: 0 !important;
+}
+#payment.woocommerce-checkout-payment div.form-row.place-order {
+    padding: 0 !important;
+    margin: 1.5rem 0 0 !important;
+    background: transparent !important;
+}
+/* Basic styling for WooCommerce fields inside the accordion */
+.step-content .form-row {
+    margin-bottom: 1.25rem;
+}
+.step-content .form-row label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #334155;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+.step-content .form-row .optional {
+    text-transform: lowercase;
+    font-weight: 400;
+    color: #64748b;
+}
+.step-content .form-row input.input-text,
+.step-content .form-row select,
+.step-content .form-row textarea {
+    width: 100%;
+    height: 2.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid hsl(var(--border));
+    padding: 0 0.75rem;
+    font-size: 0.875rem;
+    background: #fff;
+    outline: none;
+    transition: border-color 0.15s;
+}
+.step-content .form-row textarea {
+    height: auto;
+    padding: 0.75rem;
+}
+.step-content .form-row input.input-text:focus,
+.step-content .form-row select:focus,
+.step-content .form-row textarea:focus {
+    border-color: hsl(var(--primary));
+}
+input[type="radio"], input[type="checkbox"] {
+    accent-color: hsl(var(--primary));
+}
+#place_order {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    height: 3rem;
+    padding: 0 2rem;
+    border-radius: 0.5rem;
+    background-color: hsl(var(--accent));
+    color: hsl(var(--primary));
+    font-weight: 600;
+    font-size: 1rem;
+    margin-top: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.15s;
+    width: auto;
+}
+#place_order:hover {
+    background-color: #e6bb00;
+}
+.woocommerce-privacy-policy-text {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-bottom: 1.5rem;
+}
+.wc_payment_methods {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 1px solid hsl(var(--border));
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+.wc_payment_methods li {
+    padding: 1.25rem;
+    margin: 0 !important;
+    border-bottom: 1px solid hsl(var(--border));
+    background: #f8fafc;
+}
+.wc_payment_methods li:last-child {
+    border-bottom: none;
+}
+.wc_payment_methods li input[type="radio"] {
+    margin-right: 0.75rem;
+}
+.wc_payment_methods li label {
+    font-weight: 600;
+    color: hsl(var(--primary));
+    display: inline-block;
+    margin: 0;
+}
+.wc_payment_methods li .payment_box {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 0.5rem;
+    border: 1px solid hsl(var(--border));
+    font-size: 0.875rem;
+    color: #475569;
+    position: relative;
+}
+/* Hide the ugly WooCommerce triangle */
+.wc_payment_methods li .payment_box::before {
+    display: none !important;
+}
+.woocommerce-terms-and-conditions-wrapper {
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    color: #64748b;
+}
+.medical-info-fields-wrapper h3 { font-family: Poppins, sans-serif; font-size: 1.25rem; font-weight: 600; color: hsl(var(--primary)); margin-bottom: 1.25rem; border-bottom: 1px solid hsl(var(--border)); padding-bottom: 0.5rem; } 
+
+/* Thank you page (moved from woocommerce/checkout/thankyou.php) */
+/* Style WooCommerce default hooks content (e.g. BACS Bank details) */
+.woocommerce-thankyou-hooks h2 {
+    font-family: Poppins, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: hsl(var(--primary)); /* ink-900 */
+    margin-bottom: 1rem;
+}
+.woocommerce-thankyou-hooks h3 {
+    font-family: Poppins, sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: hsl(var(--primary));
+    margin-bottom: 0.75rem;
+}
+.woocommerce-thankyou-hooks ul.order_details {
+    background: #fff;
+    border: 1px solid hsl(var(--border)); box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+.woocommerce-thankyou-hooks ul.order_details li {
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+}
+.woocommerce-thankyou-hooks ul.order_details li strong {
+    display: block;
+    color: hsl(var(--primary));
+    font-size: 1rem;
+    margin-top: 0.25rem;
+}
+.woocommerce-thankyou-hooks section.woocommerce-bacs-bank-details {
+    background: hsl(var(--secondary));
+    border: 1px solid hsl(var(--border)); box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* All WooCommerce tables (Order Details, Medical Conditions, etc) */
+.woocommerce-thankyou-hooks table.shop_table {
+    width: 100%;
+    border-collapse: separate; border-spacing: 0;
+    background: #fff;
+    border: 1px solid hsl(var(--border)); box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+.woocommerce-thankyou-hooks table.shop_table thead th {
+    background: hsl(var(--secondary));
+    font-weight: 600;
+    color: hsl(var(--primary));
+    border-bottom: 1px solid hsl(var(--border));
+}
+.woocommerce-thankyou-hooks table.shop_table th,
+.woocommerce-thankyou-hooks table.shop_table td {
+    padding: 1rem 1.5rem;
+    font-size: 0.875rem;
+    color: hsl(var(--foreground));
+    border-bottom: 1px solid hsl(var(--border));
+    vertical-align: top;
+}
+.woocommerce-thankyou-hooks table.shop_table tr:last-child th,
+.woocommerce-thankyou-hooks table.shop_table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Receipt-style alignment for Order Details Table */
+.woocommerce-thankyou-hooks table.shop_table.order_details th:first-child,
+.woocommerce-thankyou-hooks table.shop_table.order_details td:first-child {
+    text-align: left;
+}
+.woocommerce-thankyou-hooks table.shop_table.order_details th:last-child,
+.woocommerce-thankyou-hooks table.shop_table.order_details td:last-child {
+    text-align: right;
+}
+.woocommerce-thankyou-hooks table.shop_table.order_details tfoot th {
+    font-weight: 600;
+    color: hsl(var(--primary));
+}
+.woocommerce-thankyou-hooks table.shop_table.order_details tfoot td {
+    font-weight: 500;
+    color: hsl(var(--primary));
+}
+
+/* Medical Conditions Table specific tweaks */
+.woocommerce-thankyou-hooks table.woocommerce-table--customer-details th {
+    font-weight: 600;
+    color: hsl(var(--primary));
+    width: 40%;
+    text-align: left;
+}
+.woocommerce-thankyou-hooks table.woocommerce-table--customer-details td {
+    text-align: left;
+}
+
+.woocommerce-customer-details {
+    background: #fff;
+    border: 1px solid hsl(var(--border)); box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+.woocommerce-customer-details address {
+    font-style: normal;
+    font-size: 0.875rem;
+    color: hsl(var(--foreground));
+    line-height: 1.6;
+}
+
+.woocommerce-thankyou-hooks section.woocommerce-bacs-bank-details h3 { padding-left: 1rem;
+    font-size: 1.125rem;
+    color: hsl(var(--primary));
+    margin-bottom: 1rem;
+}
+.woocommerce-thankyou-hooks section.woocommerce-bacs-bank-details ul,
+.woocommerce-thankyou-hooks section.woocommerce-bacs-bank-details ul.order_details.bacs_details {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+    padding: 1rem 1.5rem !important; margin: 1rem 0 0 0 !important;
+    list-style: none !important;
+}
+@media (min-width: 640px) {
+    .woocommerce-thankyou-hooks section.woocommerce-bacs-bank-details ul,
+    .woocommerce-thankyou-hooks section.woocommerce-bacs-bank-details ul.order_details.bacs_details {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 2.5rem !important;
+    }
+}
+.woocommerce-thankyou-hooks section.woocommerce-bacs-bank-details ul li,
+.woocommerce-thankyou-hooks section.woocommerce-bacs-bank-details ul.order_details.bacs_details li {
+    float: none !important;
+    text-align: left !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+}
+@media (min-width: 640px) {
+    .woocommerce-thankyou-hooks section.woocommerce-bacs-bank-details ul li,
+    .woocommerce-thankyou-hooks section.woocommerce-bacs-bank-details ul.order_details.bacs_details li {
+        width: auto !important;
+    }
+}
+.woocommerce-thankyou-hooks section.woocommerce-bacs-bank-details ul li strong,
+.woocommerce-thankyou-hooks section.woocommerce-bacs-bank-details ul.order_details.bacs_details li strong {
+    display: block !important;
+    font-size: 1.125rem !important;
+    color: hsl(var(--primary)) !important;
+    font-weight: 700 !important;
+    margin-top: 0.25rem !important;
+}

@@ -41,7 +41,7 @@ $contact_icon = static function ( $path ) {
 		<div>
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="inline-block rounded-lg bg-white px-3 py-2">
 				<?php if ( $logo_id ) : ?>
-					<?php echo wp_get_attachment_image( $logo_id, 'medium', false, array( 'alt' => $logo_alt, 'class' => 'h-9 w-auto', 'loading' => 'lazy', 'decoding' => 'async' ) ); ?>
+					<?php echo wp_get_attachment_image( $logo_id, 'medium', false, array( 'alt' => $logo_alt, 'class' => 'site-logo', 'loading' => 'lazy', 'decoding' => 'async' ) ); ?>
 				<?php else : ?>
 					<span class="font-heading text-lg font-bold text-primary"><?php bloginfo( 'name' ); ?></span>
 				<?php endif; ?>
