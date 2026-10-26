@@ -3,7 +3,7 @@
  * Review Form Module Template
  */
 
-$heading = get_sub_field('heading') ?: 'Leave us a review ';
+$heading = get_sub_field('heading');
 ?>
 
 <section class="py-16 md:py-24 bg-ink-50">

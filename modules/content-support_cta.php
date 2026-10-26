@@ -1,11 +1,11 @@
 <?php
-$title = get_sub_field('title') ?: 'Prefer help while you order?';
-$desc = get_sub_field('desc') ?: 'Our support team answers WhatsApp and email during Australian business hours - usually within minutes.';
-$chat_btn_text = get_sub_field('chat_btn_text') ?: 'Chat now';
-$chat_btn_url = get_sub_field('chat_btn_url') ?: '#';
+$title = get_sub_field('title');
+$desc = get_sub_field('desc');
+$chat_btn_text = get_sub_field('chat_btn_text');
+$chat_btn_url = get_sub_field('chat_btn_url');
 $chat_btn_url = str_replace('wa.me/', 'api.whatsapp.com/send?phone=', $chat_btn_url);
-$email_btn_text = get_sub_field('email_btn_text') ?: 'Email us';
-$email_btn_url = get_sub_field('email_btn_url') ?: 'mailto:support@armodafinilaustralia.com.au';
+$email_btn_text = get_sub_field('email_btn_text');
+$email_btn_url = get_sub_field('email_btn_url');
 ?>
 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-16">
     <div class="p-6 md:p-8 rounded-2xl bg-white border border-ink-200 flex items-start gap-4 flex-wrap shadow-soft">

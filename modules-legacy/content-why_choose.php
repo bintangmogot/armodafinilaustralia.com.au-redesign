@@ -29,7 +29,6 @@ $intro = get_sub_field('intro');
                 <?php endwhile; ?>
             </div>
         <?php else : ?>
-            <p class="text-gray-400 text-center italic">[ Location module - add locations in ACF ]</p>
         <?php endif; ?>
     </div>
 </section>

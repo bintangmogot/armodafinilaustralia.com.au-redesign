@@ -97,11 +97,11 @@ if ( ! have_rows('sections') ) {
                     $link = get_term_link($sub_cat);
                     $name = $sub_cat->name;
                     $thumbnail_id = get_term_meta( $sub_cat->term_id, 'thumbnail_id', true );
-                    $image_url = $thumbnail_id ? wp_get_attachment_image_url( $thumbnail_id, 'medium_large' ) : 'https://placehold.co/600x450/e0f2fe/0369a1?text=' . urlencode($name);
+                    $image_url = $thumbnail_id ? wp_get_attachment_image_url( $thumbnail_id, 'medium_large' ) : '';
                     ?>
                     <a href="<?php echo esc_url($link); ?>" class="group bg-white border border-ink-200 rounded-3xl overflow-hidden hover-lift flex flex-col transition-shadow hover:shadow-lg">
                         <div class="aspect-[4/3] bg-brand-50 overflow-hidden relative flex items-center justify-center p-6 md:p-8">
-                            <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($name); ?>" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 mix-blend-multiply" />
+<?php if ( $image_url ) : ?><img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($name); ?>" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 mix-blend-multiply" /><?php endif; ?>
                         </div>
                         <div class="p-5 md:p-6 flex-1 flex flex-col justify-center bg-white z-10 relative">
                             <h3 class="font-serif text-lg font-bold text-ink-900 group-hover:text-brand-700 transition-colors line-clamp-1"><?php echo esc_html($name); ?></h3>

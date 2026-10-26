@@ -15,7 +15,6 @@ $right_content = get_sub_field('right_content');
             <div class="prose"><?php echo armo_content($right_content); ?></div>
         <?php endif; ?>
         <?php if (!$left_content && !$right_content) : ?>
-            <p class="text-gray-400 text-center italic col-span-2">[ Product Delivery Intro - add content in ACF ]</p>
         <?php endif; ?>
     </div>
 </section>

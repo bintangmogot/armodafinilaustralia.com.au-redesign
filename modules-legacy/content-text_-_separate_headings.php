@@ -32,7 +32,6 @@ $background_color = get_sub_field('background_color');
                 <?php echo armo_content($content); ?>
             </div>
         <?php elseif (!$h1_heading && (!$h2_heading && !$h3_heading)) : ?>
-            <p class="text-[#1E1E1E] text-center italic">[ Text Separate Headings module - add content in ACF ]</p>
         <?php endif; ?>
     </div>
 </section>

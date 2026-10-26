@@ -9,10 +9,10 @@ $content_right = get_sub_field('content_right');
 <section class="py-12 px-4">
     <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
         <div class="md:col-span-2 prose">
-            <?php echo $content_left ? armo_content($content_left) : '<p class="text-gray-400 italic">[ Left column (2/3) - add content in ACF ]</p>'; ?>
+            <?php echo $content_left ? armo_content($content_left) : ''; ?>
         </div>
         <div class="prose">
-            <?php echo $content_right ? armo_content($content_right) : '<p class="text-gray-400 italic">[ Right column (1/3) - add content in ACF ]</p>'; ?>
+            <?php echo $content_right ? armo_content($content_right) : ''; ?>
         </div>
     </div>
 </section>

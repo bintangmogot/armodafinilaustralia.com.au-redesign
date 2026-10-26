@@ -16,7 +16,6 @@ $content = get_sub_field('content');
                     <?php echo armo_content($content); ?>
                 </div>
             <?php else : ?>
-                <p class="text-white/50 italic">[ Text content - add in ACF ]</p>
             <?php endif; ?>
         </div>
 
@@ -27,7 +26,6 @@ $content = get_sub_field('content');
                     <?php echo wp_get_attachment_image($image, 'large', false, array('class' => 'w-full h-auto object-cover')); ?>
                 </div>
             <?php else : ?>
-                <div class="bg-white/10 rounded-2xl h-80 flex items-center justify-center text-white/30 italic backdrop-blur-sm">[ Image - add in ACF ]</div>
             <?php endif; ?>
         </div>
     </div>

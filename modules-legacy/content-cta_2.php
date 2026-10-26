@@ -10,7 +10,6 @@ $content = get_sub_field('content');
         <?php if ($content) : ?>
             <div class="prose prose-invert prose-lg mx-auto"><?php echo armo_content($content); ?></div>
         <?php else : ?>
-            <p class="text-gray-400 italic">[ CTA 2 module - add content in ACF ]</p>
         <?php endif; ?>
     </div>
 </section>

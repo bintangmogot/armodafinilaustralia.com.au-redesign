@@ -74,7 +74,6 @@ add_filter( 'loop_shop_per_page', function() { return 20; }, 20 );
 require get_template_directory() . '/inc/acf-fields.php';
 require_once get_template_directory() . '/inc/cpt.php';
 require_once get_template_directory() . '/inc/acf-options.php';
-require_once get_template_directory() . '/inc/ajax-auth.php';
 require_once get_template_directory() . '/inc/ajax-reviews.php';
 require_once get_template_directory() . '/inc/ajax-search.php';
 require_once get_template_directory() . '/inc/medical-reviewers.php';
@@ -266,7 +265,7 @@ function aad_sticky_add_to_cart_bar() {
             </div>
             <button id="sticky-add-to-cart-btn" class="aad-sticky-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
-                <span>Add to Cart</span>
+                <span><?php echo esc_html( armo_label( 'label_add_to_cart' ) ); ?></span>
             </button>
         </div>
         </div>
@@ -391,7 +390,7 @@ function aad_register_product_disclaimer_fields() {
                 'label' => 'Important Usage Note Title',
                 'name' => 'usage_note_title',
                 'type' => 'text',
-                'default_value' => 'Important Usage Note',
+
             ),
             array(
                 'key' => 'field_usage_text',
@@ -399,7 +398,7 @@ function aad_register_product_disclaimer_fields() {
                 'name' => 'usage_note_text',
                 'type' => 'textarea',
                 'instructions' => 'Use {product_name} to dynamically insert the current product title.',
-                'default_value' => '{product_name} is a Schedule 4 (prescription-only) medicine in Australia. Effects, dosage, and possible side effects can differ from person to person. Taking this medicine without a doctor\'s advice may be harmful. This website does not encourage self-medication. For official Australian prescription-medicine guidance, see the <a href="https://www.tga.gov.au/" target="_blank" rel="noopener">Therapeutic Goods Administration (TGA)</a>.',
+
                 'new_lines' => 'br',
             ),
             array(
@@ -407,7 +406,7 @@ function aad_register_product_disclaimer_fields() {
                 'label' => 'Informational Warning Text',
                 'name' => 'informational_warning_text',
                 'type' => 'textarea',
-                'default_value' => 'This website is for informational purposes only and does not constitute medical advice. Always consult a qualified healthcare professional before starting, stopping, or changing any medication. <a href="/medical-disclaimer/">Read our full medical disclaimer</a>.',
+
                 'new_lines' => 'br',
             ),
         ),
@@ -1038,30 +1037,6 @@ add_action('wp_footer', function() {
         });
         </script>
         <?php
-    }
-});
-// [AUTO-CLEANUP] Remove all broken shipping insurance plugins
-add_action('admin_init', function() {
-    if ( isset($_GET['clean_insurance_plugins']) ) {
-        $plugins_dir = WP_PLUGIN_DIR . '/';
-        $folders_to_delete = glob($plugins_dir . '*shipping-insurance*');
-        $deleted = [];
-        foreach ($folders_to_delete as $folder) {
-            if (is_dir($folder)) {
-                // Delete recursively
-                $files = new RecursiveIteratorIterator(
-                    new RecursiveDirectoryIterator($folder, RecursiveDirectoryIterator::SKIP_DOTS),
-                    RecursiveIteratorIterator::CHILD_FIRST
-                );
-                foreach ($files as $fileinfo) {
-                    $todo = ($fileinfo->isDir() ? 'rmdir' : 'unlink');
-                    @$todo($fileinfo->getRealPath());
-                }
-                @rmdir($folder);
-                $deleted[] = basename($folder);
-            }
-        }
-        die('Cleaned up folders: ' . implode(', ', $deleted) . '. <br><a href="' . admin_url('plugins.php') . '">Go back to Plugins</a>');
     }
 });
 add_action( 'woocommerce_cart_totals_before_order_total', function() { ob_start(); }, -9999 );

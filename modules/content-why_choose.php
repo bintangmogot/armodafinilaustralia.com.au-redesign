@@ -5,32 +5,9 @@
  * Data provided by ACF Sub Fields: title, features
  */
 
-$title = get_sub_field('title') ?: 'Why high-achievers choose us';
+$title = get_sub_field('title');
 $features = get_sub_field('features');
 
-// Fallback dummy data if none exist
-if ( empty( $features ) ) {
-    $features = array(
-        array(
-            'icon' => 'ShieldCheck',
-            'title' => 'Pharmaceutical Grade',
-            'desc' => 'Verified sourcing, transparent product notes, and a supply chain focused on integrity.',
-            'tag' => 'Clinically informed'
-        ),
-        array(
-            'icon' => 'FlaskConical',
-            'title' => 'Evidence-Led',
-            'desc' => 'Backed by peer-reviewed studies on wakefulness and sustained cognition.',
-            'tag' => 'Research aligned'
-        ),
-        array(
-            'icon' => 'Lock',
-            'title' => 'Private & Safe',
-            'desc' => 'Neutral packaging and encrypted checkout keep your details confidential.',
-            'tag' => 'Confidential'
-        )
-    );
-}
 ?>
 
 <section class="py-16 md:py-20 bg-stone-50">

@@ -3,7 +3,7 @@
  * Review Carousel Module Template
  */
 
-$heading = get_sub_field('heading') ?: 'Reviews Carousel';
+$heading = get_sub_field('heading');
 
 // Fetch General Reviews (no linked product)
 $reviews = get_posts([
@@ -55,7 +55,7 @@ $review_count = count($reviews);
                     $title = get_the_title($post_id);
                     $body = get_post_field('post_content', $post_id);
                     $reviewer = get_field("name", $post_id) ?: $title;
-                    $meta = get_field('reviewer_meta', $post_id) ?: "Verified Buyer";
+                    $meta = get_field('reviewer_meta', $post_id);
                     $rating_val = get_field("rating", $post_id) ?: 5;
                     $initials = strtoupper(substr($reviewer, 0, 1) . (strpos($reviewer, ' ') ? substr(explode(' ', $reviewer)[1], 0, 1) : ''));
 

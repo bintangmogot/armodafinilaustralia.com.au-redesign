@@ -479,7 +479,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Price",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -499,7 +499,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Add to cart",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -519,7 +519,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "In stock",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -539,7 +539,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Out of stock",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -559,7 +559,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Quantity",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -579,7 +579,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Tabs",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -599,7 +599,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Decrease quantity",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -619,7 +619,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Increase quantity",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -1153,7 +1153,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Pause scrolling",
+                            "default_value": "",
                             "maxlength": 80,
                             "placeholder": "",
                             "prepend": "",
@@ -1173,7 +1173,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Resume scrolling",
+                            "default_value": "",
                             "maxlength": 80,
                             "placeholder": "",
                             "prepend": "",
@@ -1193,7 +1193,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Product highlights",
+                            "default_value": "",
                             "maxlength": 80,
                             "placeholder": "",
                             "prepend": "",
@@ -2732,7 +2732,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Contact us",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -2752,7 +2752,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "/contact",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -2937,7 +2937,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Send us a message",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -3815,7 +3815,7 @@
                             "label": "Chat Button Text",
                             "name": "chat_btn_text",
                             "type": "text",
-                            "default_value": "Chat now"
+                            "default_value": ""
                         },
                         {
                             "key": "field_sc_chat_url",
@@ -3829,14 +3829,14 @@
                             "label": "Email Button Text",
                             "name": "email_btn_text",
                             "type": "text",
-                            "default_value": "Email us"
+                            "default_value": ""
                         },
                         {
                             "key": "field_sc_email_url",
                             "label": "Email Button URL (mailto:)",
                             "name": "email_btn_url",
                             "type": "text",
-                            "default_value": "mailto:support@armodafinilaustralia.com.au"
+                            "default_value": ""
                         }
                     ],
                     "min": "",
@@ -3882,7 +3882,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Legal",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -5352,7 +5352,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Get started",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -5372,7 +5372,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Ready to order with confidence?",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -5393,7 +5393,7 @@
                                 "id": ""
                             },
                             "rows": 3,
-                            "default_value": "Pick your pack size, complete a secure checkout in minutes, and track your discreet parcel anywhere in Australia.",
+                            "default_value": "",
                             "new_lines": "",
                             "maxlength": "",
                             "placeholder": ""
@@ -5442,7 +5442,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "{product_name} is a Schedule 4 (prescription-only) medicine in Australia. Effects, dosage, and possible side effects can differ from person to person. Taking this medicine without a doctor's advice may be harmful. This website does not encourage self-medication. For official Australian prescription-medicine guidance, see the <a href=\"https://www.tga.gov.au/\" target=\"_blank\" rel=\"noopener\" class=\"text-brand-700 hover:underline\">Therapeutic Goods Administration (TGA)</a>.",
+                            "default_value": "",
                             "new_lines": "",
                             "maxlength": "",
                             "placeholder": "",
@@ -5462,7 +5462,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "This website is for informational purposes only and does not constitute medical advice. Always consult a qualified healthcare professional before starting, stopping, or changing any medication. <a href=\"/medical-disclaimer\" class=\"font-semibold text-brand-800 hover:underline\">Read our full medical disclaimer.</a>",
+                            "default_value": "",
                             "new_lines": "",
                             "maxlength": "",
                             "placeholder": "",
@@ -5482,7 +5482,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "https://armodafinildirect.com.au/medical-team/dr-ginni-mansberg/",
+                            "default_value": "",
                             "placeholder": ""
                         },
                         {
@@ -5499,7 +5499,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Dr. Ginni Mansberg",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -5754,7 +5754,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Customer Reviews",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -5804,7 +5804,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "What Our Customers Say",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -5854,7 +5854,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Leave us a review ",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -5904,7 +5904,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Trusted by Everyday Australian's",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -5954,7 +5954,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "SHIPPING NATIONWIDE",
+                            "default_value": "",
                             "placeholder": ""
                         },
                         {
@@ -5971,7 +5971,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Delivered Everywhere in Australia",
+                            "default_value": "",
                             "placeholder": ""
                         },
                         {
@@ -5988,7 +5988,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Metro cities, regional towns, or remote FIFO camps - we ship to your address.",
+                            "default_value": "",
                             "rows": 2,
                             "placeholder": ""
                         },
@@ -6107,7 +6107,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "SHIPPING NATIONWIDE",
+                            "default_value": "",
                             "placeholder": ""
                         },
                         {
@@ -6124,7 +6124,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Delivered Everywhere in Australia",
+                            "default_value": "",
                             "placeholder": ""
                         },
                         {
@@ -6141,7 +6141,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Metro cities, regional towns, or remote FIFO camps - we ship to your address.",
+                            "default_value": "",
                             "rows": 2,
                             "placeholder": ""
                         },

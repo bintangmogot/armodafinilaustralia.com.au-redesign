@@ -48,7 +48,6 @@ $reviews = new WP_Query(array(
                 <?php endwhile; ?>
             </div>
         <?php else : ?>
-            <p class="text-gray-400 text-center italic">No reviews found.</p>
         <?php endif; ?>
         <?php wp_reset_postdata(); ?>
     </div>

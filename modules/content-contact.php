@@ -5,16 +5,12 @@
  * Data provided by ACF Sub Fields: form_title, form_shortcode, methods
  */
 
-$form_title = get_sub_field('form_title') ?: 'Send us a message';
+$form_title = get_sub_field('form_title');
 $form_shortcode = get_sub_field('form_shortcode');
 $methods = get_sub_field('methods');
 
 if ( empty($methods) ) {
-    $methods = array(
-        array('icon' => 'mail', 'label' => 'Email', 'value' => 'support@armodafinilaustralia.com.au', 'link' => 'mailto:support@armodafinilaustralia.com.au'),
-        array('icon' => 'phone', 'label' => 'Phone', 'value' => '+61 4 8999 5839', 'link' => 'tel:+61489995839'),
-        array('icon' => 'map-pin', 'label' => 'Address', 'value' => 'Sydney, NSW, Australia', 'link' => ''),
-    );
+    $methods = array();
 }
 
 // Map of common Lucide icons

@@ -10,7 +10,6 @@ $content = get_sub_field('content');
         <?php if ($content) : ?>
             <div class="prose prose-invert"><?php echo armo_content($content); ?></div>
         <?php else : ?>
-            <p class="text-gray-400 text-center italic">[ Intro Black Background module - add content in ACF ]</p>
         <?php endif; ?>
     </div>
 </section>

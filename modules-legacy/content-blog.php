@@ -15,7 +15,6 @@ $recent = new WP_Query(array('posts_per_page' => 6, 'post_type' => 'post', 'post
                 <?php endwhile; ?>
             </div>
         <?php else: ?>
-            <p class="text-gray-400 text-center italic">No blog posts found.</p>
         <?php endif; ?>
         <?php wp_reset_postdata(); ?>
     </div>

@@ -5,8 +5,8 @@
  * Data provided by ACF Sub Fields: title, subtitle, reviews (Relationship to review CPT)
  */
 
-$title = get_sub_field('title') ?: 'What Australians say';
-$subtitle = get_sub_field('subtitle') ?: 'A handful of recent notes from verified buyers.';
+$title = get_sub_field('title');
+$subtitle = get_sub_field('subtitle');
 $selected_reviews = get_sub_field('reviews');
 
 $review_items = array();
@@ -188,11 +188,7 @@ if ( empty( $review_items ) ) {
         }
     } else {
         // Fallback dummy reviews if none exist
-        $review_items = array(
-            array('id' => 0, 'title' => 'Genuine product, fast shipping', 'body' => 'Ordered on Tuesday, arrived Thursday. The packaging was discreet and the product is exactly as described.', 'name' => 'Michael T.', 'meta' => 'Sydney', 'rating' => 5, 'date' => '12 October 2023', 'photo_url' => '', 'photo_full' => '', 'avatar_url' => '', 'initials' => 'M'),
-            array('id' => 0, 'title' => 'My go-to supplier now', 'body' => 'I\'ve tried a few different sites but this one is the most reliable. Customer service actually replies.', 'name' => 'Sarah J.', 'meta' => 'Melbourne', 'rating' => 5, 'date' => '8 November 2023', 'photo_url' => '', 'photo_full' => '', 'avatar_url' => '', 'initials' => 'S'),
-            array('id' => 0, 'title' => 'Helps me through night shifts', 'body' => 'Working ward shifts was killing me. These have been a lifesaver for maintaining focus at 3am.', 'name' => 'David L.', 'meta' => 'Brisbane', 'rating' => 5, 'date' => '21 November 2023', 'photo_url' => '', 'photo_full' => '', 'avatar_url' => '', 'initials' => 'D'),
-        );
+        $review_items = array();
     }
 }
 ?>
@@ -228,7 +224,7 @@ if ( empty( $review_items ) ) {
                 <?php if ( ! empty($r['photo_url']) ) : ?>
                 <div class="mb-4 rounded-xl overflow-hidden border border-ink-100 bg-ink-50">
                     <a href="<?php echo esc_url($r['photo_full'] ?: $r['photo_url']); ?>" target="_blank" rel="noopener noreferrer" class="block relative aspect-video overflow-hidden group">
-                        <img src="<?php echo esc_url($r['photo_url']); ?>" alt="<?php echo esc_attr($r['title'] ?: 'Review photo'); ?>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img src="<?php echo esc_url($r['photo_url']); ?>" alt="<?php echo esc_attr($r['title']); ?>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
                         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors flex items-center justify-center">
                             <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 text-white text-[11px] font-bold px-2.5 py-1 rounded-full backdrop-blur-sm flex items-center gap-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>

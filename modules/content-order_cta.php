@@ -5,9 +5,9 @@
  * Data provided by ACF Sub Fields: tag, title, desc
  */
 
-$tag = get_sub_field('tag') ?: 'Get started';
-$title = get_sub_field('title') ?: 'Ready to order with confidence?';
-$desc = get_sub_field('desc') ?: 'Pick your pack size, complete a secure checkout in minutes, and track your discreet parcel anywhere in Australia.';
+$tag = get_sub_field('tag');
+$title = get_sub_field('title');
+$desc = get_sub_field('desc');
 ?>
 
 <section class="py-14 md:py-20">

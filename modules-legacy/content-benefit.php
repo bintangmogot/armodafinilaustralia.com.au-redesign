@@ -56,7 +56,6 @@ $intro = get_sub_field('intro');
                 </div>
             </div>
         <?php else: ?>
-            <p class="text-white/30 text-center italic">[ Benefit module - add benefits in ACF ]</p>
         <?php endif; ?>
     </div>
 </section>

@@ -36,8 +36,17 @@ function armo_render_modules( $post_id = null ) {
 		}
 		while ( have_rows( $field, $post_id ) ) {
 			the_row();
+			ob_start();
 			get_template_part( $template_slug, get_row_layout() );
-			$rendered = true;
+			$html = ob_get_clean();
+
+			// A module whose fields are empty prints nothing: skip output with no visible text and no media.
+			$has_text  = '' !== trim( wp_strip_all_tags( preg_replace( '#<(script|style)\b.*?</\1>#is', '', $html ) ) );
+			$has_media = (bool) preg_match( '/<(img|iframe|video|form)\b/i', $html );
+			if ( $has_text || $has_media ) {
+				echo $html; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside the module templates.
+				$rendered = true;
+			}
 		}
 	}
 

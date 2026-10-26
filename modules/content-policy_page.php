@@ -1,5 +1,5 @@
 <?php
-$badge = get_sub_field('badge') ?: 'Legal';
+$badge = get_sub_field('badge');
 $title = get_sub_field('title');
 $intro = get_sub_field('intro');
 $updated = get_sub_field('updated') ?: date('F Y');

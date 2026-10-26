@@ -25,7 +25,6 @@
                 <?php endwhile; ?>
             </div>
         <?php else : ?>
-            <p class="text-gray-400 text-center italic">[ Icons 2 module - add icon items in ACF ]</p>
         <?php endif; ?>
     </div>
 </section>

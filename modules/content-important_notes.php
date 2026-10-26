@@ -9,7 +9,7 @@ $doctor_id = get_sub_field('medical_reviewer_post') ?: get_field('medical_review
 if ($doctor_id) {
     $reviewed_by = get_the_title($doctor_id);
     $rev_url = get_permalink($doctor_id);
-    $rev_title = get_field('medical_title', $doctor_id) ?: 'Physician';
+    $rev_title = get_field('medical_title', $doctor_id);
 } else {
     $reviewed_by = get_sub_field('medically_reviewed_by');
     $rev_url = get_sub_field('reviewer_url');

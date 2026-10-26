@@ -5,9 +5,9 @@
  * Data provided by ACF Sub Fields: badge, title, subtitle, cities
  */
 
-$badge = get_sub_field('badge') ?: 'SHIPPING NATIONWIDE';
-$title = get_sub_field('title') ?: 'Delivered Everywhere in Australia';
-$subtitle = get_sub_field('subtitle') ?: 'Metro cities, regional towns, or remote FIFO camps - we ship to your address.';
+$badge = get_sub_field('badge');
+$title = get_sub_field('title');
+$subtitle = get_sub_field('subtitle');
 $cities_field = get_sub_field('cities');
 
 $cities = array();
@@ -51,35 +51,11 @@ if ( ! empty( $cities_field ) && is_array( $cities_field ) ) {
 
 // Fallback to Australian coverage list if empty
 if ( empty( $cities ) ) {
-    $cities = array(
-        array('name' => 'Sydney NSW', 'highlight' => true, 'status' => 'Same-Day Dispatch'),
-        array('name' => 'Melbourne VIC', 'highlight' => true, 'status' => 'Same-Day Dispatch'),
-        array('name' => 'Brisbane QLD', 'highlight' => true, 'status' => 'Express Metro'),
-        array('name' => 'Perth WA', 'highlight' => false, 'status' => ''),
-        array('name' => 'Adelaide SA', 'highlight' => false, 'status' => ''),
-        array('name' => 'Gold Coast QLD', 'highlight' => false, 'status' => ''),
-        array('name' => 'Canberra ACT', 'highlight' => false, 'status' => ''),
-        array('name' => 'Newcastle NSW', 'highlight' => false, 'status' => ''),
-        array('name' => 'Darwin NT', 'highlight' => false, 'status' => ''),
-        array('name' => 'Hobart TAS', 'highlight' => false, 'status' => ''),
-        array('name' => 'Cairns QLD', 'highlight' => false, 'status' => ''),
-        array('name' => 'Geelong VIC', 'highlight' => false, 'status' => ''),
-        array('name' => 'Townsville QLD', 'highlight' => false, 'status' => ''),
-        array('name' => 'Wollongong NSW', 'highlight' => false, 'status' => ''),
-        array('name' => 'Regional & Remote ', 'highlight' => true, 'status' => '100% AU-Wide'),
-    );
+    $cities = array();
 }
 
 // Creative palette of theme-derived colorways for normal city pills
-$colorways = array(
-    array('bg' => '#f0fdfa', 'border' => '#99f6e4', 'text' => '#134e4a'), // brand-50 / brand-900 (Theme Mint)
-    array('bg' => '#ecfdf5', 'border' => '#a7f3d0', 'text' => '#065f46'), // emerald-50 / emerald-900 (Emerald)
-    array('bg' => '#fffbeb', 'border' => '#fde68a', 'text' => '#78350f'), // amber-50 / amber-900 (Warm Amber)
-    array('bg' => '#ffffff', 'border' => '#e2e8f0', 'text' => '#09152b'), // white / ink-900 (Pure White)
-    array('bg' => '#ccfbf1', 'border' => '#5eead4', 'text' => '#0f766e'), // brand-100 / brand-700 (Teal)
-    array('bg' => '#f0f9ff', 'border' => '#bae6fd', 'text' => '#0c4a6e'), // sky-50 / sky-900 (Coastal Sky)
-    array('bg' => '#fff7ed', 'border' => '#fed7aa', 'text' => '#9a3412'), // orange-50 / orange-900 (Warm Sand)
-);
+$colorways = array();
 ?>
 
 <section class="py-14 md:py-18 text-white select-none border-y" data-module="delivery-cities" style="background: linear-gradient(180deg, #134e4a 0%, #115e59 50%, #0f4a43 100%); border-color: #0f766e;">

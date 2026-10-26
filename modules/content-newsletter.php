@@ -3,8 +3,8 @@
  * Newsletter Module Template
  */
 
-$title = get_sub_field('title') ?: 'Stay in the loop';
-$subtitle = get_sub_field('subtitle') ?: 'Focus tips, dosage explainers, and exclusive Australian-only offers - straight to your inbox. Unsubscribe anytime.';
+$title = get_sub_field('title');
+$subtitle = get_sub_field('subtitle');
 $shortcode = get_sub_field('shortcode');
 ?>
 

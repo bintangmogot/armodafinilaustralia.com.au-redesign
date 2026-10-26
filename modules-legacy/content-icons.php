@@ -31,7 +31,6 @@ $intro_content = get_sub_field('intro_content');
                 <?php endwhile; ?>
             </div>
         <?php else : ?>
-            <p class="text-white/30 text-center italic text-sm">[ Icons module - add icon items in ACF ]</p>
         <?php endif; ?>
     </div>
 </section>

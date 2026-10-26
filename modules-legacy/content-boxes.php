@@ -28,7 +28,6 @@
                 <?php endwhile; ?>
             </div>
         <?php else : ?>
-            <p class="text-gray-400 text-center italic">[ Boxes module - add box items in ACF ]</p>
         <?php endif; ?>
     </div>
 </section>

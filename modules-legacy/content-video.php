@@ -12,7 +12,7 @@ $content = get_sub_field('content');
             <div class="aspect-video rounded-lg overflow-hidden shadow-lg mb-6">
                 <video controls class="w-full h-full object-cover" preload="metadata">
                     <source src="<?php echo esc_url($video['url']); ?>" type="<?php echo esc_attr($video['mime_type']); ?>">
-                    Your browser does not support the video tag.
+                    
                 </video>
             </div>
         <?php endif; ?>
@@ -22,7 +22,6 @@ $content = get_sub_field('content');
         <?php endif; ?>
         
         <?php if (!$video && !$content) : ?>
-            <p class="text-gray-400 text-center italic">[ Video module - upload a video file in ACF ]</p>
         <?php endif; ?>
     </div>
 </section>

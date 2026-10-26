@@ -193,7 +193,7 @@
                 "layout_68d4c1fca4306": {
                     "key": "layout_68d4c1fca4306",
                     "name": "text_-_12_&_12",
-                    "label": "Text - 1\/2 & 1\/2",
+                    "label": "Text - 1/2 & 1/2",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -245,7 +245,7 @@
                 "layout_695e5e9cf51ae": {
                     "key": "layout_695e5e9cf51ae",
                     "name": "text_-_23_&_13",
-                    "label": "Text - 2\/3 & 1\/3",
+                    "label": "Text - 2/3 & 1/3",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -380,7 +380,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Customer Reviews",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -1829,7 +1829,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Armodafinil Australia",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -1849,7 +1849,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Trusted Armodafinil Supplier with Fast Australia-Wide Delivery",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -1869,7 +1869,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Wake up sharper, stay focused longer",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -1933,7 +1933,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Shop Armodafinil Now",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -2068,7 +2068,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "What Our Customers Say",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -2098,7 +2098,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Buy Armodafinil Online Sydney Australia",
+                            "default_value": "",
                             "maxlength": "",
                             "allow_in_bindings": 0,
                             "placeholder": "",
@@ -2119,7 +2119,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Order premium Armodafinil online with trusted Australia-wide shipping, discreet packaging, secure ANZ bank payments, and responsive customer support.\r\nArmodafinil Australia delivers across Sydney including CBD, Bondi, Parramatta, Chatswood, Manly, and surrounding suburbs with reliable service Australians trust.",
+                            "default_value": "",
                             "allow_in_bindings": 0,
                             "tabs": "all",
                             "toolbar": "full",
@@ -2140,7 +2140,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Shop Now",
+                            "default_value": "",
                             "maxlength": "",
                             "allow_in_bindings": 0,
                             "placeholder": "",
@@ -2219,7 +2219,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "What Is Armodafinil?\r\nArmodafinil is a popular wakefulness-support medication commonly used by adults looking to improve alertness, focus, concentration, and mental performance during long working hours or demanding schedules.\r\n\r\nMany Australians choose Armodafinil because it is known for:\r\n Long-lasting wakefulness support\r\n Smoother focus throughout the day\r\n Reduced mental fatigue\r\n Improved productivity\r\n Better concentration during study or work\r\nArmodafinil is commonly preferred by professionals, shift workers, university students, business owners, remote workers, gamers, developers, and creatives who need sustained mental clarity without the heavy crash associated with traditional stimulants.",
+                            "default_value": "",
                             "allow_in_bindings": 0,
                             "tabs": "all",
                             "toolbar": "full",
@@ -2250,7 +2250,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Leave us a review ",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -2280,7 +2280,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Why Australians Choose Armodafinil ",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -2390,7 +2390,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Shop Now",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -2441,7 +2441,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Why Buy From Armodafinil Australia?",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -2461,7 +2461,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Looking to buy Armodafinil online in Australia without the stress?",
+                            "default_value": "",
                             "tabs": "all",
                             "toolbar": "full",
                             "media_upload": 1,
@@ -2582,7 +2582,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Who Uses Armodafinil?",
+                            "default_value": "",
                             "maxlength": "",
                             "allow_in_bindings": 0,
                             "placeholder": "",
@@ -2603,7 +2603,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Armodafinil is commonly used by Australians with demanding schedules, including:",
+                            "default_value": "",
                             "allow_in_bindings": 0,
                             "tabs": "all",
                             "toolbar": "full",
@@ -2645,7 +2645,7 @@
                                         "class": "",
                                         "id": ""
                                     },
-                                    "default_value": "FIFO workers",
+                                    "default_value": "",
                                     "maxlength": "",
                                     "allow_in_bindings": 0,
                                     "placeholder": "",
@@ -2727,7 +2727,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Armodafinil is commonly used by Australians with demanding schedules, including:",
+                            "default_value": "",
                             "maxlength": "",
                             "allow_in_bindings": 0,
                             "placeholder": "",
@@ -3157,7 +3157,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Buy Armodafinil Online Sydney",
+                            "default_value": "",
                             "maxlength": "",
                             "allow_in_bindings": 0,
                             "placeholder": "",
@@ -3178,7 +3178,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Premium Armodafinil Delivered Across Sydney",
+                            "default_value": "",
                             "maxlength": "",
                             "allow_in_bindings": 0,
                             "placeholder": "",
@@ -3220,7 +3220,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "5-10 business days delivery",
+                            "default_value": "",
                             "maxlength": "",
                             "allow_in_bindings": 0,
                             "placeholder": "",
@@ -3241,7 +3241,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "View Available Options",
+                            "default_value": "",
                             "maxlength": "",
                             "allow_in_bindings": 0,
                             "placeholder": "",
@@ -3298,7 +3298,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Trusted by Everyday Australian's",
+                            "default_value": "",
                             "maxlength": "",
                             "placeholder": "",
                             "prepend": "",
@@ -3328,7 +3328,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "Buy Armodafinil Australia",
+                            "default_value": "",
                             "maxlength": "",
                             "allow_in_bindings": 0,
                             "placeholder": "",
@@ -3349,7 +3349,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "https:\/\/armodafinilaustralia.com.au\/shop\/",
+                            "default_value": "",
                             "allow_in_bindings": 0,
                             "placeholder": ""
                         }

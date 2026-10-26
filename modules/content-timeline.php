@@ -1,6 +1,6 @@
 <?php
-$badge = get_sub_field('badge') ?: 'Steps';
-$title = get_sub_field('title') ?: 'Your path to delivery';
+$badge = get_sub_field('badge');
+$title = get_sub_field('title');
 $steps = get_sub_field('steps');
 
 $icons = array(

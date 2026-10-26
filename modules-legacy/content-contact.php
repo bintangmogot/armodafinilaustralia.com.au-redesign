@@ -19,7 +19,7 @@ if ( ! $form && ! $email && ! $phone && ! $address && ! $map ) {
 <section class="section bg-secondary">
 	<div class="container-site grid gap-6 lg:grid-cols-2 lg:gap-10">
 		<?php if ( $email || $phone || $address || $map ) : ?>
-			<div class="h-fit space-y-5 rounded-2xl border border-border bg-white p-6 md:p-8">
+			<div class="h-fit min-w-0 space-y-5 rounded-2xl border border-border bg-white p-6 md:p-8">
 				<?php if ( $email ) : ?>
 					<a href="mailto:<?php echo esc_attr( $email ); ?>" class="block text-lg font-semibold text-primary hover:underline"><?php echo esc_html( $email ); ?></a>
 				<?php endif; ?>
@@ -36,7 +36,7 @@ if ( ! $form && ! $email && ! $phone && ! $address && ! $map ) {
 		<?php endif; ?>
 
 		<?php if ( $form ) : ?>
-			<div class="armo-prose rounded-2xl border border-border bg-white p-6 md:p-8"><?php echo armo_content( $form ); // phpcs:ignore WordPress.Security.EscapeOutput -- form plugin markup. ?></div>
+			<div class="armo-prose min-w-0 rounded-2xl border border-border bg-white p-6 md:p-8"><?php echo armo_content( $form ); // phpcs:ignore WordPress.Security.EscapeOutput -- form plugin markup. ?></div>
 		<?php endif; ?>
 	</div>
 </section>

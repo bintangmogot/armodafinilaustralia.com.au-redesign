@@ -5,10 +5,10 @@
  * Data provided by ACF Sub Fields: title, subtitle, view_all_text, view_all_url, products
  */
 
-$title = get_sub_field('title') ?: 'Popular right now';
-$subtitle = get_sub_field('subtitle') ?: 'Add to cart, or open a product for full details and dosing notes.';
-$view_all_text = get_sub_field('view_all_text') ?: 'View all';
-$view_all_url = get_sub_field('view_all_url') ?: '/product';
+$title = get_sub_field('title');
+$subtitle = get_sub_field('subtitle');
+$view_all_text = get_sub_field('view_all_text');
+$view_all_url = get_sub_field('view_all_url');
 $products = get_sub_field('products');
 
 ?>
@@ -38,7 +38,7 @@ $products = get_sub_field('products');
                     $p_url = $product->get_permalink();
                     $p_price_html = $product->get_price_html();
                     
-                    $p_image = 'https://placehold.co/400x300/e0f2fe/0369a1?text=Product';
+                    $p_image = '';
                     if ( $product->get_image_id() ) {
                         $p_image = wp_get_attachment_image_url( $product->get_image_id(), 'medium' );
                     }
@@ -70,7 +70,7 @@ $products = get_sub_field('products');
             ?>
             <div class="group bg-white border border-ink-200 rounded-[20px] overflow-hidden hover:shadow-card hover:border-ink-300 transition-all duration-300 flex flex-col p-2.5">
                 <a href="<?php echo esc_url($p_url); ?>" target="_blank" class="block aspect-[4/3] bg-white rounded-xl border border-ink-100 overflow-hidden relative">
-                    <img src="<?php echo esc_url($p_image); ?>" alt="<?php echo esc_attr($p_name); ?>" loading="lazy" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
+<?php if ( $p_image ) : ?><img src="<?php echo esc_url($p_image); ?>" alt="<?php echo esc_attr($p_name); ?>" loading="lazy" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" /><?php endif; ?>
                 </a>
                 <div class="px-3 pt-4 pb-2 flex flex-col gap-3 flex-1">
                     
