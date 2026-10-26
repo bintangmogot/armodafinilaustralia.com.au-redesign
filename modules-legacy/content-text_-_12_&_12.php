@@ -1,18 +1,25 @@
 <?php
 /**
- * Layout: Text - 1/2 & 1/2
+ * Module: text_-_12_&_12 (modules field).
  * Fields: content_left (wysiwyg), content_right (wysiwyg)
+ *
+ * @package Armodafinil_Australia
  */
-$content_left  = get_sub_field('content_left');
-$content_right = get_sub_field('content_right');
+
+$content_left  = get_sub_field( 'content_left' );
+$content_right = get_sub_field( 'content_right' );
+
+if ( ! $content_left && ! $content_right ) {
+	return;
+}
 ?>
-<section class="py-12 px-4">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
-        <div class="prose">
-            <?php echo $content_left ? armo_content($content_left) : '<p class="text-gray-400 italic">[ Left column - add content in ACF ]</p>'; ?>
-        </div>
-        <div class="prose">
-            <?php echo $content_right ? armo_content($content_right) : '<p class="text-gray-400 italic">[ Right column - add content in ACF ]</p>'; ?>
-        </div>
-    </div>
+<section class="section bg-white">
+	<div class="container-site grid gap-8 md:grid-cols-2 md:gap-12">
+		<?php if ( $content_left ) : ?>
+			<div class="armo-prose"><?php echo wp_kses_post( armo_content( $content_left ) ); ?></div>
+		<?php endif; ?>
+		<?php if ( $content_right ) : ?>
+			<div class="armo-prose"><?php echo wp_kses_post( armo_content( $content_right ) ); ?></div>
+		<?php endif; ?>
+	</div>
 </section>

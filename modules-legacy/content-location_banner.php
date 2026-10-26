@@ -1,30 +1,30 @@
 <?php
 /**
- * Layout: Location Banner
- * Fields: title, content, button_text, button_link
+ * Module: location_banner (modules field).
+ * Fields: title, content (wysiwyg), button, button_link
+ *
+ * @package Armodafinil_Australia
  */
 
-$title       = get_sub_field('title') ?: 'Buy Armodafinil Online Sydney Australia';
-$content     = get_sub_field('content') ?: '<p class="mb-4">Order premium Armodafinil online with trusted Australia-wide shipping, discreet packaging, secure ANZ bank payments, and responsive customer support.</p><p>Armodafinil Australia delivers across Sydney including CBD, Bondi, Parramatta, Chatswood, Manly, and surrounding suburbs with reliable service Australians trust.</p>';
-$button_text = get_sub_field('button_text') ?: 'Shop Now ';
-$button_link = get_sub_field('button_link') ?: '/shop/';
+$title       = get_sub_field( 'title' );
+$content     = get_sub_field( 'content' );
+$button_text = get_sub_field( 'button' ) ?: get_sub_field( 'button_text' );
+$button_link = get_sub_field( 'button_link' );
+
+if ( ! $title && ! $content ) {
+	return;
+}
 ?>
-<section class="py-12 px-6 lg:px-12 bg-[#183a6b] text-white">
-    <div class="max-w-6xl mx-auto">
-        <?php if ($title) : ?>
-            <h2 class="text-xl md:text-2xl font-bold mb-4"><?php echo esc_html($title); ?></h2>
-        <?php endif; ?>
-
-        <?php if ($content) : ?>
-            <div class="text-base md:text-lg leading-relaxed mb-6 opacity-90">
-                <?php echo armo_content($content); ?>
-            </div>
-        <?php endif; ?>
-
-        <?php if ($button_text && $button_link) : ?>
-            <a href="<?php echo esc_url($button_link); ?>" class="inline-flex items-center justify-center bg-accent hover:bg-[#e6b800] text-primary-dark font-bold text-lg py-3 px-6 rounded transition-colors duration-300">
-                <?php echo esc_html($button_text); ?>
-            </a>
-        <?php endif; ?>
-    </div>
+<section class="section bg-primary text-white">
+	<div class="container-site max-w-[1000px]">
+		<?php if ( $title ) : ?>
+			<h2 class="font-heading text-2xl font-bold text-white md:text-3xl"><?php echo esc_html( $title ); ?></h2>
+		<?php endif; ?>
+		<?php if ( $content ) : ?>
+			<div class="armo-prose mt-4 max-w-none text-base text-white/85 md:text-lg [&_a]:text-white [&_p]:text-white/85 [&_strong]:text-white"><?php echo wp_kses_post( armo_content( $content ) ); ?></div>
+		<?php endif; ?>
+		<?php if ( $button_text && $button_link ) : ?>
+			<a href="<?php echo esc_url( $button_link ); ?>" class="btn-buy mt-6"><?php echo esc_html( $button_text ); ?></a>
+		<?php endif; ?>
+	</div>
 </section>

@@ -1,185 +1,139 @@
 <?php
 /**
- * The footer for our theme
+ * Site footer. Every visible word comes from Theme Settings or Appearance > Menus.
  *
- * @package Armodafinil_Australia_Direct
+ * @package Armodafinil_Australia
  */
+
+$is_checkout = function_exists( 'is_checkout' ) && is_checkout() && ! is_wc_endpoint_url( 'order-received' );
+$logo_id     = (int) get_theme_mod( 'custom_logo' );
+$logo_alt    = get_field( 'header_logo_alt', 'option' ) ?: get_bloginfo( 'name' );
+$about       = get_field( 'footer_description', 'option' );
+$delivery    = get_field( 'footer_text', 'option' );
+$phone       = get_field( 'footer_direct_helpline', 'option' );
+$whatsapp    = get_field( 'footer_whatsapp', 'option' );
+$wa_url      = armo_whatsapp_url();
+$email       = get_field( 'footer_email', 'option' );
+$address     = get_field( 'footer_corporate_registry', 'option' );
+$facebook    = get_field( 'footer_facebook', 'option' );
+$linkedin    = get_field( 'footer_linkedin', 'option' );
+$disclaimer  = get_field( 'footer_disclaimer', 'option' );
+$payments    = get_field( 'footer_payment_images', 'option' );
+$shipping    = get_field( 'footer_shipping_images', 'option' );
+$copyright   = get_field( 'footer_copyright', 'option' );
+$columns     = array(
+	array( 'location' => 'footer', 'heading' => get_field( 'footer_menu_1_heading', 'option' ) ),
+	array( 'location' => 'footer-quick', 'heading' => get_field( 'footer_menu_2_heading', 'option' ) ),
+	array( 'location' => 'footer-important', 'heading' => get_field( 'footer_menu_3_heading', 'option' ) ),
+);
+if ( $copyright ) {
+	$copyright = str_replace( array( '{year}', '{site_name}' ), array( gmdate( 'Y' ), get_bloginfo( 'name' ) ), $copyright );
+}
+$contact_icon = static function ( $path ) {
+	return '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="mt-0.5 shrink-0 text-white/60">' . $path . '</svg>';
+};
 ?>
 
-	<footer class="mt-24 bg-ink-900 text-ink-100">
-		<style>
-	@media (min-width: 1024px) {
-		.lg-grid-cols-6-fix { grid-template-columns: repeat(6, minmax(0, 1fr)) !important; }
-	}
-</style>
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 lg-grid-cols-6-fix gap-8">
-			<div class="col-span-2 lg:col-span-2">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="inline-block bg-white px-3 py-2 rounded-xl mb-1">
-                    <img src="<?php $custom_logo_id = get_theme_mod("custom_logo"); echo $custom_logo_id ? esc_url(wp_get_attachment_image_url($custom_logo_id, "full")) : esc_url(get_template_directory_uri() . "/assets/logo.png"); ?>" alt="Armodafinil Direct" style="height: 36px !important; width: auto !important; max-width: 220px; object-fit: contain;">
-				</a>
-				<?php if ( $footer_desc = get_field('footer_description', 'option') ) : 
-					$footer_desc = str_replace('Legal Disclaimer:', '<br><br><span class="opacity-50 uppercase tracking-widest text-[10px] font-bold block mb-1">Legal Disclaimer:</span>', $footer_desc);
-				?>
-				<p class="mt-3 text-sm text-ink-100/70 max-w-sm"><?php echo wp_kses_post($footer_desc); ?></p>
+<?php if ( ! $is_checkout ) : ?>
+<footer class="mt-16 bg-primary text-white">
+	<div class="container-site grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+
+		<div>
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="inline-block rounded-lg bg-white px-3 py-2">
+				<?php if ( $logo_id ) : ?>
+					<?php echo wp_get_attachment_image( $logo_id, 'medium', false, array( 'alt' => $logo_alt, 'class' => 'h-9 w-auto', 'loading' => 'lazy', 'decoding' => 'async' ) ); ?>
+				<?php else : ?>
+					<span class="font-heading text-lg font-bold text-primary"><?php bloginfo( 'name' ); ?></span>
 				<?php endif; ?>
-				<div class="mt-5 flex items-center gap-3 text-brand-300">
-					<?php if(get_field('facebook_link', 'option')): ?>
-					<a href="<?php echo esc_url(get_field('facebook_link', 'option')); ?>" aria-label="Facebook" target="_blank" rel="noopener noreferrer" class="w-9 h-9 grid place-items-center rounded-full bg-white/5 hover:bg-white/10">
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-					</a>
+			</a>
+			<?php if ( $about ) : ?>
+				<p class="mt-4 max-w-md text-sm leading-relaxed text-white/75"><?php echo esc_html( $about ); ?></p>
+			<?php endif; ?>
+			<?php if ( $delivery ) : ?>
+				<p class="mt-3 max-w-md text-sm leading-relaxed text-white/75"><?php echo esc_html( $delivery ); ?></p>
+			<?php endif; ?>
+
+			<ul class="m-0 mt-5 list-none space-y-2.5 p-0 text-sm text-white/85">
+				<?php if ( $phone ) : ?>
+					<li class="flex items-start gap-2.5"><?php echo $contact_icon( '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>' ); // phpcs:ignore ?>
+						<a class="hover:text-white" href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a></li>
+				<?php endif; ?>
+				<?php if ( $whatsapp && $wa_url ) : ?>
+					<li class="flex items-start gap-2.5"><?php echo $contact_icon( '<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>' ); // phpcs:ignore ?>
+						<a class="hover:text-white" href="<?php echo esc_url( $wa_url ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $whatsapp ); ?></a></li>
+				<?php endif; ?>
+				<?php if ( $email ) : ?>
+					<li class="flex items-start gap-2.5"><?php echo $contact_icon( '<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 5L2 7"/>' ); // phpcs:ignore ?>
+						<a class="hover:text-white" href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email ); ?></a></li>
+				<?php endif; ?>
+				<?php if ( $address ) : ?>
+					<li class="flex items-start gap-2.5"><?php echo $contact_icon( '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>' ); // phpcs:ignore ?>
+						<span><?php echo esc_html( $address ); ?></span></li>
+				<?php endif; ?>
+			</ul>
+
+			<?php if ( $facebook || $linkedin ) : ?>
+				<div class="mt-5 flex items-center gap-2">
+					<?php if ( $facebook ) : ?>
+						<a href="<?php echo esc_url( $facebook ); ?>" target="_blank" rel="noopener noreferrer" class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 hover:bg-white/20" aria-label="Facebook">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.6-1.5H16.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21h3z"/></svg>
+						</a>
 					<?php endif; ?>
-					
-					<?php if(get_field('instagram_link', 'option')): ?>
-					<a href="<?php echo esc_url(get_field('instagram_link', 'option')); ?>" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="w-9 h-9 grid place-items-center rounded-full bg-white/5 hover:bg-white/10">
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-					</a>
+					<?php if ( $linkedin ) : ?>
+						<a href="<?php echo esc_url( $linkedin ); ?>" target="_blank" rel="noopener noreferrer" class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 hover:bg-white/20" aria-label="LinkedIn">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.9 8.6H3.6V20h3.3V8.6zM5.3 3.3a1.9 1.9 0 1 0 0 3.8 1.9 1.9 0 0 0 0-3.8zM20.4 13.3c0-3.1-1.7-4.9-4.1-4.9-1.4 0-2.4.7-2.8 1.4V8.6h-3.3V20h3.3v-6.2c0-1.6.8-2.5 2.1-2.5 1.2 0 1.9.8 1.9 2.5V20h3.3l-.4-6.7z"/></svg>
+						</a>
 					<?php endif; ?>
 				</div>
-			</div>
-
-			<div>
-				<div class="text-white font-semibold mb-3 text-sm uppercase tracking-widest">Shop</div>
-				<?php wp_nav_menu(array('theme_location' => 'footer_1', 'menu_class' => 'space-y-2 text-sm text-ink-100/80', 'fallback_cb' => false)); ?>
-                
-                <div class="text-white font-semibold mt-8 mb-3 text-sm uppercase tracking-widest">Trending Products</div>
-                <?php wp_nav_menu(array('theme_location' => 'footer_trending', 'menu_class' => 'space-y-2 text-sm text-ink-100/80', 'fallback_cb' => false)); ?>
-			</div>
-			<div>
-				<div class="text-white font-semibold mb-3 text-sm uppercase tracking-widest">Help</div>
-				<?php wp_nav_menu(array('theme_location' => 'footer_2', 'menu_class' => 'space-y-2 text-sm text-ink-100/80', 'fallback_cb' => false)); ?>
-			</div>
-			<div>
-				<div class="text-white font-semibold mb-3 text-sm uppercase tracking-widest">Company</div>
-				<?php wp_nav_menu(array('theme_location' => 'footer_3', 'menu_class' => 'space-y-2 text-sm text-ink-100/80', 'fallback_cb' => false)); ?>
-			</div>
-			<div>
-				<div class="text-white font-semibold mb-3 text-sm uppercase tracking-widest">Areas Delivered in Australia</div>
-				<?php wp_nav_menu(array('theme_location' => 'footer_4', 'menu_class' => 'space-y-2 text-sm text-ink-100/80', 'fallback_cb' => false)); ?>
-			</div>
+			<?php endif; ?>
 		</div>
 
+		<?php foreach ( $columns as $column ) : ?>
+			<?php if ( ! has_nav_menu( $column['location'] ) ) { continue; } ?>
+			<nav aria-label="<?php echo esc_attr( $column['heading'] ?: get_bloginfo( 'name' ) ); ?>">
+				<?php if ( $column['heading'] ) : ?>
+					<h2 class="mb-4 font-heading text-base font-semibold text-white"><?php echo esc_html( $column['heading'] ); ?></h2>
+				<?php endif; ?>
+				<?php
+				wp_nav_menu( array(
+					'theme_location' => $column['location'],
+					'container'      => false,
+					'items_wrap'     => '<ul class="m-0 list-none space-y-2.5 p-0">%3$s</ul>',
+					'fallback_cb'    => false,
+					'depth'          => 1,
+				) );
+				?>
+			</nav>
+		<?php endforeach; ?>
+	</div>
+
+	<?php if ( $disclaimer ) : ?>
+		<div class="container-site pb-8">
+			<div class="rounded-xl border border-white/15 bg-white/5 p-5 text-sm leading-relaxed text-white/80 md:p-6 [&_a]:text-white [&_a]:underline [&_p+p]:mt-3"><?php echo wp_kses_post( $disclaimer ); ?></div>
+		</div>
+	<?php endif; ?>
+
+	<?php if ( ! empty( $payments ) || ! empty( $shipping ) ) : ?>
+		<div class="container-site flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-white/10 py-6">
+			<?php foreach ( array_merge( (array) $payments, (array) $shipping ) as $image_id ) : ?>
+				<span class="inline-flex h-9 items-center rounded-md bg-white px-2.5">
+					<?php echo wp_get_attachment_image( $image_id, 'thumbnail', false, array( 'class' => 'h-6 w-auto max-w-[96px] object-contain', 'loading' => 'lazy', 'decoding' => 'async' ) ); ?>
+				</span>
+			<?php endforeach; ?>
+		</div>
+	<?php endif; ?>
+
+	<?php if ( $copyright ) : ?>
 		<div class="border-t border-white/10">
-			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row gap-3 items-start md:items-center justify-between text-xs text-ink-100/60">
-				<div class="flex flex-wrap items-center gap-4">
-					<!-- Trust Badges with simple SVGs -->
-					<?php if ( $ssl_text = get_field('ssl_text', 'option') ) : ?>
-					<span class="inline-flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-300"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> <?php echo esc_html($ssl_text); ?></span>
-					<?php endif; ?>
-					<?php if ( $dispatch_text = get_field('dispatch_text', 'option') ) : ?>
-					<span class="inline-flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-300"><rect width="16" height="8" x="2" y="10" rx="2"/><path d="M2 14h16"/><path d="M22 14v-4l-4-4H6"/><path d="M6 6v4"/></svg> <?php echo esc_html($dispatch_text); ?></span>
-					<?php endif; ?>
-					<?php if ( $checkout_text = get_field('checkout_text', 'option') ) : ?>
-					<span class="inline-flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-300"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg> <?php echo esc_html($checkout_text); ?></span>
-					<?php endif; ?>
-					<?php if ( $location_text = get_field('location_text', 'option') ) : ?>
-					<span class="inline-flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-300"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> <?php echo esc_html($location_text); ?></span>
-					<?php endif; ?>
-					<?php if ( $support_email = get_field('support_email', 'option') ) : ?>
-					<span class="inline-flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-300"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> <?php echo esc_html($support_email); ?></span>
-					<?php endif; ?>
-					<?php if ( $support_phone = get_field('whatsapp_number', 'option') ) : ?>
-					<span class="inline-flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-300"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <?php echo esc_html($support_phone); ?></span>
-					<?php endif; ?>
-				</div>
-				<div class="flex flex-wrap items-center gap-4 mt-4 md:mt-0">
-					<?php if ( $copyright_text = get_field('copyright_text', 'option') ) : ?>
-					<div><?php echo wp_kses_post($copyright_text); ?></div>
-					<?php endif; ?>
-					<span class="hidden md:inline text-white/20">|</span>
-					<a href="/sitemap/" class="hover:text-white transition-colors underline underline-offset-2 decoration-white/20">Sitemap</a>
-				</div>
-			</div>
+			<p class="container-site py-5 text-xs text-white/60"><?php echo esc_html( $copyright ); ?></p>
 		</div>
-	</footer>
-
-	
+	<?php endif; ?>
+</footer>
+<?php endif; ?>
 
 </div><!-- #page -->
 
-<!-- Mobile Menu Drawer (Bottom Sheet) -->
-		<style>
-		.mobile-drawer-backdrop {
-			position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-			background-color: rgba(9, 21, 37, 0.6);
-			z-index: 9998;
-			opacity: 0;
-			transition: opacity 0.3s ease;
-			pointer-events: none;
-		}
-		.mobile-drawer-backdrop.is-active {
-			opacity: 1;
-			pointer-events: auto;
-		}
-		.mobile-drawer {
-			position: fixed; left: 0; right: 0; bottom: 0;
-			background-color: #ffffff;
-			z-index: 9999;
-			border-radius: 24px 24px 0 0;
-			box-shadow: 0 -10px 40px rgba(0,0,0,0.1);
-			transform: translateY(100%);
-			transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-			display: flex; flex-direction: column;
-			max-height: 85vh;
-		}
-		.mobile-drawer.is-active {
-			transform: translateY(0);
-		}
-		</style>
-		<div id="mobile-menu-backdrop" class="mobile-drawer-backdrop lg:hidden" aria-hidden="true"></div>
-		
-        <div id="mobile-menu" class="mobile-drawer lg:hidden">
-			<div class="p-5 flex items-center justify-between border-b border-ink-100">
-				<span class="font-serif font-semibold text-xl text-ink-900">Menu</span>
-				<button id="mobile-menu-close" class="w-10 h-10 grid place-items-center rounded-full bg-ink-50 text-ink-500 hover:bg-ink-100 hover:text-ink-900 transition-colors" aria-label="Close menu">
-					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-				</button>
-			</div>
-            <nav class="flex flex-col overflow-y-auto pb-8">
-                <?php
-                wp_nav_menu( array(
-                    'theme_location' => 'mobile',
-                    'menu_id'        => 'mobile-menu-items',
-                    'container'      => false,
-                    'items_wrap'     => '%3$s',
-                    'fallback_cb'    => false,
-                ) );
-                ?>
-            </nav>
-        </div>
-		
-	
-	<!-- Mobile menu toggle script -->
-	<script>
-		const menuBtn = document.getElementById('mobile-menu-btn');
-		const menuClose = document.getElementById('mobile-menu-close');
-		const menu = document.getElementById('mobile-menu');
-		const backdrop = document.getElementById('mobile-menu-backdrop');
-
-		if (menuBtn && menuClose && menu && backdrop) {
-			function openMenu() {
-				backdrop.classList.add('is-active');
-				menu.classList.add('is-active');
-				document.body.style.overflow = 'hidden';
-			}
-
-			function closeMenu() {
-				backdrop.classList.remove('is-active');
-				menu.classList.remove('is-active');
-				document.body.style.overflow = '';
-			}
-
-			menuBtn.addEventListener('click', openMenu);
-			menuClose.addEventListener('click', closeMenu);
-			backdrop.addEventListener('click', closeMenu);
-		}
-	</script>
-<?php wp_footer(); ?>
-
 <?php get_template_part( 'template-parts/search-modal' ); ?>
+<?php wp_footer(); ?>
 </body>
 </html>
-
-
-
-
-

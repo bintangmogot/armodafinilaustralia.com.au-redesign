@@ -56,6 +56,30 @@ body {
   body { @apply bg-background text-foreground; }
   h1,h2,h3,h4 { @apply font-heading text-primary; }
 }
+
+@layer components {
+  .container-site { @apply mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8; }
+  .section { @apply py-14 md:py-20; }
+  .section-tint { @apply bg-secondary; }
+
+  /* Buttons: yellow is only for the main buy action */
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 h-12 text-[15px] font-semibold leading-none transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2; }
+  .btn-buy { @apply btn bg-accent text-primary hover:bg-[#e6bb00]; }
+  .btn-primary { @apply btn bg-primary text-white hover:bg-brand-600; }
+  .btn-outline { @apply btn border border-primary/25 bg-white text-primary hover:border-primary hover:bg-secondary; }
+  .btn-sm { @apply h-10 px-4 text-sm; }
+
+  .badge { @apply inline-flex items-center gap-1.5 rounded-full border border-primary/15 bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-primary; }
+  .section-title { @apply font-heading text-[clamp(1.75rem,1.3rem+2vw,2.75rem)] font-bold leading-[1.15] text-primary; }
+  .section-lead { @apply mx-auto mt-3 max-w-[720px] text-base text-muted-foreground md:text-lg; }
+
+  /* Header and footer links */
+  .armo-nav-link { @apply whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-ink-700 transition-colors hover:bg-secondary hover:text-primary; }
+  .current-menu-item > .armo-nav-link { @apply text-primary bg-secondary; }
+  .armo-drawer-link { @apply block border-b border-border px-1 py-3.5 text-base font-medium text-primary; }
+  .armo-footer-link { @apply text-sm text-white/75 transition-colors hover:text-white; }
+}
+
 /* Custom scrollbars for a polished feel */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 6px; }
@@ -567,3 +591,26 @@ body {
   @apply bg-ink-900 border border-ink-900 text-white hover:bg-ink-800 shadow-sm px-6 py-2.5 rounded-full font-semibold transition-colors !important;
 }
 
+
+@layer components {
+  .search-cat.is-active { @apply border-primary bg-primary text-white; }
+}
+
+@layer components {
+  /* Check mark used by armo_content() */
+  .armo-yellow-tick { @apply relative mr-1.5 inline-block h-[1.15em] w-[1.15em] rounded-full bg-accent align-[-0.2em]; }
+  .armo-yellow-tick::after { content: ""; @apply absolute left-[0.38em] top-[0.2em] h-[0.5em] w-[0.28em] rotate-45 border-b-2 border-r-2 border-primary; }
+}
+
+@layer components {
+  .qty-pill.is-active { @apply border-primary bg-primary text-white; }
+}
+
+@layer components {
+  /* Editor content (ACF WYSIWYG). Tables scroll sideways on phones through the wrapper added in assets/js/site.js. */
+  .armo-prose { @apply prose max-w-none text-base text-foreground prose-headings:font-heading prose-headings:font-semibold prose-headings:text-primary prose-a:font-medium prose-a:text-brand-500 prose-a:underline-offset-2 hover:prose-a:text-primary prose-strong:text-primary prose-li:marker:text-brand-500 md:text-[17px]; }
+  .armo-prose table { @apply w-full text-sm; }
+  .armo-prose th { @apply bg-secondary text-left text-primary; }
+  .armo-prose th, .armo-prose td { @apply border border-border px-3 py-2; }
+  .armo-table-wrapper { @apply my-6 w-full overflow-x-auto; }
+}

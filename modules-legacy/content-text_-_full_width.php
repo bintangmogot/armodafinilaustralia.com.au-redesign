@@ -1,20 +1,21 @@
 <?php
 /**
- * Layout: Text - Full Width
- * Fields: content (wysiwyg)
- * Design: White background, centered text with dark navy headings
+ * Module: text_-_full_width (modules field).
+ * Fields: content (wysiwyg), background_color
+ *
+ * @package Armodafinil_Australia
  */
-$content = get_sub_field('content');
-$background_color = get_sub_field('background_color');
+
+$content          = get_sub_field( 'content' );
+$background_color = get_sub_field( 'background_color' );
+
+if ( ! $content ) {
+	return;
+}
 ?>
-<section class="py-4 lg:py-8 px-4 lg:px-8 <?php echo $background_color ? '' : 'bg-surface'; ?>" <?php if($background_color) echo 'style="background-color: ' . esc_attr($background_color) . ';"'; ?>>
-    <div class="max-w-4xl mx-auto text-center">
-        <?php if ($content) : ?>
-            <div class="module-fulltext-content prose max-w-none">
-                <?php echo armo_content($content); ?>
-            </div>
-        <?php else : ?>
-            <p class="text-[#1E1E1E] text-center italic">[ Text Full Width module - add content in ACF ]</p>
-        <?php endif; ?>
-    </div>
+<?php $in_post = is_singular( 'post' ); ?>
+<section class="py-8 lg:py-12 <?php echo $background_color ? '' : ( $in_post ? 'bg-white' : 'bg-secondary' ); ?>"<?php echo $background_color ? ' style="background-color: ' . esc_attr( $background_color ) . ';"' : ''; ?>>
+	<div class="container-site">
+		<div class="armo-prose mx-auto <?php echo $in_post ? 'max-w-3xl text-left' : 'max-w-4xl text-center'; ?>"><?php echo wp_kses_post( armo_content( $content ) ); ?></div>
+	</div>
 </section>

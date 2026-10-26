@@ -235,46 +235,7 @@ function armo_load_product_reviews()
         ob_start();
         while ($reviews->have_posts()) {
             $reviews->the_post();
-            $rating = get_field('rating') ? get_field('rating') : 5;
-            $name = get_field('name') ? get_field('name') : get_the_title();
-            $content = get_the_content();
-            ?>
-            <div
-                class="bg-gradient-review rounded-2xl p-4 md:p-8 shadow-md text-white shrink-0 snap-start w-[85%] md:w-[95%] lg:w-full max-w-full">
-                <div class="grid grid-cols-1 md:grid-cols-[200px_auto_1fr] gap-4 md:gap-8 items-center">
-                    <!-- Left side: Name, Verified, Stars -->
-                    <div class="flex flex-col items-center md:items-start text-center md:text-left">
-                        <h3 class="text-lg md:text-xl font-bold text-white mb-1"><?php echo esc_html($name); ?></h3>
-                        <div class="flex items-center gap-1 text-xs text-accent font-bold mb-3">
-                            <span>Verified</span>
-                            <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </div>
-                        <div class="text-xl leading-none tracking-[4px] text-accent">
-                            <?php
-                            $r = intval($rating);
-                            echo str_repeat('', $r);
-                            if (5 - $r > 0) {
-                                echo '<span class="text-white/25">' . str_repeat('', 5 - $r) . '</span>';
-                            }
-                            ?>
-                        </div>
-                    </div>
-
-                    <!-- Divider (desktop only) -->
-                    <div class="hidden md:block w-px h-full bg-white/20 mx-auto"></div>
-
-                    <!-- Right side: Content -->
-                    <div class="text-white/90 text-sm md:text-base leading-relaxed text-center md:text-left">
-                        <h4 class="text-xl font-extrabold text-white mb-2"><?php echo esc_html(get_the_title()); ?></h4>
-                        <?php echo wp_kses_post(wpautop($content)); ?>
-                    </div>
-                </div>
-            </div>
-            <?php
+            get_template_part( 'template-parts/review-card' );
         }
         $html = ob_get_clean();
         wp_reset_postdata();
@@ -365,3 +326,55 @@ function armo_handle_review_submission() {
 // wp_ajax_ = for logged-in users, wp_ajax_nopriv_ = for visitors (not logged in)
 add_action( 'wp_ajax_armo_submit_review', 'armo_handle_review_submission' );
 add_action( 'wp_ajax_nopriv_armo_submit_review', 'armo_handle_review_submission' );
+
+/**
+ * Clean up rich text from the editor: link bare email addresses and swap the check mark
+ * character for the CSS tick (.armo-yellow-tick).
+ */
+function armo_content( $content ) {
+	if ( ! $content ) {
+		return '';
+	}
+
+	$content = preg_replace(
+		'/href=(["\'])\s*(?!(?:mailto:|https?:\/\/|\/|#|\?|tel:))([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})\s*\1/i',
+		'href="mailto:$2"',
+		$content
+	);
+
+	if ( function_exists( 'make_clickable' ) ) {
+		$content = make_clickable( $content );
+	}
+
+	// wp_kses_post is not applied here: it would strip <style> tags that form plugins inject.
+	return str_replace( "\u{2705}", '<span class="armo-yellow-tick"></span>', $content );
+}
+
+/**
+ * Show the "Modules" field group on every page template and on products.
+ */
+add_filter( 'acf/location/match_rule', function ( $match, $rule, $screen ) {
+	if ( 'page_template' === $rule['param'] && isset( $screen['post_type'] ) && in_array( $screen['post_type'], array( 'page', 'product' ), true ) ) {
+		return true;
+	}
+	return $match;
+}, 10, 3 );
+
+add_filter( 'acf/get_field_group', function ( $group ) {
+	if ( isset( $group['title'] ) && false !== strpos( strtolower( $group['title'] ), 'module' ) ) {
+		$group['location'][] = array(
+			array(
+				'param'    => 'post_type',
+				'operator' => '==',
+				'value'    => 'product',
+			),
+		);
+	}
+	return $group;
+} );
+
+add_filter( 'upload_mimes', function ( $mimes ) {
+	$mimes['svg']  = 'image/svg+xml';
+	$mimes['svgz'] = 'image/svg+xml';
+	return $mimes;
+} );

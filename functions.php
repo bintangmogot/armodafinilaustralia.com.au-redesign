@@ -35,15 +35,7 @@ add_action( 'wp_enqueue_scripts', 'armodafinil_australia_scripts' );
 function armodafinil_australia_setup() {
     // Enable WordPress Menus
     add_theme_support('menus');
-    register_nav_menus(array(
-        'primary' => __('Primary Navigation (Desktop)', 'armodafinil-australia-direct'),
-        'mobile'  => __('Mobile Navigation', 'armodafinil-australia-direct'),
-        'footer_1'  => __('Footer Column 1', 'armodafinil-australia-direct'),
-        'footer_2'  => __('Footer Column 2', 'armodafinil-australia-direct'),
-        'footer_3'  => __('Footer Column 3', 'armodafinil-australia-direct'),
-        'footer_4'  => __('Footer Column 4', 'armodafinil-australia-direct'),
-        'footer_trending'  => __('Footer Trending Products', 'armodafinil-australia-direct'),
-    ));
+    // Menu locations are registered in inc/navigation.php.
 
     add_theme_support( 'title-tag' );
     add_theme_support( 'post-thumbnails' );
@@ -86,142 +78,18 @@ require_once get_template_directory() . '/inc/ajax-auth.php';
 require_once get_template_directory() . '/inc/ajax-reviews.php';
 require_once get_template_directory() . '/inc/ajax-search.php';
 require_once get_template_directory() . '/inc/medical-reviewers.php';
-require_once get_template_directory() . '/inc/email-routing.php';
 require_once get_template_directory() . '/inc/security.php';
 require_once get_template_directory() . '/inc/render-modules.php';
 require_once get_template_directory() . '/inc/live-compat.php';
 require_once get_template_directory() . '/inc/checkout-medical.php';
 require_once get_template_directory() . '/inc/shipping-label.php';
 
-add_filter('nav_menu_css_class', function($classes, $item, $args) {
-    if(in_array($args->theme_location, ['footer_1', 'footer_2', 'footer_3', 'footer_4', 'footer_trending'])) {
-        // li classes for footer
-        // No specific classes needed for li since space-y-2 is on ul
-    }
-    return $classes;
-}, 10, 3);
-
-add_filter('nav_menu_link_attributes', function($atts, $item, $args) {
-    if(in_array($args->theme_location, ['footer_1', 'footer_2', 'footer_3', 'footer_4', 'footer_trending'])) {
-        $atts['class'] = 'hover:text-brand-300';
-    }
-    return $atts;
-}, 10, 3);
-
-add_action('wp_footer', function() {
-?>
-    <script>
-    function toggleReadMore(e, btn) {
-        e.preventDefault();
-        e.stopPropagation();
-        const text = btn.previousElementSibling;
-        if (text.classList.contains('line-clamp-2')) {
-            text.classList.remove('line-clamp-2');
-            btn.innerHTML = 'Read less &gt;&gt;';
-        } else {
-            text.classList.add('line-clamp-2');
-            btn.innerHTML = 'Read more &gt;&gt;';
-        }
-    }
-    </script>
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const syncLoopWishlist = () => {
-            document.querySelectorAll('.loop-wishlist-btn').forEach(btn => {
-                const pid = btn.dataset.productId;
-                const container = document.querySelector('.loop-wishlist-plugin-container[data-product-id="' + pid + '"]');
-                if(!container) return;
-                
-                const yithBtn = container.querySelector('.add_to_wishlist');
-                const tiBtn = container.querySelector('.tinvwl_add_to_wishlist_button');
-                
-                let isAdded = false;
-                if (container.querySelector('.yith-wcwl-wishlistaddedbrowse.show, .yith-wcwl-wishlistexistsbrowse.show') || (yithBtn && yithBtn.classList.contains('added'))) {
-                    isAdded = true;
-                }
-                if (tiBtn && (tiBtn.classList.contains('tinvwl-product-in-list') || tiBtn.classList.contains('in-wishlist'))) {
-                    isAdded = true;
-                }
-                
-                if (isAdded) {
-                    btn.classList.add('text-brand-600');
-                    btn.classList.remove('text-ink-400');
-                    btn.querySelector('svg').classList.add('fill-brand-600');
-                } else {
-                    btn.classList.remove('text-brand-600');
-                    btn.classList.add('text-ink-400');
-                    btn.querySelector('svg').classList.remove('fill-brand-600');
-                }
-            });
-        };
-
-                syncLoopWishlist();
-        setInterval(syncLoopWishlist, 500);
-
-        document.querySelectorAll('.loop-wishlist-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const pid = btn.dataset.productId;
-                const container = document.querySelector('.loop-wishlist-plugin-container[data-product-id="' + pid + '"]');
-                if(!container) return;
-                
-                const yithBtn = container.querySelector('.add_to_wishlist');
-                const tiBtn = container.querySelector('.tinvwl_add_to_wishlist_button');
-                
-                if (yithBtn) {
-                    yithBtn.click();
-                } else if (tiBtn) {
-                    tiBtn.click();
-                } else {
-                    alert('Wishlist plugin is not active.');
-                }
-            });
-        });
-    });
-    </script>
-<?php
-});
-
-// Add Tailwind classes to dynamic menu
-add_filter("nav_menu_css_class", function($classes, $item, $args) { 
-    if($args->theme_location === "primary") { 
-        $classes[] = "flex items-center"; 
-    } elseif($args->theme_location === "mobile") {
-        $classes[] = "border-b border-ink-100 last:border-0";
-    }
-    return $classes; 
-}, 10, 3);
-
-add_filter("nav_menu_link_attributes", function($atts, $item, $args) { 
-    if($args->theme_location === "primary") { 
-        $atts["class"] = "px-3 py-2 rounded-md text-sm font-medium transition-colors text-ink-700 hover:text-brand-700 hover:bg-brand-50/60"; 
-    } elseif($args->theme_location === "mobile") { 
-        $atts["class"] = "block w-full text-left px-6 py-4 text-base font-medium text-ink-900 hover:bg-brand-50 transition-colors"; 
-    } 
-    return $atts; 
-}, 10, 3);
+require_once get_template_directory() . '/inc/navigation.php';
+require_once get_template_directory() . '/inc/assets.php';
+require_once get_template_directory() . '/inc/product-helpers.php';
+require_once get_template_directory() . '/inc/schema.php';
 
 
-add_filter('nav_menu_css_class', function($classes, $item, $args) {
-    if(in_array($args->theme_location, ['footer_1', 'footer_2', 'footer_3', 'footer_4', 'footer_trending'])) {
-        // li classes for footer
-        // No specific classes needed for li since space-y-2 is on ul
-    }
-    return $classes;
-}, 10, 3);
-
-add_filter('nav_menu_link_attributes', function($atts, $item, $args) {
-    if(in_array($args->theme_location, ['footer_1', 'footer_2', 'footer_3', 'footer_4', 'footer_trending'])) {
-        $atts['class'] = 'hover:text-brand-300';
-    }
-    return $atts;
-}, 10, 3);
-
-?>
-
-<?php
 
 /**
  * Sticky Add to Cart Bar for Single Products
@@ -485,14 +353,6 @@ function aad_force_default_variable_price_range( $price, $product ) {
     return $price;
 }
 
-// Add 'A' before '$' to make it clear it's AUD
-add_filter('woocommerce_currency_symbol', 'aad_change_currency_symbol', 10, 2);
-function aad_change_currency_symbol( $currency_symbol, $currency ) {
-    if ( $currency === 'AUD' ) {
-        return 'A$';
-    }
-    return $currency_symbol;
-}
 // Fix ACF WYSIWYG bookmark bug on backend
 
 

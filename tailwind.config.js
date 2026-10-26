@@ -61,6 +61,8 @@ module.exports = {
           800: '#0a1045',
           900: '#070b30',
         },
+        success: '#15803D',
+        star: '#F5B400',
         surface: {
           DEFAULT: '#e1edff',
           light: '#eaf2ff',

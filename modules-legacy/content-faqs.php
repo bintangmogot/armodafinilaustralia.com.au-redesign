@@ -1,46 +1,46 @@
 <?php
 /**
- * Layout: FAQs
- * Fields: faq_title (text), faqs (repeater: question (text), answer (wysiwyg))
- * Design: White background, centered heading, dark blue accordion cards with plus/minus icons
+ * Module: faqs (modules field).
+ * Fields: faq_title, faqs (repeater: question, answer wysiwyg)
+ * Questions and answers are also printed as FAQPage structured data by inc/schema.php.
+ *
+ * @package Armodafinil_Australia
  */
-$faq_title = get_sub_field('faq_title');
-$faq_id = 'faq-' . uniqid();
-?>
-<section class="py-14 lg:py-16 px-6 lg:px-12 bg-white">
-    <div class="max-w-4xl mx-auto">
-        <?php if ($faq_title) : ?>
-            <h3 class="text-2xl lg:text-3xl font-bold text-center text-primary mb-10"><?php echo esc_html($faq_title); ?></h3>
-        <?php endif; ?>
 
-        <?php if (have_rows('faqs')) : ?>
-            <div class="space-y-4" id="<?php echo esc_attr($faq_id); ?>">
-                <?php $i = 0; while (have_rows('faqs')) : the_row(); 
-                    $question = get_sub_field('question');
-                    $answer   = get_sub_field('answer');
-                ?>
-                    <details class="bg-gradient-review rounded-xl shadow-sm group overflow-hidden" open>
-                        <summary class="cursor-pointer list-none flex justify-between items-center px-6 md:px-8 py-5 hover:bg-[#1a51a3] transition-colors">
-                            <h3 class="font-bold text-base md:text-lg text-white pr-4 m-0 leading-snug"><?php echo esc_html($question); ?></h3>
-                            
-                            <!-- Plus icon (shown when closed) -->
-                            <svg class="w-6 h-6 text-white block group-open:hidden flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            
-                            <!-- Minus icon (shown when open) -->
-                            <svg class="w-6 h-6 text-white hidden group-open:block flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </summary>
-                        <div class="px-6 md:px-8 pb-6 text-white/90 leading-relaxed text-base md:text-lg module-faqs-content">
-                            <?php echo armo_content($answer); ?>
-                        </div>
-                    </details>
-                <?php $i++; endwhile; ?>
-            </div>
-        <?php else : ?>
-            <p class="text-gray-400 text-center italic">[ FAQs module - add FAQ items in ACF ]</p>
-        <?php endif; ?>
-    </div>
+$faq_title = get_sub_field( 'faq_title' );
+
+if ( ! have_rows( 'faqs' ) ) {
+	return;
+}
+?>
+<section class="section bg-secondary">
+	<div class="container-site">
+		<?php if ( $faq_title ) : ?>
+			<h2 class="section-title mb-8 text-center md:mb-12"><?php echo esc_html( $faq_title ); ?></h2>
+		<?php endif; ?>
+
+		<div class="mx-auto max-w-3xl space-y-3">
+			<?php while ( have_rows( 'faqs' ) ) : the_row(); ?>
+				<?php
+				$question = get_sub_field( 'question' );
+				$answer   = get_sub_field( 'answer' );
+				if ( ! $question ) {
+					continue;
+				}
+				?>
+				<details class="group rounded-xl border border-border bg-white">
+					<summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 md:px-6">
+						<h3 class="m-0 font-heading text-base font-semibold leading-snug text-primary md:text-lg"><?php echo esc_html( $question ); ?></h3>
+						<span class="relative h-5 w-5 shrink-0 text-primary" aria-hidden="true">
+							<span class="absolute left-0 top-1/2 h-0.5 w-5 -translate-y-1/2 bg-current"></span>
+							<span class="absolute left-1/2 top-0 h-5 w-0.5 -translate-x-1/2 bg-current transition-transform group-open:scale-y-0"></span>
+						</span>
+					</summary>
+					<?php if ( $answer ) : ?>
+						<div class="armo-prose px-5 pb-5 md:px-6"><?php echo wp_kses_post( armo_content( $answer ) ); ?></div>
+					<?php endif; ?>
+				</details>
+			<?php endwhile; ?>
+		</div>
+	</div>
 </section>

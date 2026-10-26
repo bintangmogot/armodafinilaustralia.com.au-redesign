@@ -1,51 +1,57 @@
 <?php
 /**
- * Layout: How to Order
- * Fields: heading (text), steps (repeater: title, description), safety_title (text), safety_text (wysiwyg)
+ * Module: how_to_order (modules field).
+ * Fields: heading, steps (repeater: title, description), safety_title, safety_text (wysiwyg)
+ *
+ * @package Armodafinil_Australia
  */
 
-$heading = get_sub_field('heading');
-$safety_title = get_sub_field('safety_title');
-$safety_text = get_sub_field('safety_text');
+$heading      = get_sub_field( 'heading' );
+$safety_title = get_sub_field( 'safety_title' );
+$safety_text  = get_sub_field( 'safety_text' );
+
+if ( ! have_rows( 'steps' ) && ! $heading && ! $safety_text ) {
+	return;
+}
 ?>
-<?php if (have_rows('steps') || $heading || $safety_text) : ?>
-<section class="bg-white">
-    <div class="max-w-7xl mx-auto px-6 pb-12 lg:pb-20">
-        
-        <?php if ($heading) : ?>
-            <h2 class="text-2xl md:text-3xl font-bold text-center text-primary mb-12">
-                <?php echo esc_html($heading); ?>
-            </h2>
-        <?php endif; ?>
+<section class="section bg-white">
+	<div class="container-site">
+		<?php if ( $heading ) : ?>
+			<h2 class="section-title mb-8 text-center md:mb-12"><?php echo esc_html( $heading ); ?></h2>
+		<?php endif; ?>
 
-        <?php if (have_rows('steps')) : ?>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
-                <?php 
-                $count = 1;
-                while (have_rows('steps')) : the_row(); 
-                    $title = get_sub_field('title');
-                    $description = get_sub_field('description');
-                    if (!$title && !$description) continue;
-                ?>
-                    <div class="relative bg-gradient-review rounded-xl shadow-lg pt-10 pb-6 px-4 text-center">
-                        <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 bg-accent rounded-full flex items-center justify-center text-primary text-xl font-bold shadow-md">
-                            <?php echo $count; ?>
-                        </div>
-                        <h3 class="text-white text-lg md:text-xl font-semibold mb-3">
-                            <?php echo esc_html($title); ?>
-                        </h3>
-                        <p class="text-white/90 text-base md:text-lg leading-relaxed">
-                            <?php echo esc_html($description); ?>
-                        </p>
-                    </div>
-                <?php 
-                $count++;
-                endwhile; ?>
-            </div>
-        <?php endif; ?>
+		<?php if ( have_rows( 'steps' ) ) : ?>
+			<ol class="m-0 grid list-none grid-cols-1 gap-4 p-0 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+				<?php $count = 1; ?>
+				<?php while ( have_rows( 'steps' ) ) : the_row(); ?>
+					<?php
+					$step_title = get_sub_field( 'title' );
+					$step_text  = get_sub_field( 'description' );
+					if ( ! $step_title && ! $step_text ) {
+						continue;
+					}
+					?>
+					<li class="rounded-2xl border border-border bg-secondary p-6">
+						<span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary font-heading text-base font-bold text-white"><?php echo (int) $count; ?></span>
+						<?php if ( $step_title ) : ?>
+							<h3 class="mt-4 font-heading text-lg font-semibold text-primary"><?php echo esc_html( $step_title ); ?></h3>
+						<?php endif; ?>
+						<?php if ( $step_text ) : ?>
+							<p class="mt-2 text-base leading-relaxed text-muted-foreground"><?php echo esc_html( $step_text ); ?></p>
+						<?php endif; ?>
+					</li>
+					<?php ++$count; ?>
+				<?php endwhile; ?>
+			</ol>
+		<?php endif; ?>
 
-    </div>
-
-
+		<?php if ( $safety_text ) : ?>
+			<div class="mx-auto mt-8 max-w-3xl rounded-xl border border-border bg-white p-5 md:p-6">
+				<?php if ( $safety_title ) : ?>
+					<h3 class="font-heading text-lg font-semibold text-primary"><?php echo esc_html( $safety_title ); ?></h3>
+				<?php endif; ?>
+				<div class="armo-prose mt-2"><?php echo wp_kses_post( armo_content( $safety_text ) ); ?></div>
+			</div>
+		<?php endif; ?>
+	</div>
 </section>
-<?php endif; ?>

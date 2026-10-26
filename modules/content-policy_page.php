@@ -69,8 +69,8 @@ $sections = get_sub_field('sections');
                     </ol>
 
                     <?php
-                    $support_email = get_field('support_email', 'option');
-                    $whatsapp_number = get_field('whatsapp_number', 'option');
+                    $support_email = get_field('footer_email', 'option');
+                    $whatsapp_number = get_field('footer_whatsapp', 'option');
                     if ( $support_email || $whatsapp_number ) :
                     ?>
                     <div class="mt-8 p-5 rounded-2xl bg-white border border-ink-200">

@@ -1,89 +1,98 @@
 <?php
-$image       = get_sub_field('image');
-$title       = get_sub_field('title');
-$subtitle    = get_sub_field('subtitle');
-$tagline     = get_sub_field('tagline');
-$button_text = get_sub_field('button_text');
-$button_link = get_sub_field('button_link');
+/**
+ * Module: hero_section (modules field).
+ * Fields: image (url), title, subtitle, tagline, button_text, button_link, features (repeater: feature_text)
+ *
+ * @package Armodafinil_Australia
+ */
 
-// Make the first word of the title yellow
+$image       = get_sub_field( 'image' );
+$title       = get_sub_field( 'title' );
+$subtitle    = get_sub_field( 'subtitle' );
+$tagline     = get_sub_field( 'tagline' );
+$button_text = get_sub_field( 'button_text' );
+$button_link = get_sub_field( 'button_link' );
+
+if ( ! $title && ! $subtitle && ! $image ) {
+	return;
+}
+
+$image_id = 0;
+if ( is_numeric( $image ) ) {
+	$image_id = (int) $image;
+} elseif ( is_array( $image ) && ! empty( $image['ID'] ) ) {
+	$image_id = (int) $image['ID'];
+} elseif ( $image ) {
+	$image_id = (int) attachment_url_to_postid( $image );
+}
+
+// The first word of the title picks up the accent colour.
 $title_html = '';
 if ( $title ) {
-    $words = explode( ' ', $title );
-    if ( !empty( $words ) ) {
-        $words[0] = '<span class="text-accent">' . esc_html($words[0]) . '</span>';
-        $title_html = implode( ' ', $words );
-    } else {
-        $title_html = esc_html($title);
-    }
+	$words      = explode( ' ', $title, 2 );
+	$title_html = '<span class="text-accent">' . esc_html( $words[0] ) . '</span>' . ( isset( $words[1] ) ? ' ' . esc_html( $words[1] ) : '' );
 }
 ?>
-<section class="hero relative overflow-hidden md:min-h-[600px] lg:h-[80vh] max-h-[964px]">
-    <?php if ($image) : ?>
-        <!-- Desktop Image -->
-        <img src="<?php echo esc_url($image); ?>" alt="" class="hidden md:block absolute inset-0 w-full h-full object-cover object-bottom">
-        <!-- Mobile Image -->
-        <img src="<?php echo esc_url(get_stylesheet_directory_uri()); ?>/assets/images/mobile-hero-image.png" alt="" class="block md:hidden absolute inset-0 w-full h-full object-cover object-right">
-        <div class="absolute inset-0 bg-gradient-to-r from-primary-dark/90 via-primary-dark/20 to-transparent lg:hidden"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-primary-dark/20 to-transparent lg:hidden"></div>
-    <?php endif; ?>
+<section class="relative isolate overflow-hidden bg-primary text-white">
+	<?php if ( $image_id ) : ?>
+		<?php
+		echo wp_get_attachment_image(
+			$image_id,
+			'full',
+			false,
+			array(
+				'alt'           => '',
+				'class'         => 'absolute inset-0 -z-20 h-full w-full object-cover object-[70%_center] md:object-bottom',
+				'loading'       => 'eager',
+				'fetchpriority' => 'high',
+				'decoding'      => 'async',
+				'sizes'         => '100vw',
+			)
+		);
+		?>
+	<?php elseif ( $image ) : ?>
+		<img src="<?php echo esc_url( $image ); ?>" alt="" class="absolute inset-0 -z-20 h-full w-full object-cover object-[70%_center] md:object-bottom" fetchpriority="high" decoding="async">
+	<?php endif; ?>
+	<div class="absolute inset-0 -z-10 bg-gradient-to-r from-primary via-primary/85 to-primary/20 md:via-primary/70"></div>
 
-    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 h-full flex items-start lg:items-center min-h-[inherit]">
-        <div class="w-full pt-28 pb-6 md:pt-32 md:pb-16 lg:pt-36 lg:pb-20 text-white">
-            <div class="w-[70%] sm:w-[80%] md:w-full lg:w-[75%] xl:w-[70%]">
-                <?php if ($title_html) : ?>
-                    <h1 class="max-w-5xl text-4xl md:text-5xl font-extrabold text-white leading-[1.2] mb-3 lg:mb-4" data-aos="fade-up">
-                        <?php echo $title_html; ?>
-                    </h1>
-                <?php endif; ?>
+	<div class="container-site flex min-h-[520px] items-center py-14 md:min-h-[600px] md:py-20">
+		<div class="max-w-[680px]">
+			<?php if ( $title_html ) : ?>
+				<h1 class="font-heading text-[clamp(2.25rem,1.6rem+3vw,3.75rem)] font-bold leading-[1.1] text-white"><?php echo wp_kses( $title_html, array( 'span' => array( 'class' => true ) ) ); ?></h1>
+			<?php endif; ?>
 
-                <?php if ($subtitle) : ?>
-                    <p class="md:w-[80%] lg:w-full text-lg md:text-2xl lg:text-3xl font-semibold text-white/90 leading-snug mb-2 lg:mb-3" data-aos="fade-up" data-aos-delay="100">
-                        <?php echo esc_html($subtitle); ?>
-                    </p>
-                <?php endif; ?>
+			<?php if ( $subtitle ) : ?>
+				<p class="mt-4 text-lg font-semibold leading-snug text-white/90 md:text-2xl"><?php echo esc_html( $subtitle ); ?></p>
+			<?php endif; ?>
 
-                <?php if ($tagline) : ?>
-                    <p class="text-base lg:text-xl text-accent italic mb-6 lg:mb-8" data-aos="fade-up" data-aos-delay="200">
-                        <?php echo esc_html($tagline); ?>
-                    </p>
-                <?php endif; ?>
+			<?php if ( $tagline ) : ?>
+				<p class="mt-3 text-base text-white/80 md:text-lg"><?php echo esc_html( $tagline ); ?></p>
+			<?php endif; ?>
 
-                <?php if ( have_rows('features') ) : ?>
-                    <ul class="space-y-3 mb-6 lg:mb-8" data-aos="fade-up" data-aos-delay="300">
-                        <?php while ( have_rows('features') ) : the_row(); ?>
-                            <?php $feature_text = get_sub_field('feature_text'); ?>
-                            <?php if ( $feature_text ) : ?>
-                                <li class="flex items-center gap-3 text-base lg:text-xl text-white/90">
-                                    <img src="<?php echo esc_url(get_stylesheet_directory_uri()); ?>/assets/images/check.png" alt="Check" class="w-6 h-6 flex-shrink-0 object-contain">
-                                    <span><?php echo esc_html($feature_text); ?></span>
-                                </li>
-                            <?php endif; ?>
-                        <?php endwhile; ?>
-                    </ul>
-                <?php endif; ?>
-            </div>
+			<?php if ( have_rows( 'features' ) ) : ?>
+				<ul class="m-0 mt-6 list-none space-y-2.5 p-0">
+					<?php while ( have_rows( 'features' ) ) : the_row(); ?>
+						<?php $feature_text = get_sub_field( 'feature_text' ); ?>
+						<?php if ( $feature_text ) : ?>
+							<li class="flex items-start gap-3 text-base text-white/90 md:text-lg">
+								<span class="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent text-primary" aria-hidden="true">
+									<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+								</span>
+								<span><?php echo esc_html( $feature_text ); ?></span>
+							</li>
+						<?php endif; ?>
+					<?php endwhile; ?>
+				</ul>
+			<?php endif; ?>
 
-            <?php if ($button_text && $button_link) : ?>
-                <!-- Mobile Button Wrapper -->
-                <div class="mt-5 block md:hidden" data-aos="fade-up" data-aos-delay="400">
-                    <a href="<?php echo esc_url($button_link); ?>" class="group inline-flex justify-center items-center gap-2 bg-[#FF0000] hover:bg-[#dc0000] text-white font-bold text-base px-4 py-3 rounded-full no-underline transition-all hover:shadow-lg hover:shadow-black/30">
-                        <span class="whitespace-nowrap"><?php echo esc_html($button_text); ?></span>
-                        <svg class="w-5 h-5 flex-shrink-0 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 28 28">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-                <!-- Desktop Button Wrapper -->
-                <div class="mt-6 hidden md:block" data-aos="fade-up" data-aos-delay="400">
-                    <a href="<?php echo esc_url($button_link); ?>" class="group inline-flex items-center gap-2 bg-[#FF0000] hover:bg-[#dc0000] text-white font-bold text-base lg:text-lg px-4 lg:px-8 py-2.5 lg:py-3.5 rounded-full no-underline transition-all hover:shadow-lg hover:shadow-black/30">
-                        <span class="whitespace-nowrap"><?php echo esc_html($button_text); ?></span>
-                        <svg class="w-5 h-5 flex-shrink-0 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 28 28">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-            <?php endif; ?>
-        </div>
-    </div>
+			<?php if ( $button_text && $button_link ) : ?>
+				<div class="mt-8">
+					<a href="<?php echo esc_url( $button_link ); ?>" class="btn-buy h-14 px-7 text-base">
+						<?php echo esc_html( $button_text ); ?>
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+					</a>
+				</div>
+			<?php endif; ?>
+		</div>
+	</div>
 </section>

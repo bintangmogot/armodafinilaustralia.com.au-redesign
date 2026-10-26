@@ -58,7 +58,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
         </form>
 
         <div class="mt-8 pt-6 border-t border-ink-100 flex items-center justify-center gap-4 text-sm text-ink-500">
-            <a href="mailto:<?php echo esc_attr(get_field('support_email', 'option') ?: 'support@armodafinil-australia-direct.com'); ?>" class="hover:text-brand-600 transition-colors">Need help?</a>
+            <a href="mailto:<?php echo esc_attr(get_field('footer_email', 'option')); ?>" class="hover:text-brand-600 transition-colors">Need help?</a>
             <span class="text-ink-300">&bull;</span>
             <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="hover:text-brand-600 transition-colors">Shop as guest</a>
         </div>
