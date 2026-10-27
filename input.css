@@ -920,3 +920,209 @@ input[type="radio"], input[type="checkbox"] {
     font-weight: 700 !important;
     margin-top: 0.25rem !important;
 }
+
+.medical-upload-dropzone.is-over { border-color: hsl(var(--primary)); background-color: hsl(var(--secondary)); }
+.medical-file-name { margin-top: 0.6rem; font-weight: 700; color: hsl(var(--primary)); }
+
+/* Medical Conditions step (from the live theme) */
+/* ===== CHECKOUT PAGE ===== */
+
+
+
+/* Dark-blue header bars for Billing / Shipping / Medical sections */
+.woocommerce-checkout .woocommerce-billing-fields > h3,
+.woocommerce-checkout .woocommerce-shipping-fields > h3,
+.woocommerce-checkout .checkout-fields-block > h3,
+.woocommerce-checkout .medical-condition-fields > h3,
+.woocommerce-checkout .woocommerce-additional-fields > h3 {
+    background-color: #00104a !important;
+    color: #fff !important;
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.625rem 1rem;
+    margin: 0 !important;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0;
+}
+/* SVG icons in headers */
+.woocommerce-checkout .woocommerce-billing-fields > h3::before,
+.woocommerce-checkout .woocommerce-shipping-fields > h3::before,
+.woocommerce-checkout .medical-condition-fields > h3::before {
+    content: "";
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.woocommerce-checkout .medical-condition-fields > h3::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27none%27 viewBox=%270 0 24 24%27 stroke=%27%23ffffff%27%3E%3Cpath stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%272%27 d=%27M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z%27/%3E%3C/svg%3E");
+}
+/* ===== MEDICAL CONDITIONS SECTION ===== */
+
+/* Form rows: label + input side by side */
+.medical-condition-fields .medical-conditions-body {
+    padding: 0;
+}
+.medical-condition-fields .medical-row {
+    display: flex;
+    align-items: center;
+    padding: 0.625rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+.medical-condition-fields .medical-row:last-of-type {
+    border-bottom: 1px solid #e5e7eb;
+}
+.medical-condition-fields .medical-row > label {
+    width: 40%;
+    flex-shrink: 0;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    color: #111827;
+    margin: 0;
+    padding-right: 0.75rem;
+}
+.medical-condition-fields .medical-input-wrap {
+    width: 60%;
+    flex-grow: 1;
+}
+.medical-condition-fields .medical-input-wrap input.input-text {
+    width: 100%;
+    padding: 0.4rem 0.625rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.25rem;
+    font-size: 0.8125rem;
+    outline: none;
+    box-shadow: none;
+    height: auto;
+    background: #fff;
+}
+.medical-condition-fields .medical-input-wrap input.input-text:focus {
+    border-color: #00125E;
+}
+/* Radio buttons row (Smoke / Drink) */
+.medical-condition-fields .medical-radio-row {
+    display: flex;
+    gap: 0;
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+.medical-condition-fields .medical-radio-group {
+    flex: 1;
+}
+.medical-condition-fields .medical-radio-label {
+    font-weight: 700;
+    font-size: 0.8125rem;
+    color: #00125E;
+    margin: 0 0 0.5rem 0;
+}
+.medical-condition-fields .medical-radio-group ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+.medical-condition-fields .medical-radio-group ul li {
+    margin: 0;
+    padding: 0;
+}
+.medical-condition-fields .medical-radio-group ul li label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    color: #111827;
+    margin: 0;
+}
+.medical-condition-fields .medical-radio-group input[type="radio"] {
+    margin: 0;
+    width: 16px;
+    height: 16px;
+    accent-color: #00125E;
+    cursor: pointer;
+}
+/* Certification Blue Box */
+.medical-condition-fields .medical-certification-box {
+    background-color: #e5edfb;
+    color: #00125E;
+    padding: 1.25rem 1.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin: 1.25rem 0; /* Mobile: no left/right margin */
+}
+@media (min-width: 768px) {
+    .medical-condition-fields .medical-certification-box {
+        margin: 1.25rem 1rem; /* Desktop: restore margin */
+    }
+}
+.medical-condition-fields .medical-certification-box p {
+    margin: 0;
+}
+/* Upload Prescription section */
+.medical-condition-fields .medical-upload-section {
+    padding: 0 1rem 1.25rem;
+}
+.medical-condition-fields .medical-upload-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #111827;
+    margin: 0 0 0.75rem 0;
+    background: none !important;
+    padding: 0 !important;
+}
+.medical-condition-fields .medical-upload-dropzone {
+    border: 2px dashed #cbd5e1;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    text-align: center;
+    background: #fff;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+.medical-condition-fields .medical-upload-dropzone:hover {
+    border-color: #00125E;
+}
+.medical-condition-fields .medical-upload-dropzone .upload-icon {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 auto 0.5rem;
+    color: #9ca3af;
+}
+.medical-condition-fields .medical-upload-dropzone p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+.medical-condition-fields .medical-upload-dropzone .choose-file-link {
+    color: hsl(var(--primary));
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.medical-condition-fields .medical-upload-dropzone .choose-file-link:hover {
+    color: #073980;
+}
+.medical-condition-fields .medical-upload-dropzone input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Shipping method rows: name, price, then the delivery time on its own line */
+#shipping_method li label, .woocommerce-shipping-methods li label { display: flex !important; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.75rem; width: 100%; }
+#shipping_method li label .shipping-title, .woocommerce-shipping-methods li label .shipping-title { flex: 1 1 auto; font-weight: 600; text-align: left; }
+#shipping_method li label .woocommerce-Price-amount, .woocommerce-shipping-methods li label .woocommerce-Price-amount { font-weight: 700; margin-left: auto; }
+#shipping_method li label span.description, .woocommerce-shipping-methods li label span.description { flex: 0 0 100%; font-size: 0.8125rem; font-weight: 400; color: hsl(var(--muted-foreground)); }

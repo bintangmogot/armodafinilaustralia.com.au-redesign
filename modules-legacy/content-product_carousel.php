@@ -29,7 +29,7 @@ $next = armo_label( 'label_next' );
 				</button>
 			<?php endif; ?>
 
-			<div data-carousel-track class="relative -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-4 pb-4 [scrollbar-width:none] sm:mx-0 sm:px-0 [&::-webkit-scrollbar]:hidden">
+			<div data-carousel-track class="relative -mx-4 flex snap-x snap-mandatory scroll-pl-4 gap-4 overflow-x-auto scroll-smooth px-4 pb-4 sm:scroll-pl-0 [scrollbar-width:none] sm:mx-0 sm:px-0 [&::-webkit-scrollbar]:hidden">
 				<?php foreach ( $products as $item ) : ?>
 					<?php
 					$product = wc_get_product( is_object( $item ) ? $item->ID : $item );

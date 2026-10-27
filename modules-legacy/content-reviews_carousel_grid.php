@@ -39,7 +39,7 @@ $next = armo_label( 'label_next' );
 				</button>
 			<?php endif; ?>
 
-			<div data-carousel-track class="relative -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-4 pb-4 [scrollbar-width:none] sm:mx-0 sm:px-0 [&::-webkit-scrollbar]:hidden">
+			<div data-carousel-track class="relative -mx-4 flex snap-x snap-mandatory scroll-pl-4 gap-4 overflow-x-auto scroll-smooth px-4 pb-4 sm:scroll-pl-0 [scrollbar-width:none] sm:mx-0 sm:px-0 [&::-webkit-scrollbar]:hidden">
 				<?php while ( $reviews->have_posts() ) : $reviews->the_post(); ?>
 					<div class="w-[85%] shrink-0 snap-start sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-11px)]">
 						<?php get_template_part( 'template-parts/review-card' ); ?>

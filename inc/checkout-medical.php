@@ -18,177 +18,74 @@ defined( 'ABSPATH' ) || exit;
 add_action( 'armo_custom_checkout_medical_conditions', 'armo_render_medical_conditions', 10 );
 
 function armo_render_medical_conditions() {
-    ?>
-    <!-- Medical Conditions header -->
-    <h3>Medical Conditions</h3>
+	$text_fields = array(
+		'medical_physician_name'      => armo_label( 'label_med_physician' ),
+		'medical_physician_phone'     => armo_label( 'label_med_physician_phone' ),
+		'medical_drug_allergies'      => armo_label( 'label_med_allergies' ),
+		'medical_current_medications' => armo_label( 'label_med_medications' ),
+		'medical_current_treatments'  => armo_label( 'label_med_treatments' ),
+	);
+	$yes_no_fields = array(
+		'medical_smoke' => armo_label( 'label_med_smoke' ),
+		'medical_drink' => armo_label( 'label_med_drink' ),
+	);
+	$title         = armo_label( 'label_med_title' );
+	$yes           = armo_label( 'label_med_yes' );
+	$no            = armo_label( 'label_med_no' );
+	$certification = (string) get_field( 'medical_certification', 'option' );
+	$upload_title  = armo_label( 'label_med_upload_title' );
+	$upload_text   = armo_label( 'label_med_upload_text' );
+	$choose_file   = armo_label( 'label_med_choose_file' );
+	$selected      = armo_label( 'label_med_selected' );
+	?>
+	<div class="medical-condition-fields">
+	<?php if ( $title ) : ?>
+		<h3><?php echo esc_html( $title ); ?></h3>
+	<?php endif; ?>
 
-    <div class="medical-conditions-body p-6">
-        <!-- Physician's Name -->
-        <div class="medical-row">
-            <label for="medical_physician_name">Your Physician's Name</label>
-            <div class="medical-input-wrap">
-                <input type="text" id="medical_physician_name" name="medical_physician_name"
-                       class="input-text" autocomplete="off" />
-            </div>
-        </div>
+	<div class="medical-conditions-body p-6">
+		<?php foreach ( $text_fields as $name => $label ) : ?>
+			<?php if ( ! $label ) { continue; } ?>
+			<div class="medical-row">
+				<label for="<?php echo esc_attr( $name ); ?>"><?php echo esc_html( $label ); ?></label>
+				<div class="medical-input-wrap">
+					<input type="text" id="<?php echo esc_attr( $name ); ?>" name="<?php echo esc_attr( $name ); ?>" class="input-text" autocomplete="off" />
+				</div>
+			</div>
+		<?php endforeach; ?>
 
-        <!-- Physician's Telephone No -->
-        <div class="medical-row">
-            <label for="medical_physician_phone">Physician's Telephone No:</label>
-            <div class="medical-input-wrap">
-                <input type="text" id="medical_physician_phone" name="medical_physician_phone"
-                       class="input-text" autocomplete="off" />
-            </div>
-        </div>
+		<?php if ( $yes && $no ) : ?>
+			<div class="medical-radio-row">
+				<?php foreach ( $yes_no_fields as $name => $label ) : ?>
+					<?php if ( ! $label ) { continue; } ?>
+					<div class="medical-radio-group">
+						<p class="medical-radio-label"><?php echo esc_html( $label ); ?></p>
+						<ul>
+							<li><label><input type="radio" name="<?php echo esc_attr( $name ); ?>" value="<?php echo esc_attr( $no ); ?>" checked /> <span><?php echo esc_html( $no ); ?></span></label></li>
+							<li><label><input type="radio" name="<?php echo esc_attr( $name ); ?>" value="<?php echo esc_attr( $yes ); ?>" /> <span><?php echo esc_html( $yes ); ?></span></label></li>
+						</ul>
+					</div>
+				<?php endforeach; ?>
+			</div>
+		<?php endif; ?>
 
-        <!-- Drug Allergies -->
-        <div class="medical-row">
-            <label for="medical_drug_allergies">Drug Allergies:</label>
-            <div class="medical-input-wrap">
-                <input type="text" id="medical_drug_allergies" name="medical_drug_allergies"
-                       class="input-text" autocomplete="off" />
-            </div>
-        </div>
+		<?php if ( $certification ) : ?>
+			<div class="medical-certification-box"><p><?php echo esc_html( $certification ); ?></p></div>
+		<?php endif; ?>
 
-        <!-- Current Medications -->
-        <div class="medical-row">
-            <label for="medical_current_medications">Current Medications:</label>
-            <div class="medical-input-wrap">
-                <input type="text" id="medical_current_medications" name="medical_current_medications"
-                       class="input-text" autocomplete="off" />
-            </div>
-        </div>
-
-        <!-- Current Treatments -->
-        <div class="medical-row">
-            <label for="medical_current_treatments">Current Treatments:</label>
-            <div class="medical-input-wrap">
-                <input type="text" id="medical_current_treatments" name="medical_current_treatments"
-                       class="input-text" autocomplete="off" />
-            </div>
-        </div>
-
-        <!-- Smoke / Drink row -->
-        <div class="medical-radio-row">
-            <div class="medical-radio-group">
-                <p class="medical-radio-label">Do you Smoke?</p>
-                <ul>
-                    <li>
-                        <label>
-                            <input type="radio" name="medical_smoke" value="No" checked />
-                            <span>No</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input type="radio" name="medical_smoke" value="Yes" />
-                            <span>Yes</span>
-                        </label>
-                    </li>
-                </ul>
-            </div>
-            <div class="medical-radio-group">
-                <p class="medical-radio-label">Do you drink Alcohol?</p>
-                <ul>
-                    <li>
-                        <label>
-                            <input type="radio" name="medical_drink" value="No" checked />
-                            <span>No</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input type="radio" name="medical_drink" value="Yes" />
-                            <span>Yes</span>
-                        </label>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Certification disclaimer -->
-        <div class="medical-certification-box">
-            <p>
-                I certify that I am 'over 18 years' and that I am under the
-                supervision of a doctor. The ordered medication is for my
-                own personal use and is strictly not meant for a re-sale.
-                I also accept that I am taking the medicine at my own
-                risk and that I am duly aware of all the effects / side effects
-                of the medicine. I acknowledge that the drugs are as
-                per the norms of the country of destination.
-            </p>
-        </div>
-
-        <!-- Upload Prescription -->
-        <div class="medical-upload-section">
-            <h4 class="medical-upload-title">Upload Prescription</h4>
-            <div class="medical-upload-dropzone" id="medical_dropzone">
-                <svg class="upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 4v12m0-12L8 8m4-4l4 4"/>
-                </svg>
-                <p>Drag &amp; Drop or <label for="medical_prescription" class="choose-file-link">Choose file</label> to upload</p>
-                <input type="file" id="medical_prescription" name="medical_prescription"
-                       accept=".jpg,.jpeg,.png,.pdf,.webp" />
-            </div>
-        </div>
-    </div>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var dropzone = document.getElementById('medical_dropzone');
-        var fileInput = document.getElementById('medical_prescription');
-        
-        if (!dropzone || !fileInput) return;
-        
-        var fileNameDisplay = document.createElement('p');
-        fileNameDisplay.style.color = '#00125E';
-        fileNameDisplay.style.fontWeight = 'bold';
-        fileNameDisplay.style.marginTop = '10px';
-        dropzone.appendChild(fileNameDisplay);
-
-        dropzone.addEventListener('dragover', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            dropzone.style.borderColor = '#00125E';
-            dropzone.style.backgroundColor = '#f8fafc';
-        });
-
-        dropzone.addEventListener('dragleave', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            dropzone.style.borderColor = '';
-            dropzone.style.backgroundColor = '';
-        });
-
-        dropzone.addEventListener('drop', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            dropzone.style.borderColor = '';
-            dropzone.style.backgroundColor = '';
-            
-            if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-                fileInput.files = e.dataTransfer.files;
-                fileNameDisplay.textContent = 'Selected: ' + fileInput.files[0].name;
-            }
-        });
-        
-        // Allow clicking the entire dropzone to open the file dialog
-        dropzone.addEventListener('click', function(e) {
-            // Prevent triggering if the user clicked the label or the input directly
-            if (e.target !== fileInput && e.target.tagName !== 'LABEL') {
-                fileInput.click();
-            }
-        });
-
-        fileInput.addEventListener('change', function() {
-            if (fileInput.files && fileInput.files.length > 0) {
-                fileNameDisplay.textContent = 'Selected: ' + fileInput.files[0].name;
-            }
-        });
-    });
-    </script>
-    <?php
+		<?php if ( $upload_title ) : ?>
+			<div class="medical-upload-section">
+				<h4 class="medical-upload-title"><?php echo esc_html( $upload_title ); ?></h4>
+				<div class="medical-upload-dropzone" id="medical_dropzone" data-selected="<?php echo esc_attr( $selected ); ?>">
+					<svg class="upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 4v12m0-12L8 8m4-4l4 4"/></svg>
+					<p><?php echo esc_html( $upload_text ); ?> <?php if ( $choose_file ) : ?><label for="medical_prescription" class="choose-file-link"><?php echo esc_html( $choose_file ); ?></label><?php endif; ?></p>
+					<input type="file" id="medical_prescription" name="medical_prescription" accept=".jpg,.jpeg,.png,.pdf,.webp" />
+				</div>
+			</div>
+		<?php endif; ?>
+	</div>
+	</div>
+	<?php
 }
 
 

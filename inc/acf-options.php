@@ -598,6 +598,14 @@ add_action( 'acf/init', function () {
 				'type'  => 'text',
 			),
 
+			array(
+				'key'   => 'field_label_payid',
+				'label' => 'Emails: PayID Label',
+				'name'  => 'label_payid',
+				'type'  => 'text',
+				'instructions' => 'Printed before the PayID taken from the first bank account (IBAN field) in order emails.',
+			),
+
 			$tab( 'field_tab_blog', 'Blog' ),
 			array(
 				'key'   => 'field_blog_title',
@@ -826,6 +834,100 @@ add_action( 'acf/init', function () {
 				'key'   => 'field_label_continue_shopping',
 				'label' => 'Continue Shopping Button',
 				'name'  => 'label_continue_shopping',
+				'type'  => 'text',
+			),
+
+			$tab( 'field_tab_medical', 'Medical Form' ),
+			array(
+				'key'   => 'field_label_med_title',
+				'label' => 'Heading',
+				'name'  => 'label_med_title',
+				'type'  => 'text',
+			),
+			array(
+				'key'   => 'field_label_med_physician',
+				'label' => 'Physician Name Label',
+				'name'  => 'label_med_physician',
+				'type'  => 'text',
+			),
+			array(
+				'key'   => 'field_label_med_physician_phone',
+				'label' => 'Physician Phone Label',
+				'name'  => 'label_med_physician_phone',
+				'type'  => 'text',
+			),
+			array(
+				'key'   => 'field_label_med_allergies',
+				'label' => 'Drug Allergies Label',
+				'name'  => 'label_med_allergies',
+				'type'  => 'text',
+			),
+			array(
+				'key'   => 'field_label_med_medications',
+				'label' => 'Current Medications Label',
+				'name'  => 'label_med_medications',
+				'type'  => 'text',
+			),
+			array(
+				'key'   => 'field_label_med_treatments',
+				'label' => 'Current Treatments Label',
+				'name'  => 'label_med_treatments',
+				'type'  => 'text',
+			),
+			array(
+				'key'   => 'field_label_med_smoke',
+				'label' => 'Smoke Question',
+				'name'  => 'label_med_smoke',
+				'type'  => 'text',
+			),
+			array(
+				'key'   => 'field_label_med_drink',
+				'label' => 'Alcohol Question',
+				'name'  => 'label_med_drink',
+				'type'  => 'text',
+			),
+			array(
+				'key'   => 'field_label_med_yes',
+				'label' => 'Yes',
+				'name'  => 'label_med_yes',
+				'type'  => 'text',
+			),
+			array(
+				'key'   => 'field_label_med_no',
+				'label' => 'No',
+				'name'  => 'label_med_no',
+				'type'  => 'text',
+			),
+			array(
+				'key'   => 'field_medical_certification',
+				'label' => 'Certification Statement',
+				'name'  => 'medical_certification',
+				'type'  => 'textarea',
+				'rows'  => 5,
+				'instructions' => 'Shown above the upload box. Wording to be approved by the client.',
+			),
+			array(
+				'key'   => 'field_label_med_upload_title',
+				'label' => 'Upload Title',
+				'name'  => 'label_med_upload_title',
+				'type'  => 'text',
+			),
+			array(
+				'key'   => 'field_label_med_upload_text',
+				'label' => 'Upload Instruction',
+				'name'  => 'label_med_upload_text',
+				'type'  => 'text',
+			),
+			array(
+				'key'   => 'field_label_med_choose_file',
+				'label' => 'Choose File Link',
+				'name'  => 'label_med_choose_file',
+				'type'  => 'text',
+			),
+			array(
+				'key'   => 'field_label_med_selected',
+				'label' => 'Selected File Prefix',
+				'name'  => 'label_med_selected',
 				'type'  => 'text',
 			),
 

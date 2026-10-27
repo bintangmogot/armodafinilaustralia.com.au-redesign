@@ -163,3 +163,34 @@ jQuery(function () {
     // Initial update
     updateSidebar();
 });
+
+
+/* Prescription upload drop zone (Medical Conditions step). */
+(function () {
+	document.addEventListener('DOMContentLoaded', function () {
+		var dropzone = document.getElementById('medical_dropzone');
+		var fileInput = document.getElementById('medical_prescription');
+		if (!dropzone || !fileInput) { return; }
+
+		var name = document.createElement('p');
+		name.className = 'medical-file-name';
+		dropzone.appendChild(name);
+		var show = function () {
+			if (fileInput.files && fileInput.files.length) {
+				name.textContent = (dropzone.dataset.selected ? dropzone.dataset.selected + ' ' : '') + fileInput.files[0].name;
+			}
+		};
+
+		dropzone.addEventListener('dragover', function (e) { e.preventDefault(); dropzone.classList.add('is-over'); });
+		dropzone.addEventListener('dragleave', function (e) { e.preventDefault(); dropzone.classList.remove('is-over'); });
+		dropzone.addEventListener('drop', function (e) {
+			e.preventDefault();
+			dropzone.classList.remove('is-over');
+			if (e.dataTransfer.files && e.dataTransfer.files.length) { fileInput.files = e.dataTransfer.files; show(); }
+		});
+		dropzone.addEventListener('click', function (e) {
+			if (e.target !== fileInput && e.target.tagName !== 'LABEL') { fileInput.click(); }
+		});
+		fileInput.addEventListener('change', show);
+	});
+})();

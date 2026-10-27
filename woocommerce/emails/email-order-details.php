@@ -53,9 +53,12 @@ do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plai
 <?php
 $bacs_settings = get_option( 'woocommerce_bacs_accounts' );
 $bacs_account  = ! empty( $bacs_settings[0] ) ? $bacs_settings[0] : array();
-$pay_id        = ! empty( $bacs_account['iban'] ) ? $bacs_account['iban'] : '0455 241 294';
+$pay_id        = ! empty( $bacs_account['iban'] ) ? $bacs_account['iban'] : '';
+$pay_label     = function_exists( 'armo_label' ) ? armo_label( 'label_payid' ) : '';
 ?>
-<h3 style='color:#F30105'>PayID: <?php echo esc_html( $pay_id ); ?></h3>
+<?php if ( $pay_id && $pay_label ) : ?>
+<h3 style="color:#00125E"><?php echo esc_html( $pay_label ); ?> <?php echo esc_html( $pay_id ); ?></h3>
+<?php endif; ?>
 
 <h2 class="<?php echo esc_attr( $heading_class ); ?>">
 	<?php
