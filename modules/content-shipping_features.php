@@ -5,17 +5,12 @@
  * Data provided by ACF Sub Fields: title, subtitle, features
  */
 
-$title = get_sub_field('title') ?: 'Fast, discreet delivery';
-$subtitle = get_sub_field('subtitle') ?: 'Care built into every step — from checkout to your doorstep.';
+$title = get_sub_field('title');
+$subtitle = get_sub_field('subtitle');
 $features = get_sub_field('features');
 
 if ( empty( $features ) ) {
-    $features = array(
-        array('icon' => 'Package', 'title' => 'Plain Packaging', 'desc' => 'Your order ships in an unmarked box with no logos or medical branding.'),
-        array('icon' => 'Truck', 'title' => 'Tracked Dispatch', 'desc' => 'Every order includes an Australia Post tracking number sent via email.'),
-        array('icon' => 'Zap', 'title' => 'Same-Day Send', 'desc' => 'Orders placed before 2pm AEST are handed to the courier the same afternoon.'),
-        array('icon' => 'ShieldCheck', 'title' => 'Guaranteed Delivery', 'desc' => 'If it doesn’t arrive within the estimated window, we’ll reship it for free.'),
-    );
+    $features = array();
 }
 ?>
 

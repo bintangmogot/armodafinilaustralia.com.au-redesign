@@ -16,15 +16,8 @@ get_header(); ?>
             // Output normal content if any
             the_content();
             
-            // Loop through flexible content modules
-            if ( have_rows('page_modules') ) :
-                while ( have_rows('page_modules') ) : the_row();
-                    // Include the specific module template
-                    $layout = get_row_layout();
-                    get_template_part('modules/content', $layout);
-                endwhile;
-            endif;
-            
+            armo_render_modules();
+
         endwhile;
     endif;
     ?>

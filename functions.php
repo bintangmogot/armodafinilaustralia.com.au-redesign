@@ -35,15 +35,7 @@ add_action( 'wp_enqueue_scripts', 'armodafinil_australia_scripts' );
 function armodafinil_australia_setup() {
     // Enable WordPress Menus
     add_theme_support('menus');
-    register_nav_menus(array(
-        'primary' => __('Primary Navigation (Desktop)', 'armodafinil-australia-direct'),
-        'mobile'  => __('Mobile Navigation', 'armodafinil-australia-direct'),
-        'footer_1'  => __('Footer Column 1', 'armodafinil-australia-direct'),
-        'footer_2'  => __('Footer Column 2', 'armodafinil-australia-direct'),
-        'footer_3'  => __('Footer Column 3', 'armodafinil-australia-direct'),
-        'footer_4'  => __('Footer Column 4', 'armodafinil-australia-direct'),
-        'footer_trending'  => __('Footer Trending Products', 'armodafinil-australia-direct'),
-    ));
+    // Menu locations are registered in inc/navigation.php.
 
     add_theme_support( 'title-tag' );
     add_theme_support( 'post-thumbnails' );
@@ -82,141 +74,21 @@ add_filter( 'loop_shop_per_page', function() { return 20; }, 20 );
 require get_template_directory() . '/inc/acf-fields.php';
 require_once get_template_directory() . '/inc/cpt.php';
 require_once get_template_directory() . '/inc/acf-options.php';
-require_once get_template_directory() . '/inc/ajax-auth.php';
 require_once get_template_directory() . '/inc/ajax-reviews.php';
 require_once get_template_directory() . '/inc/ajax-search.php';
 require_once get_template_directory() . '/inc/medical-reviewers.php';
-require_once get_template_directory() . '/inc/email-routing.php';
+require_once get_template_directory() . '/inc/security.php';
+require_once get_template_directory() . '/inc/render-modules.php';
+require_once get_template_directory() . '/inc/live-compat.php';
+require_once get_template_directory() . '/inc/checkout-medical.php';
+require_once get_template_directory() . '/inc/shipping-label.php';
 
-add_filter('nav_menu_css_class', function($classes, $item, $args) {
-    if(in_array($args->theme_location, ['footer_1', 'footer_2', 'footer_3', 'footer_4', 'footer_trending'])) {
-        // li classes for footer
-        // No specific classes needed for li since space-y-2 is on ul
-    }
-    return $classes;
-}, 10, 3);
-
-add_filter('nav_menu_link_attributes', function($atts, $item, $args) {
-    if(in_array($args->theme_location, ['footer_1', 'footer_2', 'footer_3', 'footer_4', 'footer_trending'])) {
-        $atts['class'] = 'hover:text-brand-300';
-    }
-    return $atts;
-}, 10, 3);
-
-add_action('wp_footer', function() {
-?>
-    <script>
-    function toggleReadMore(e, btn) {
-        e.preventDefault();
-        e.stopPropagation();
-        const text = btn.previousElementSibling;
-        if (text.classList.contains('line-clamp-2')) {
-            text.classList.remove('line-clamp-2');
-            btn.innerHTML = 'Read less &gt;&gt;';
-        } else {
-            text.classList.add('line-clamp-2');
-            btn.innerHTML = 'Read more &gt;&gt;';
-        }
-    }
-    </script>
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const syncLoopWishlist = () => {
-            document.querySelectorAll('.loop-wishlist-btn').forEach(btn => {
-                const pid = btn.dataset.productId;
-                const container = document.querySelector('.loop-wishlist-plugin-container[data-product-id="' + pid + '"]');
-                if(!container) return;
-                
-                const yithBtn = container.querySelector('.add_to_wishlist');
-                const tiBtn = container.querySelector('.tinvwl_add_to_wishlist_button');
-                
-                let isAdded = false;
-                if (container.querySelector('.yith-wcwl-wishlistaddedbrowse.show, .yith-wcwl-wishlistexistsbrowse.show') || (yithBtn && yithBtn.classList.contains('added'))) {
-                    isAdded = true;
-                }
-                if (tiBtn && (tiBtn.classList.contains('tinvwl-product-in-list') || tiBtn.classList.contains('in-wishlist'))) {
-                    isAdded = true;
-                }
-                
-                if (isAdded) {
-                    btn.classList.add('text-brand-600');
-                    btn.classList.remove('text-ink-400');
-                    btn.querySelector('svg').classList.add('fill-brand-600');
-                } else {
-                    btn.classList.remove('text-brand-600');
-                    btn.classList.add('text-ink-400');
-                    btn.querySelector('svg').classList.remove('fill-brand-600');
-                }
-            });
-        };
-
-                syncLoopWishlist();
-        setInterval(syncLoopWishlist, 500);
-
-        document.querySelectorAll('.loop-wishlist-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const pid = btn.dataset.productId;
-                const container = document.querySelector('.loop-wishlist-plugin-container[data-product-id="' + pid + '"]');
-                if(!container) return;
-                
-                const yithBtn = container.querySelector('.add_to_wishlist');
-                const tiBtn = container.querySelector('.tinvwl_add_to_wishlist_button');
-                
-                if (yithBtn) {
-                    yithBtn.click();
-                } else if (tiBtn) {
-                    tiBtn.click();
-                } else {
-                    alert('Wishlist plugin is not active.');
-                }
-            });
-        });
-    });
-    </script>
-<?php
-});
-
-// Add Tailwind classes to dynamic menu
-add_filter("nav_menu_css_class", function($classes, $item, $args) { 
-    if($args->theme_location === "primary") { 
-        $classes[] = "flex items-center"; 
-    } elseif($args->theme_location === "mobile") {
-        $classes[] = "border-b border-ink-100 last:border-0";
-    }
-    return $classes; 
-}, 10, 3);
-
-add_filter("nav_menu_link_attributes", function($atts, $item, $args) { 
-    if($args->theme_location === "primary") { 
-        $atts["class"] = "px-3 py-2 rounded-md text-sm font-medium transition-colors text-ink-700 hover:text-brand-700 hover:bg-brand-50/60"; 
-    } elseif($args->theme_location === "mobile") { 
-        $atts["class"] = "block w-full text-left px-6 py-4 text-base font-medium text-ink-900 hover:bg-brand-50 transition-colors"; 
-    } 
-    return $atts; 
-}, 10, 3);
+require_once get_template_directory() . '/inc/navigation.php';
+require_once get_template_directory() . '/inc/assets.php';
+require_once get_template_directory() . '/inc/product-helpers.php';
+require_once get_template_directory() . '/inc/schema.php';
 
 
-add_filter('nav_menu_css_class', function($classes, $item, $args) {
-    if(in_array($args->theme_location, ['footer_1', 'footer_2', 'footer_3', 'footer_4', 'footer_trending'])) {
-        // li classes for footer
-        // No specific classes needed for li since space-y-2 is on ul
-    }
-    return $classes;
-}, 10, 3);
-
-add_filter('nav_menu_link_attributes', function($atts, $item, $args) {
-    if(in_array($args->theme_location, ['footer_1', 'footer_2', 'footer_3', 'footer_4', 'footer_trending'])) {
-        $atts['class'] = 'hover:text-brand-300';
-    }
-    return $atts;
-}, 10, 3);
-
-?>
-
-<?php
 
 /**
  * Sticky Add to Cart Bar for Single Products
@@ -393,7 +265,7 @@ function aad_sticky_add_to_cart_bar() {
             </div>
             <button id="sticky-add-to-cart-btn" class="aad-sticky-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
-                <span>Add to Cart</span>
+                <span><?php echo esc_html( armo_label( 'label_add_to_cart' ) ); ?></span>
             </button>
         </div>
         </div>
@@ -480,14 +352,6 @@ function aad_force_default_variable_price_range( $price, $product ) {
     return $price;
 }
 
-// Add 'A' before '$' to make it clear it's AUD
-add_filter('woocommerce_currency_symbol', 'aad_change_currency_symbol', 10, 2);
-function aad_change_currency_symbol( $currency_symbol, $currency ) {
-    if ( $currency === 'AUD' ) {
-        return 'A$';
-    }
-    return $currency_symbol;
-}
 // Fix ACF WYSIWYG bookmark bug on backend
 
 
@@ -526,7 +390,7 @@ function aad_register_product_disclaimer_fields() {
                 'label' => 'Important Usage Note Title',
                 'name' => 'usage_note_title',
                 'type' => 'text',
-                'default_value' => 'Important Usage Note',
+
             ),
             array(
                 'key' => 'field_usage_text',
@@ -534,7 +398,7 @@ function aad_register_product_disclaimer_fields() {
                 'name' => 'usage_note_text',
                 'type' => 'textarea',
                 'instructions' => 'Use {product_name} to dynamically insert the current product title.',
-                'default_value' => '{product_name} is a Schedule 4 (prescription-only) medicine in Australia. Effects, dosage, and possible side effects can differ from person to person. Taking this medicine without a doctor\'s advice may be harmful. This website does not encourage self-medication. For official Australian prescription-medicine guidance, see the <a href="https://www.tga.gov.au/" target="_blank" rel="noopener">Therapeutic Goods Administration (TGA)</a>.',
+
                 'new_lines' => 'br',
             ),
             array(
@@ -542,7 +406,7 @@ function aad_register_product_disclaimer_fields() {
                 'label' => 'Informational Warning Text',
                 'name' => 'informational_warning_text',
                 'type' => 'textarea',
-                'default_value' => 'This website is for informational purposes only and does not constitute medical advice. Always consult a qualified healthcare professional before starting, stopping, or changing any medication. <a href="/medical-disclaimer/">Read our full medical disclaimer</a>.',
+
                 'new_lines' => 'br',
             ),
         ),
@@ -1175,30 +1039,6 @@ add_action('wp_footer', function() {
         <?php
     }
 });
-// [AUTO-CLEANUP] Remove all broken shipping insurance plugins
-add_action('admin_init', function() {
-    if ( isset($_GET['clean_insurance_plugins']) ) {
-        $plugins_dir = WP_PLUGIN_DIR . '/';
-        $folders_to_delete = glob($plugins_dir . '*shipping-insurance*');
-        $deleted = [];
-        foreach ($folders_to_delete as $folder) {
-            if (is_dir($folder)) {
-                // Delete recursively
-                $files = new RecursiveIteratorIterator(
-                    new RecursiveDirectoryIterator($folder, RecursiveDirectoryIterator::SKIP_DOTS),
-                    RecursiveIteratorIterator::CHILD_FIRST
-                );
-                foreach ($files as $fileinfo) {
-                    $todo = ($fileinfo->isDir() ? 'rmdir' : 'unlink');
-                    @$todo($fileinfo->getRealPath());
-                }
-                @rmdir($folder);
-                $deleted[] = basename($folder);
-            }
-        }
-        die('Cleaned up folders: ' . implode(', ', $deleted) . '. <br><a href="' . admin_url('plugins.php') . '">Go back to Plugins</a>');
-    }
-});
 add_action( 'woocommerce_cart_totals_before_order_total', function() { ob_start(); }, -9999 );
 add_action( 'woocommerce_cart_totals_before_order_total', function() { $html = ob_get_clean(); if ( $html ) { $td_start = strpos($html, '<td'); $td_end = strrpos($html, '</td>'); if ($td_start !== false && $td_end !== false) { $td_start = strpos($html, '>', $td_start) + 1; $inner_content = substr($html, $td_start, $td_end - $td_start); $inner_content = str_replace('</label><br>', '</label>', $inner_content); $inner_content = preg_replace('/<\/label>\s*<br>/', '</label>', $inner_content); $html = '<div class="shipping-insurance-wrapper mt-4 pt-4 border-t border-ink-200"><div class="flex flex-col gap-1.5 text-sm text-ink-600">' . $inner_content . '</div></div>'; $selected_package = WC()->session ? WC()->session->get( 'shipping_insurance_package' ) : ''; if ( $selected_package === 'NO_INSURANCE' ) { $html = preg_replace( '/name="shipping_insurance_package"\s*value=""/is', 'name="shipping_insurance_package" value="NO_INSURANCE" checked="checked"', $html ); } else { $html = preg_replace( '/name="shipping_insurance_package"\s*value=""/is', 'name="shipping_insurance_package" value="NO_INSURANCE"', $html ); } } echo $html; } }, 9999 );
 
@@ -1250,192 +1090,6 @@ function force_shipping_insurance_default($cart) {
         }
     }
 }
-
-// [AUTO-INJECT] Add specific JSON-LD Schema for Waklert 150mg
-add_action('wp_head', function() {
-    if ( function_exists('is_product') && is_product() && get_post_field('post_name', get_post()) === 'waklert-150mg' ) {
-        ?>
-        <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Product",
-              "@id": "https://armodafinildirect.com.au/product/waklert-150mg/#product",
-              "name": "Waklert 150mg (Armodafinil)",
-              "image": [
-                "https://armodafinildirect.com.au/wp-content/uploads/waklert-150mg.jpg"
-              ],
-              "description": "Buy Waklert 150mg online in Australia for clean, long-lasting mental focus without the jitters. Formulated with pure Armodafinil by Sun Pharma.",
-              "sku": "WAK-150",
-              "brand": {
-                "@type": "Brand",
-                "name": "Sun Pharma"
-              },
-              "offers": {
-                "@type": "AggregateOffer",
-                "url": "https://armodafinildirect.com.au/product/waklert-150mg/",
-                "priceCurrency": "AUD",
-                "lowPrice": "150.00",
-                "highPrice": "1180.00",
-                "offerCount": "7",
-                "priceValidUntil": "2027-12-31",
-                "itemCondition": "https://schema.org/NewCondition",
-                "availability": "https://schema.org/InStock",
-                "seller": {
-                  "@type": "Organization",
-                  "name": "Armodafinil Direct"
-                },
-                "shippingDetails": {
-                  "@type": "OfferShippingDetails",
-                  "shippingRate": {
-                    "@type": "MonetaryAmount",
-                    "value": "0.00",
-                    "currency": "AUD"
-                  },
-                  "shippingDestination": {
-                    "@type": "DefinedRegion",
-                    "addressCountry": "AU"
-                  },
-                  "deliveryTime": {
-                    "@type": "ShippingDeliveryTime",
-                    "handlingTime": {
-                      "@type": "QuantitativeValue",
-                      "minValue": 1,
-                      "maxValue": 2,
-                      "unitCode": "DAY"
-                    },
-                    "transitTime": {
-                      "@type": "QuantitativeValue",
-                      "minValue": 7,
-                      "maxValue": 10,
-                      "unitCode": "DAY"
-                    }
-                  }
-                },
-                "hasMerchantReturnPolicy": {
-                  "@type": "MerchantReturnPolicy",
-                  "applicableCountry": "AU",
-                  "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-                  "merchantReturnDays": 30,
-                  "returnMethod": "https://schema.org/ReturnByMail",
-                  "returnFees": "https://schema.org/FreeReturn"
-                }
-              },
-              "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "4.7",
-                "reviewCount": "10",
-                "bestRating": "5",
-                "worstRating": "1"
-              },
-              "review": [
-                {
-                  "@type": "Review",
-                  "author": {
-                    "@type": "Person",
-                    "name": "Lucy D."
-                  },
-                  "datePublished": "2026-09-23",
-                  "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5",
-                    "bestRating": "5"
-                  },
-                  "reviewBody": "Clean focus, no heart palpitations like caffeine gives me."
-                },
-                {
-                  "@type": "Review",
-                  "author": {
-                    "@type": "Person",
-                    "name": "Craig L."
-                  },
-                  "datePublished": "2026-08-20",
-                  "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5",
-                    "bestRating": "5"
-                  },
-                  "reviewBody": "Much cleaner than pre-workouts or double-shot coffees. Keeps you locked in for hours without the afternoon slump at 3pm."
-                }
-              ]
-            },
-            {
-              "@type": "FAQPage",
-              "@id": "https://armodafinildirect.com.au/product/waklert-150mg/#faq",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "Do I need a prescription to buy Waklert online in Australia?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Under the TGA Personal Importation Scheme, Australian residents can legally order up to a 3-month supply of prescription medicine from overseas for personal use without needing to upload a local prescription at checkout."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "How does Waklert 150mg feel compared to Modafinil 200mg?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Waklert uses pure Armodafinil (the longer-acting half of Modafinil). Most users notice a smoother, cleaner wave of focus that lasts 12 to 15 hours without the sharp mid-day peak or jittery crash sometimes felt with standard 200mg Modafinil."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Will Waklert keep me awake at night?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "It can if you take it too late. Because Armodafinil stays active for up to 15 hours, take your dose early in the morning (ideally before 7:30 AM) or roughly 60 minutes before starting a night shift so it wears off naturally before you bed down."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Can I split a Waklert tablet in half?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. Every Sun Pharma Waklert 150mg tablet has a center score line down the middle, so you can easily break it into two 75mg halves for lighter work days or lower tolerance."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "How are orders packaged and delivered?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Orders are packed in plain, tough satchels with no product descriptions, logos, or pharmacy labels on the outside. We ship express via Australia Post with full tracking to your door or PO Box."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "What payment methods do you accept?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "We accept PayID and direct Australian bank transfers (EFT). Everything is billed in AUD, so you won't hit foreign exchange fees or international card surcharges."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "What happens if my delivery gets lost or delayed?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "If your order gets lost in the post or held up in transit, we send out a free reshipment—guaranteed."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "How should I store Waklert in hot Australian weather?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Keep your blister strips in a cool, dry place like a pantry or drawer below 25°C. Keep them out of direct sunlight and hot cars to protect the active ingredients during summer."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-        </script>
-        <?php
-    }
-});
 
 // [AUTO-INJECT] Sync WooCommerce Email Header Image with Site Logo
 add_filter('option_woocommerce_email_header_image_url', function($value) {

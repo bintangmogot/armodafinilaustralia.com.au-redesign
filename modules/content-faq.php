@@ -10,11 +10,11 @@ $categories = array('All topics');
 $faqs = array();
 
 // Support Block Fields
-$support_title    = get_sub_field('support_title') ?: 'Still need help?';
-$support_subtitle = get_sub_field('support_subtitle') ?: 'Our pharmacy support team typically responds within one business day.';
+$support_title    = get_sub_field('support_title');
+$support_subtitle = get_sub_field('support_subtitle');
 $support_email    = get_sub_field('support_email');
-$support_btn_text = get_sub_field('support_btn_text') ?: 'Contact us';
-$support_btn_url  = get_sub_field('support_btn_url') ?: '/contact';
+$support_btn_text = get_sub_field('support_btn_text');
+$support_btn_url  = get_sub_field('support_btn_url');
 
 // Default icons mapping for fallback
 $icons = array(
@@ -55,18 +55,7 @@ if ( !empty( $raw_categories ) ) {
         'Shipping' => $icons['truck'],
         'Account' => $icons['user'],
     );
-    $faqs = array(
-        array('category' => 'Ordering', 'question' => 'How do I place an order?', 'answer' => 'Pick your product and pack size, add it to your cart, then complete checkout with your delivery details. A confirmation email with payment instructions will land in your inbox shortly after.'),
-        array('category' => 'Payment', 'question' => 'What payment methods do you accept?', 'answer' => 'We accept Australian bank transfer, major cards through our encrypted gateway, and a handful of supported cryptocurrencies. Every transaction is processed on a secure, PCI-aligned checkout.'),
-        array('category' => 'Shipping', 'question' => 'When is shipping free?', 'answer' => 'Orders above A$299 qualify for complimentary Australia-wide dispatch, plus 10% off with code ARMD10 applied at checkout.'),
-        array('category' => 'Payment', 'question' => 'Do you offer discounts?', 'answer' => 'Yes � new-customer welcome codes, bundle savings for larger pack sizes, and the ongoing ARMD10 code work in combination with our free-shipping threshold.'),
-        array('category' => 'Shipping', 'question' => 'How long does delivery take?', 'answer' => 'Most Australian metropolitan addresses receive their parcel within 6�12 business days. Regional and remote postcodes may take a few days longer during peak periods.'),
-        array('category' => 'Ordering', 'question' => 'Do I need a prescription?', 'answer' => 'Australian regulations may require a prescription depending on your circumstances. We recommend a chat with your GP or our support team before you order for personal use.'),
-        array('category' => 'Shipping', 'question' => 'Is my order discreet?', 'answer' => 'Every parcel ships in neutral outer packaging � no brand names, product references, or clinical branding are printed on the outside.'),
-        array('category' => 'Ordering', 'question' => 'What is your return policy?', 'answer' => 'Sealed, unopened items can be returned within 14 days of delivery. Email support with your order number and we will send return instructions the next business day.'),
-        array('category' => 'Account', 'question' => 'Do I need an account?', 'answer' => 'No � checkout works fine as a guest. Creating an account simply speeds up future orders and gives you a running history of shipments and tracking links.'),
-        array('category' => 'Account', 'question' => 'How do I contact support?', 'answer' => 'WhatsApp is fastest during business hours, or email support@armodafinildirect.example anytime. Our team usually replies within one business day.'),
-    );
+    $faqs = array();
 }
 ?>
 

@@ -1,146 +1,84 @@
 <?php
 /**
- * The Template for displaying product archives, including the main shop page which is a post type archive
+ * Shop and product category pages.
+ *
+ * The shop page is built from its own ACF modules (modules and page_modules). Category and tag
+ * archives print a heading band, the products and any bottom content entered on the term.
+ *
+ * @package Armodafinil_Australia
  */
 
 defined( 'ABSPATH' ) || exit;
 
 get_header( 'shop' );
-global $wp_query;
 
-$shop_page_id = wc_get_page_id('shop');
-$current_term = is_product_category() || is_product_tag() ? get_queried_object() : null;
-
-$has_shop_modules = is_shop() && ! is_search() && have_rows('page_modules', $shop_page_id);
-$has_cat_modules = $current_term && have_rows('page_modules', $current_term);
-
-if ( $has_shop_modules || $has_cat_modules ) :
-    $acf_id = $has_cat_modules ? $current_term : $shop_page_id;
-    while( have_rows('page_modules', $acf_id) ) : the_row();
-        $layout = get_row_layout();
-        get_template_part('modules/content', $layout);
-    endwhile;
-else :
-    // Fallback to standard WooCommerce layout if no modules defined
+$shop_page_id = (int) wc_get_page_id( 'shop' );
+$term         = ( is_product_category() || is_product_tag() ) ? get_queried_object() : null;
 ?>
+<main id="primary" class="site-main">
+<?php
+if ( is_shop() && ! is_search() && $shop_page_id > 0 ) :
+	ob_start();
+	$has_modules = armo_render_modules( $shop_page_id );
+	$body        = ob_get_clean();
+	if ( $has_modules && false === stripos( $body, '<h1' ) ) :
+		?>
+		<header class="border-b border-border bg-secondary"><div class="container-site py-10 md:py-14"><h1 class="font-heading text-[clamp(2rem,1.5rem+2.5vw,3.25rem)] font-bold leading-[1.1] text-primary"><?php echo esc_html( get_the_title( $shop_page_id ) ); ?></h1></div></header>
+		<?php
+	endif;
+	echo $body; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside the module templates.
+endif;
 
-<div class="bg-gradient-to-b from-brand-50/60 to-white overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-10 md:pt-12 md:pb-16">
-        
-        <?php
-        // Fetch custom ACF fields
-        $top_image = '';
-        $bottom_content = '';
-        if ( is_product_category() || is_product_tag() ) {
-            $top_image = get_field('top_image', $current_term);
-            $bottom_content = get_field('bottom_content', $current_term);
-            $thumbnail_id = get_term_meta( $current_term->term_id, 'thumbnail_id', true );
-            $image_url = $thumbnail_id ? wp_get_attachment_image_url( $thumbnail_id, 'medium_large' ) : '';
-        } elseif ( is_shop() && ! is_search() ) {
-            $bottom_content = get_field('bottom_content', $shop_page_id);
-        }
-        ?>
+if ( ! is_shop() || is_search() || ! $has_modules ) :
+	$description = $term ? term_description() : '';
+	?>
+	<header class="border-b border-border bg-secondary">
+		<div class="container-site py-10 text-center md:py-14">
+			<h1 class="font-heading text-[clamp(2rem,1.5rem+2.5vw,3.25rem)] font-bold leading-[1.1] text-primary">
+				<?php
+				if ( is_search() ) {
+					$template = armo_label( 'label_search_results' );
+					echo esc_html( $template ? str_replace( '{query}', get_search_query(), $template ) : get_search_query() );
+				} else {
+					woocommerce_page_title();
+				}
+				?>
+			</h1>
+			<?php if ( $description ) : ?><div class="section-lead"><?php echo wp_kses_post( $description ); ?></div><?php endif; ?>
+		</div>
+	</header>
 
-        <!-- Shop / Search Header -->
-            <div class="text-center mb-10">
-                <?php 
-                $badge_text = 'Full catalogue';
-                if ( is_shop() && ! is_search() ) {
-                    $badge_text = get_field('shop_badge_text', $shop_page_id) ?: 'Full catalogue';
-                } elseif ( is_product_category() ) {
-                    $badge_text = get_field('shop_badge_text', get_queried_object()) ?: 'Products';
-                }
-                ?>
-                <span class="text-xs uppercase tracking-widest text-brand-700 font-semibold bg-brand-100 rounded-full px-3 py-1.5"><?php echo esc_html($badge_text); ?></span>
-                <h1 class="mt-4 font-serif text-4xl md:text-5xl font-semibold text-ink-900">
-                    <?php 
-                    if ( is_search() ) {
-                        $sq = get_search_query();
-                        if ( empty($sq) ) {
-                            echo 'Products';
-                        } else {
-                            echo 'Search results: &ldquo;' . esc_html($sq) . '&rdquo;';
-                        }
-                    } else {
-                        $custom_title = '';
-                        if ( is_shop() && ! is_search() ) {
-                            $custom_title = get_field('shop_custom_title', $shop_page_id);
-                        } elseif ( is_product_category() ) {
-                            $custom_title = get_field('shop_custom_title', get_queried_object());
-                        }
-                        
-                        if ( ! empty($custom_title) ) {
-                            echo wp_kses_post($custom_title);
-                        } else {
-                            woocommerce_page_title(); 
-                        }
-                    }
-                    ?>
-                </h1>
-                <div class="mt-3 text-ink-700 max-w-none w-full mx-auto text-base">
-                    <?php 
-                    if ( is_product_category() || is_product_tag() ) {
-                        $desc = term_description();
-                        if ( ! empty( $desc ) ) {
-                            echo wp_kses_post( $desc );
-                        } else {
-                            echo 'Compare prescription and OTC medicines by category, check ratings and prices in AUD, and add to cart in a few taps &mdash; shipped discreetly across Australia.';
-                        }
-                    } else if ( is_shop() && ! is_search() ) {
-                        $shop_desc = get_field('shop_description', $shop_page_id);
-                        if ($shop_desc) {
-                            echo wp_kses_post( wpautop($shop_desc) );
-                        } else {
-                            echo 'Compare prescription and OTC medicines by category, check ratings and prices in AUD, and add to cart in a few taps &mdash; shipped discreetly across Australia.';
-                        }
-                    } else {
-                        echo 'Compare prescription and OTC medicines by category, check ratings and prices in AUD, and add to cart in a few taps &mdash; shipped discreetly across Australia.';
-                    }
-                    ?>
-                </div>
-            </div>
+	<section class="section bg-white">
+		<div class="container-site">
+			<?php if ( woocommerce_product_loop() ) : ?>
+				<div class="mb-6 flex flex-wrap items-center justify-between gap-3 text-sm text-muted-foreground [&_select]:h-10 [&_select]:rounded-lg [&_select]:border-border [&_select]:bg-white [&_select]:px-3 [&_select]:text-sm [&_select]:text-primary">
+					<?php woocommerce_result_count(); ?>
+					<?php woocommerce_catalog_ordering(); ?>
+				</div>
+				<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+					<?php
+					while ( have_posts() ) {
+						the_post();
+						wc_get_template_part( 'content', 'product' );
+					}
+					?>
+				</div>
+				<div class="mt-10 [&_.page-numbers]:inline-flex [&_.page-numbers]:h-10 [&_.page-numbers]:min-w-10 [&_.page-numbers]:items-center [&_.page-numbers]:justify-center [&_.page-numbers]:rounded-lg [&_.page-numbers]:border [&_.page-numbers]:border-border [&_.page-numbers]:px-3 [&_.page-numbers.current]:bg-primary [&_.page-numbers.current]:text-white [&_ul]:flex [&_ul]:list-none [&_ul]:justify-center [&_ul]:gap-2 [&_ul]:p-0">
+					<?php woocommerce_pagination(); ?>
+				</div>
+			<?php else : ?>
+				<?php do_action( 'woocommerce_no_products_found' ); ?>
+			<?php endif; ?>
+		</div>
+	</section>
 
-    </div>
-</div>
-
-<?php 
-// Load the archive products module manually for the standard layout
-get_template_part('modules/content', 'archive_products'); 
-?>
-
-<?php if ( ! empty( $bottom_content ) ) : ?>
-    <section class="bg-white pb-16 md:pb-24">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="prose prose-ink prose-brand prose-a:text-brand-600 hover:prose-a:text-brand-700 mx-auto">
-                <?php echo wp_kses_post( $bottom_content ); ?>
-            </div>
-        </div>
-    </section>
+	<?php
+	$bottom = $term ? get_field( 'bottom_content', $term ) : '';
+	if ( $bottom ) :
+		?>
+		<section class="section bg-secondary"><div class="container-site"><div class="armo-prose mx-auto max-w-3xl"><?php echo wp_kses_post( $bottom ); ?></div></div></section>
+	<?php endif; ?>
 <?php endif; ?>
-
-<?php endif; // End modules fallback check ?>
-
-<style>
-/* Clean up WC sorting dropdown */
-.custom-sort-wrapper select {
-    height: 2.5rem;
-    border-radius: 9999px;
-    border-color: #e2e8f0;
-    padding-left: 1rem;
-    padding-right: 2.5rem;
-    font-size: 0.875rem;
-    color: #334155;
-    background-color: #fff;
-    cursor: pointer;
-    box-shadow: none;
-    outline: none;
-}
-.custom-sort-wrapper select:focus {
-    border-color: #0d9488;
-    box-shadow: 0 0 0 1px #0d9488;
-}
-</style>
-
+</main>
 <?php
 get_footer( 'shop' );
-

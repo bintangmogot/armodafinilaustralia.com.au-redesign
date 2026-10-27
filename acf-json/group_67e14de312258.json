@@ -1,7 +1,30 @@
 {
     "key": "group_67e14de312258",
-    "title": "Review",
+    "title": "Review Details",
     "fields": [
+        {
+            "key": "field_review_linked_product",
+            "label": "Linked Product",
+            "name": "linked_product",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "Select a product if this is a Product Review. Leave empty for General Reviews.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "product"
+            ],
+            "taxonomy": "",
+            "allow_null": 1,
+            "multiple": 0,
+            "return_format": "id",
+            "ui": 1
+        },
         {
             "key": "field_67e14e1944cf1",
             "label": "Rating",
@@ -75,7 +98,7 @@
         },
         {
             "key": "field_6a7cbe3a3c178",
-            "label": "Job \/ Location",
+            "label": "Job / Location",
             "name": "reviewer_meta",
             "aria-label": "",
             "type": "text",
@@ -93,6 +116,74 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_review_date",
+            "label": "Review Date",
+            "name": "review_date",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "Select the date of this review. If left blank, the WordPress publish date will be used.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d/m/Y",
+            "return_format": "Y-m-d",
+            "first_day": 1
+        },
+        {
+            "key": "field_67e14e30photo",
+            "label": "Review Image / Product Photo",
+            "name": "review_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Upload a photo for this review (e.g. delivered product, blister pack, or unboxing photo).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_67e14e40avatar",
+            "label": "Reviewer Avatar / Customer Photo (Optional)",
+            "name": "reviewer_avatar",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Optional customer face/profile photo. If empty, initials will be generated automatically.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "thumbnail"
         }
     ],
     "location": [
@@ -100,7 +191,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "review"
+                "value": "reviews"
             }
         ]
     ],
@@ -116,5 +207,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1786560321
+    "modified": 1792244382
 }

@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 do_action( 'woocommerce_before_cart' ); ?>
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-    <h1 class="font-serif text-3xl md:text-4xl font-semibold text-ink-900">Your cart</h1>
+    <h1 class="font-serif text-3xl md:text-4xl font-semibold text-ink-900"><?php echo esc_html( armo_label( 'label_cart_title' ) ); ?></h1>
     <div class="mt-8 grid lg:grid-cols-3 gap-8">
         <div class="lg:col-span-2">
             <form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
@@ -39,7 +39,7 @@ do_action( 'woocommerce_before_cart' ); ?>
                                         ?>
                                     </div>
                                     <div class="text-sm text-ink-500 mt-1">
-                                        <?php echo apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key ); ?> each
+                                        <?php echo apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key ); ?> <?php echo esc_html( armo_label( 'label_each' ) ); ?>
                                     </div>
                                     <div class="mt-3 flex items-center justify-between gap-3 flex-wrap">
                                         <div class="inline-flex items-center border border-ink-200 rounded-full overflow-hidden bg-white custom-qty-wrapper">
@@ -81,7 +81,7 @@ do_action( 'woocommerce_before_cart' ); ?>
                                                 $cart_item_key
                                             );
                                             ?>
-                                            <button type="button" class="trigger-remove text-ink-500 hover:text-red-600 transition-colors" aria-label="Remove item">
+                                            <button type="button" class="trigger-remove text-ink-500 hover:text-red-600 transition-colors" aria-label="<?php echo esc_attr( armo_label( 'label_remove_item' ) ); ?>">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
                                             </button>
                                         </div>

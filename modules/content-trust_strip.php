@@ -9,13 +9,7 @@ $items = get_sub_field('items');
 
 // Default fallback items if none exist
 if ( empty( $items ) ) {
-    $items = array(
-        array('text' => 'Australian Pharmacy'),
-        array('text' => 'Quality Verified'),
-        array('text' => 'Same-Day Tracking'),
-        array('text' => 'SSL Secure'),
-        array('text' => 'Trusted by 100,000+ Buyers'),
-    );
+    $items = array();
 }
 
 // Duplicate items to ensure the marquee effect loops smoothly

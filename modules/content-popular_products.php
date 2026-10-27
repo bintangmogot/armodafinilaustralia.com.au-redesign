@@ -5,10 +5,10 @@
  * Data provided by ACF Sub Fields: title, subtitle, view_all_text, view_all_url, products
  */
 
-$title = get_sub_field('title') ?: 'Popular right now';
-$subtitle = get_sub_field('subtitle') ?: 'Add to cart, or open a product for full details and dosing notes.';
-$view_all_text = get_sub_field('view_all_text') ?: 'View all';
-$view_all_url = get_sub_field('view_all_url') ?: '/product';
+$title = get_sub_field('title');
+$subtitle = get_sub_field('subtitle');
+$view_all_text = get_sub_field('view_all_text');
+$view_all_url = get_sub_field('view_all_url');
 $products = get_sub_field('products');
 
 ?>
@@ -38,14 +38,14 @@ $products = get_sub_field('products');
                     $p_url = $product->get_permalink();
                     $p_price_html = $product->get_price_html();
                     
-                    $p_image = 'https://placehold.co/400x300/e0f2fe/0369a1?text=Product';
+                    $p_image = '';
                     if ( $product->get_image_id() ) {
                         $p_image = wp_get_attachment_image_url( $product->get_image_id(), 'medium' );
                     }
                     
                                         // Fetch rating from custom 'review' CPT
                     $reviews = get_posts([
-                        'post_type' => 'review',
+                        'post_type' => 'reviews',
                         'posts_per_page' => -1,
                         'fields' => 'ids',
                         'meta_query' => array(
@@ -70,7 +70,7 @@ $products = get_sub_field('products');
             ?>
             <div class="group bg-white border border-ink-200 rounded-[20px] overflow-hidden hover:shadow-card hover:border-ink-300 transition-all duration-300 flex flex-col p-2.5">
                 <a href="<?php echo esc_url($p_url); ?>" target="_blank" class="block aspect-[4/3] bg-white rounded-xl border border-ink-100 overflow-hidden relative">
-                    <img src="<?php echo esc_url($p_image); ?>" alt="<?php echo esc_attr($p_name); ?>" loading="lazy" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
+<?php if ( $p_image ) : ?><img src="<?php echo esc_url($p_image); ?>" alt="<?php echo esc_attr($p_name); ?>" loading="lazy" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" /><?php endif; ?>
                 </a>
                 <div class="px-3 pt-4 pb-2 flex flex-col gap-3 flex-1">
                     
@@ -100,63 +100,69 @@ $products = get_sub_field('products');
                     </div>
 
                     <a href="<?php echo esc_url($p_url); ?>" target="_blank" class="font-serif text-[15px] sm:text-lg font-bold text-ink-900 leading-snug hover:text-brand-600 transition-colors line-clamp-2"><?php echo esc_html($p_name); ?></a>
-                    
-                    
-                    
-                    
-                    <div class="grid grid-cols-2 gap-1.5 mt-auto mb-3">
-                        <?php 
-                        $first_price = "";
-                        if ( $product->is_type('variable') ) {
-                            $variations = $product->get_available_variations();
-                            $count = 0;
-                            foreach ($variations as $var) {
-                                if ($count >= 6) break;
-                                
-                                $label = "";
-                                foreach ($var['attributes'] as $key => $val) {
-                                    if ($val) { $label = $val; break; }
-                                }
-                                if (empty($label)) {
-                                    $parts = explode('-', get_the_title($var['variation_id']));
-                                    $label = trim(end($parts));
-                                }
 
-                                $price_html = wc_price($var['display_price']);
-                                if ($count === 0) {
-                                    $first_price = $price_html;
+                    <?php 
+                    $first_price = $p_price_html;
+                    if ( $product->is_type('variable') ) : 
+                    ?>
+                        <div class="mt-auto">
+                            <div class="text-[11px] font-semibold text-ink-700 mb-1.5">
+                                Quantity <span class="text-ink-400 font-normal text-[10.5px]">(prices in AUD)</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-1.5 mb-3">
+                                <?php 
+                                $variations = $product->get_available_variations();
+                                $count = 0;
+                                foreach ($variations as $var) {
+                                    if ($count >= 6) break;
+                                    
+                                    $label = "";
+                                    foreach ($var['attributes'] as $key => $val) {
+                                        if ($val) { $label = $val; break; }
+                                    }
+                                    if (empty($label)) {
+                                        $parts = explode('-', get_the_title($var['variation_id']));
+                                        $label = trim(end($parts));
+                                    }
+
+                                    $price_html = wc_price($var['display_price']);
+                                    if ($count === 0) {
+                                        $first_price = $price_html;
+                                    }
+
+                                    $is_first = ($count === 0);
+                                    $base_classes = "text-center py-1.5 px-1 border rounded-md transition-colors text-[11px] font-bold truncate cursor-pointer";
+                                    $active_classes = "bg-brand-600 text-white border-brand-600";
+                                    $inactive_classes = "text-brand-700 bg-brand-50 border-brand-200 hover:bg-brand-100";
+                                    
+                                    $current_classes = $base_classes . " " . ($is_first ? $active_classes : $inactive_classes);
+                                    
+                                    $js_price = addslashes($price_html);
+                                    $onclick = "let card = this.closest('.group'); card.querySelector('.dynamic-price').innerHTML = '{$js_price}'; Array.from(this.parentElement.children).forEach(el => { el.classList.remove('bg-brand-600', 'text-white', 'border-brand-600'); el.classList.add('text-brand-700', 'bg-brand-50', 'border-brand-200', 'hover:bg-brand-100'); }); this.classList.remove('text-brand-700', 'bg-brand-50', 'border-brand-200', 'hover:bg-brand-100'); this.classList.add('bg-brand-600', 'text-white', 'border-brand-600');";
+
+                                    echo '<button type="button" onclick="' . esc_attr($onclick) . '" class="' . esc_attr($current_classes) . '">';
+                                    
+                                    $display_label = trim($label);
+                                    if (is_numeric($display_label)) {
+                                        $display_label .= " Tabs";
+                                    } elseif (stripos($display_label, "tab") === false && stripos($display_label, "pill") === false) {
+                                        $display_label .= " Tabs";
+                                    }
+                                    $display_label = str_ireplace("tablets", "Tabs", $display_label);
+                                    echo esc_html($display_label);
+
+                                    echo '</button>';
+                                    
+                                    $count++;
                                 }
-
-                                $is_first = ($count === 0);
-                                $base_classes = "text-center py-1.5 px-1 border rounded-md transition-colors text-[11px] font-bold truncate cursor-pointer";
-                                $active_classes = "bg-brand-600 text-white border-brand-600";
-                                $inactive_classes = "text-brand-700 bg-brand-50 border-brand-200 hover:bg-brand-100";
-                                
-                                $current_classes = $base_classes . " " . ($is_first ? $active_classes : $inactive_classes);
-                                
-                                $js_price = addslashes($price_html);
-                                $onclick = "let card = this.closest('.group'); card.querySelector('.dynamic-price').innerHTML = '{$js_price}'; Array.from(this.parentElement.children).forEach(el => { el.classList.remove('bg-brand-600', 'text-white', 'border-brand-600'); el.classList.add('text-brand-700', 'bg-brand-50', 'border-brand-200', 'hover:bg-brand-100'); }); this.classList.remove('text-brand-700', 'bg-brand-50', 'border-brand-200', 'hover:bg-brand-100'); this.classList.add('bg-brand-600', 'text-white', 'border-brand-600');";
-
-                                echo '<button type="button" onclick="' . esc_attr($onclick) . '" class="' . esc_attr($current_classes) . '">';
-                                
-                                $display_label = trim($label);
-                                if (is_numeric($display_label)) {
-                                    $display_label .= " Tabs";
-                                } elseif (stripos($display_label, "tab") === false && stripos($display_label, "pill") === false) {
-                                    $display_label .= " Tabs";
-                                }
-                                $display_label = str_ireplace("tablets", "Tabs", $display_label);
-                                echo esc_html($display_label);
-
-                                echo '</button>';
-                                
-                                $count++;
-                            }
-                        } else {
-                            $first_price = $p_price_html;
-                        }
-                        ?>
-                    </div>
+                                ?>
+                            </div>
+                        </div>
+                    <?php 
+                    else : 
+                    ?>
+                        <div class="mt-auto"></div>
+                    <?php endif; ?>
                     
                     <div class="flex items-baseline gap-2 mb-2">
                         <span class="dynamic-price text-xl font-bold text-ink-900 tracking-tight"><?php echo $first_price; ?></span>

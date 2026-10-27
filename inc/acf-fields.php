@@ -11,7 +11,7 @@ add_action('acf/init', function() {
                 'label' => 'Badge Text',
                 'name' => 'shop_badge_text',
                 'type' => 'text',
-                'default_value' => 'Full catalogue',
+
             ),
             array(
                 'key' => 'field_shop_custom_title',
@@ -43,7 +43,7 @@ add_action('acf/init', function() {
                 'media_upload' => 0,
                 'tabs' => 'all',
                 'toolbar' => 'basic',
-                'default_value' => 'Compare prescription and OTC medicines by category, check ratings and prices in AUD, and add to cart in a few taps &mdash; shipped discreetly across Australia.',
+
             ),
         ),
         'location' => array(
@@ -92,9 +92,9 @@ acf_add_local_field_group(array(
 					'display' => 'block',
 					'sub_fields' => array(
 						array(
-							'key' => 'field_hero_eyebrow',
-							'label' => 'Eyebrow',
-							'name' => 'eyebrow',
+							'key' => 'field_hero_badge',
+							'label' => 'Badge',
+							'name' => 'badge',
 							'type' => 'text',
 						),
 						array(
@@ -433,7 +433,7 @@ acf_add_local_field_group(array(
 					'button_label' => 'Add Category',
 					'sub_fields' => array(
 						array('key' => 'field_faq_cat_name', 'label' => 'Category Name', 'name' => 'cat_name', 'type' => 'text', 'required' => 1),
-						array('key' => 'field_faq_cat_icon', 'label' => 'Lucide Icon Name', 'name' => 'cat_icon', 'type' => 'text', 'default_value' => 'help-circle', 'instructions' => 'e.g., package, credit-card, truck, user'),
+						array('key' => 'field_faq_cat_icon', 'label' => 'Lucide Icon Name', 'name' => 'cat_icon', 'type' => 'text', 'instructions' => 'e.g., package, credit-card, truck, user'),
 						array(
 							'key' => 'field_faq_items',
 							'label' => 'Questions',
@@ -448,11 +448,11 @@ acf_add_local_field_group(array(
 						),
 					),
 				),
-				array('key' => 'field_faq_support_title', 'label' => 'Support Box Title', 'name' => 'support_title', 'type' => 'text', 'default_value' => 'Still need help?'),
-				array('key' => 'field_faq_support_subtitle', 'label' => 'Support Box Subtitle', 'name' => 'support_subtitle', 'type' => 'text', 'default_value' => 'Our pharmacy support team typically responds within one business day.'),
-				array('key' => 'field_faq_support_email', 'label' => 'Support Email', 'name' => 'support_email', 'type' => 'email', 'default_value' => 'support@armodafinilaustralia.com.au'),
-				array('key' => 'field_faq_support_btn_text', 'label' => 'Contact Button Text', 'name' => 'support_btn_text', 'type' => 'text', 'default_value' => 'Contact us'),
-				array('key' => 'field_faq_support_btn_url', 'label' => 'Contact Button URL', 'name' => 'support_btn_url', 'type' => 'text', 'default_value' => '/contact'),
+				array('key' => 'field_faq_support_title', 'label' => 'Support Box Title', 'name' => 'support_title', 'type' => 'text',),
+				array('key' => 'field_faq_support_subtitle', 'label' => 'Support Box Subtitle', 'name' => 'support_subtitle', 'type' => 'text',),
+				array('key' => 'field_faq_support_email', 'label' => 'Support Email', 'name' => 'support_email', 'type' => 'email',),
+				array('key' => 'field_faq_support_btn_text', 'label' => 'Contact Button Text', 'name' => 'support_btn_text', 'type' => 'text',),
+				array('key' => 'field_faq_support_btn_url', 'label' => 'Contact Button URL', 'name' => 'support_btn_url', 'type' => 'text',),
 			),
 		),
 		'layout_faq_simple' => array(
@@ -483,7 +483,7 @@ acf_add_local_field_group(array(
 			'label' => 'Contact Block',
 			'display' => 'block',
 			'sub_fields' => array(
-				array('key' => 'field_contact_form_title', 'label' => 'Form Title', 'name' => 'form_title', 'type' => 'text', 'default_value' => 'Send us a message'),
+				array('key' => 'field_contact_form_title', 'label' => 'Form Title', 'name' => 'form_title', 'type' => 'text',),
 				array('key' => 'field_contact_form_shortcode', 'label' => 'Form Shortcode', 'name' => 'form_shortcode', 'type' => 'text', 'instructions' => 'Paste a Gravity Forms shortcode here, e.g. [gravityform id="1" title="false" description="false" ajax="true"]. If left blank, a demo form will be shown.'),
 				array(
 					'key' => 'field_contact_methods',
@@ -596,7 +596,7 @@ acf_add_local_field_group(array(
 			'label' => 'Policy Page (TOC)',
 			'display' => 'block',
 			'sub_fields' => array(
-				array('key' => 'field_pp_eyebrow', 'label' => 'Eyebrow', 'name' => 'eyebrow', 'type' => 'text', 'default_value' => 'Legal'),
+				array('key' => 'field_pp_badge', 'label' => 'Badge', 'name' => 'badge', 'type' => 'text',),
 				array('key' => 'field_pp_title', 'label' => 'Title', 'name' => 'title', 'type' => 'text'),
 				array('key' => 'field_pp_intro', 'label' => 'Intro', 'name' => 'intro', 'type' => 'textarea', 'rows' => 3),
 				array('key' => 'field_pp_updated', 'label' => 'Last Updated', 'name' => 'updated', 'type' => 'text'),
@@ -792,9 +792,9 @@ acf_add_local_field_group(array(
 			'label' => 'Order CTA',
 			'display' => 'block',
 			'sub_fields' => array(
-				array('key' => 'field_octa_tag', 'label' => 'Tag', 'name' => 'tag', 'type' => 'text', 'default_value' => 'Get started'),
-				array('key' => 'field_octa_title', 'label' => 'Title', 'name' => 'title', 'type' => 'text', 'default_value' => 'Ready to order with confidence?'),
-				array('key' => 'field_octa_desc', 'label' => 'Description', 'name' => 'desc', 'type' => 'textarea', 'rows' => 3, 'default_value' => 'Pick your pack size, complete a secure checkout in minutes, and track your discreet parcel anywhere in Australia.'),
+				array('key' => 'field_octa_tag', 'label' => 'Tag', 'name' => 'tag', 'type' => 'text',),
+				array('key' => 'field_octa_title', 'label' => 'Title', 'name' => 'title', 'type' => 'text',),
+				array('key' => 'field_octa_desc', 'label' => 'Description', 'name' => 'desc', 'type' => 'textarea', 'rows' => 3,),
 			),
 		),
 		'layout_important_notes' => array(
@@ -809,27 +809,27 @@ acf_add_local_field_group(array(
 					'name' => 'important_usage_note',
 					'type' => 'textarea',
 					'instructions' => 'Use {product_name} to insert the current product name dynamically.',
-					'default_value' => '{product_name} is a Schedule 4 (prescription-only) medicine in Australia. Effects, dosage, and possible side effects can differ from person to person. Taking this medicine without a doctor\'s advice may be harmful. This website does not encourage self-medication. For official Australian prescription-medicine guidance, see the <a href="https://www.tga.gov.au/" target="_blank" rel="noopener" class="text-brand-700 hover:underline">Therapeutic Goods Administration (TGA)</a>.',
+
 				),
 				array(
 					'key' => 'field_mod_medical_disclaimer_text',
 					'label' => 'Medical Disclaimer',
 					'name' => 'medical_disclaimer_text',
 					'type' => 'textarea',
-					'default_value' => 'This website is for informational purposes only and does not constitute medical advice. Always consult a qualified healthcare professional before starting, stopping, or changing any medication. <a href="/medical-disclaimer" class="font-semibold text-brand-800 hover:underline">Read our full medical disclaimer.</a>',                ),
+                ),
                 array(
                     'key' => 'field_mod_reviewer_url',
                     'label' => 'Medical Reviewer Link (URL)',
                     'name' => 'reviewer_url',
                     'type' => 'url',
-                    'default_value' => 'https://armodafinildirect.com.au/medical-team/dr-ginni-mansberg/',
+
                 ),
                 array(
                     'key' => 'field_mod_medically_reviewed_by',
 					'label' => 'Medically Reviewed By',
 					'name' => 'medically_reviewed_by',
 					'type' => 'text',
-					'default_value' => 'Dr. Ginni Mansberg',
+
 				),
 			),
 		),
@@ -886,7 +886,7 @@ acf_add_local_field_group(array(
 					'label' => 'Heading',
 					'name' => 'heading',
 					'type' => 'text',
-					'default_value' => 'Customer Reviews',
+
 				),
 			),
 		),
@@ -901,7 +901,7 @@ acf_add_local_field_group(array(
 					'label' => 'Heading',
 					'name' => 'heading',
 					'type' => 'text',
-					'default_value' => 'Leave us a review ✍️',
+
 				),
 			),
 		),
@@ -916,7 +916,7 @@ acf_add_local_field_group(array(
 					'label' => 'Heading',
 					'name' => 'heading',
 					'type' => 'text',
-					'default_value' => 'Reviews Carousel',
+
 				),
 			),
 		),
@@ -931,7 +931,7 @@ acf_add_local_field_group(array(
 					'label' => 'Heading',
 					'name' => 'heading',
 					'type' => 'text',
-					'default_value' => 'Reviews Carousel Grid',
+
 				),
 			),
 		),
@@ -1052,70 +1052,4 @@ acf_add_local_field_group(array(
 		),
 	),
 ));
-
-    acf_add_local_field_group(array(
-        "key" => "group_review_linked_product",
-        "title" => "Additional Review Settings",
-        "fields" => array(
-            array(
-                "key" => "field_review_linked_product",
-                "label" => "Linked Product",
-                "name" => "linked_product",
-                "type" => "post_object",
-                "instructions" => "Select a product if this is a Product Review. Leave empty for General Reviews.",
-                "required" => 0,
-                "post_type" => array(
-                    0 => "product",
-                ),
-                "taxonomy" => "",
-                "allow_null" => 1,
-                "multiple" => 0,
-                "return_format" => "id",
-                "ui" => 1,
-            ),
-            array(
-                "key" => "field_review_customer_name",
-                "label" => "Customer Name",
-                "name" => "name",
-                "type" => "text",
-                "instructions" => "Enter the customer's name. If empty, the Review Title will be used.",
-                "required" => 0,
-            ),
-            array(
-                "key" => "field_review_rating",
-                "label" => "Rating",
-                "name" => "rating",
-                "type" => "number",
-                "instructions" => "Enter a rating from 1 to 5.",
-                "required" => 0,
-                "min" => 1,
-                "max" => 5,
-            ),
-            array(
-                "key" => "field_review_reviewer_meta",
-                "label" => "Reviewer Meta (Job / Location)",
-                "name" => "reviewer_meta",
-                "type" => "text",
-                "instructions" => "E.g. 'Verified Buyer' or 'Sydney, NSW'",
-                "required" => 0,
-            ),
-        ),
-        "location" => array(
-            array(
-                array(
-                    "param" => "post_type",
-                    "operator" => "==",
-                    "value" => "review",
-                ),
-            ),
-        ),
-        "menu_order" => 0,
-        "position" => "normal",
-        "style" => "default",
-        "label_placement" => "top",
-        "instruction_placement" => "label",
-        "hide_on_screen" => "",
-        "active" => true,
-        "description" => "",
-    ));
 });

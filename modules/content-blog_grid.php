@@ -3,20 +3,16 @@
  * Blog Grid Module Template
  */
 
-$title = get_sub_field('title') ?: 'Latest from the blog';
-$subtitle = get_sub_field('subtitle') ?: 'Practical notes, dosing guides, and research summaries.';
-$view_all_text = get_sub_field('view_all_text') ?: 'All articles';
-$view_all_url = get_sub_field('view_all_url') ?: '/blog';
+$title = get_sub_field('title');
+$subtitle = get_sub_field('subtitle');
+$view_all_text = get_sub_field('view_all_text');
+$view_all_url = get_sub_field('view_all_url');
 $posts = get_sub_field('posts');
 
 // Fallback if no posts selected
 $has_posts = !empty($posts);
 if (!$has_posts) {
-    $posts = array(
-        array('title' => 'Modafinil vs Armodafinil', 'excerpt' => 'Understanding the half-life and duration differences.', 'date' => 'Oct 12', 'author' => 'Dr. Smith'),
-        array('title' => 'Optimizing your dose', 'excerpt' => 'Why less is often more when it comes to focus.', 'date' => 'Oct 05', 'author' => 'Sarah J.'),
-        array('title' => 'The science of wakefulness', 'excerpt' => 'How dopamine reuptake inhibition actually feels.', 'date' => 'Sep 28', 'author' => 'Dr. Smith')
-    );
+    $posts = array();
 }
 ?>
 
@@ -44,19 +40,19 @@ $p_excerpt = wp_trim_words( wp_strip_all_tags( $raw ), 25, "..." );
                     $p_url = get_permalink($p_id);
                     $p_date = get_the_date('M j', $p_id);
                     $p_author = get_the_author_meta('display_name', $p->post_author);
-                    $p_image = get_the_post_thumbnail_url($p_id, 'medium_large') ?: 'https://placehold.co/600x400/e0f2fe/0369a1?text=Blog';
+                    $p_image = get_the_post_thumbnail_url($p_id, 'medium_large');
                 } else {
                     $p_title = $p['title'];
                     $p_excerpt = $p['excerpt'];
                     $p_url = '#';
                     $p_date = $p['date'];
                     $p_author = $p['author'];
-                    $p_image = 'https://placehold.co/600x400/e0f2fe/0369a1?text=Blog';
+                    $p_image = '';
                 }
             ?>
             <a href="<?php echo esc_url($p_url); ?>" class="group bg-white border border-ink-200 rounded-2xl overflow-hidden hover-lift block shadow-sm">
                 <div class="aspect-[16/9] bg-brand-50 overflow-hidden">
-                    <img src="<?php echo esc_url($p_image); ?>" alt="<?php echo esc_attr($p_title); ?>" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+<?php if ( $p_image ) : ?><img src="<?php echo esc_url($p_image); ?>" alt="<?php echo esc_attr($p_title); ?>" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" /><?php endif; ?>
                 </div>
                 <div class="p-5">
                     <div class="text-[11px] uppercase tracking-widest text-brand-700 font-semibold">Article</div>

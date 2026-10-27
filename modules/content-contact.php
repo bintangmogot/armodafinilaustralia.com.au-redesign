@@ -5,16 +5,12 @@
  * Data provided by ACF Sub Fields: form_title, form_shortcode, methods
  */
 
-$form_title = get_sub_field('form_title') ?: 'Send us a message';
+$form_title = get_sub_field('form_title');
 $form_shortcode = get_sub_field('form_shortcode');
 $methods = get_sub_field('methods');
 
 if ( empty($methods) ) {
-    $methods = array(
-        array('icon' => 'mail', 'label' => 'Email', 'value' => 'support@armodafinilaustralia.com.au', 'link' => 'mailto:support@armodafinilaustralia.com.au'),
-        array('icon' => 'phone', 'label' => 'Phone', 'value' => '+61 4 8999 5839', 'link' => 'tel:+61489995839'),
-        array('icon' => 'map-pin', 'label' => 'Address', 'value' => 'Sydney, NSW, Australia', 'link' => ''),
-    );
+    $methods = array();
 }
 
 // Map of common Lucide icons
@@ -108,7 +104,7 @@ usort($methods, function($a, $b) {
                     <textarea required rows="5" class="mt-1 w-full rounded-lg border border-ink-200 px-3 py-2 outline-none focus:border-brand-600"></textarea>
                 </label>
                 <button type="submit" class="h-11 px-6 rounded-full bg-brand-600 hover:bg-brand-700 text-white font-semibold transition-colors">Send message</button>
-                <p class="success-msg text-sm text-brand-700 hidden mt-2">Thanks — we'll reply within one business day.</p>
+                <p class="success-msg text-sm text-brand-700 hidden mt-2">Thanks - we'll reply within one business day.</p>
             </form>
         <?php endif; ?>
     </div>

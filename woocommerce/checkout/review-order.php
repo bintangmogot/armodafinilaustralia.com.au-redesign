@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div class="review-order-summary-wrapper hidden lg:block">
-    <h2 class="font-serif text-xl font-semibold text-ink-900">Order summary</h2>
+    <h2 class="font-serif text-xl font-semibold text-ink-900"><?php echo esc_html( armo_label( 'label_order_summary' ) ); ?></h2>
     
     <ul class="mt-4 space-y-3 m-0 p-0 list-none">
         <?php
@@ -105,9 +105,9 @@ if ( ! defined( 'ABSPATH' ) ) {
     </div>
     
     <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-ink-500">
-        <span class="inline-flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-600 !fill-none"><path style="fill: none !important;" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path style="fill: none !important;" d="m9 12 2 2 4-4"/></svg> SSL secured</span>
-        <span class="inline-flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-600 !fill-none"><rect style="fill: none !important;" width="18" height="11" x="3" y="11" rx="2" ry="2"/><path style="fill: none !important;" d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Encrypted</span>
-        <span class="inline-flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-600 !fill-none"><path style="fill: none !important;" d="M5 18H3c-.6 0-1-.4-1-1V7c0-.6.4-1 1-1h10c.6 0 1 .4 1 1v11"/><path style="fill: none !important;" d="M14 9h4l4 4v5c0 .6-.4 1-1 1h-2"/><circle style="fill: none !important;" cx="7" cy="18" r="2"/><circle style="fill: none !important;" cx="17" cy="18" r="2"/></svg> Tracked</span>
+        <span class="inline-flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-600 !fill-none"><path style="fill: none !important;" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path style="fill: none !important;" d="m9 12 2 2 4-4"/></svg> <?php echo esc_html( armo_label( 'label_secure_ssl' ) ); ?></span>
+        <span class="inline-flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-600 !fill-none"><rect style="fill: none !important;" width="18" height="11" x="3" y="11" rx="2" ry="2"/><path style="fill: none !important;" d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> <?php echo esc_html( armo_label( 'label_secure_encrypted' ) ); ?></span>
+        <span class="inline-flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-600 !fill-none"><path style="fill: none !important;" d="M5 18H3c-.6 0-1-.4-1-1V7c0-.6.4-1 1-1h10c.6 0 1 .4 1 1v11"/><path style="fill: none !important;" d="M14 9h4l4 4v5c0 .6-.4 1-1 1h-2"/><circle style="fill: none !important;" cx="7" cy="18" r="2"/><circle style="fill: none !important;" cx="17" cy="18" r="2"/></svg> <?php echo esc_html( armo_label( 'label_secure_tracked' ) ); ?></span>
     </div>
 </div>
 

@@ -5,17 +5,12 @@
  * Data provided by ACF Sub Fields: title, subtitle, audiences
  */
 
-$title = get_sub_field('title') ?: 'Built for your goals';
-$subtitle = get_sub_field('subtitle') ?: 'Choose the profile that fits your day — we’ll guide the rest.';
+$title = get_sub_field('title');
+$subtitle = get_sub_field('subtitle');
 $audiences = get_sub_field('audiences');
 
 if ( empty( $audiences ) ) {
-    $audiences = array(
-        array('icon' => 'GraduationCap', 'title' => 'Students & Learners', 'desc' => 'Sit longer sessions with clean, comfortable focus during exams and deep-work blocks.', 'badge' => '12-hour focused learning', 'cta_text' => 'For Students', 'cta_url' => '/product'),
-        array('icon' => 'Briefcase', 'title' => 'Busy Professionals', 'desc' => 'Handle back-to-back meetings and complex tasks with steadier mental energy.', 'badge' => 'All-day mental clarity', 'cta_text' => 'For Professionals', 'cta_url' => '/product'),
-        array('icon' => 'Moon', 'title' => 'Shift Workers & Night Owls', 'desc' => 'Stay alert through irregular hours without the mid-shift dip in performance.', 'badge' => 'Fatigue-resistant', 'cta_text' => 'For Shift Workers', 'cta_url' => '/product'),
-        array('icon' => 'Gamepad2', 'title' => 'Competitive Players', 'desc' => 'Sharper reactions and cleaner concentration when every decision counts.', 'badge' => 'Faster reaction time', 'cta_text' => 'For Competitors', 'cta_url' => '/product'),
-    );
+    $audiences = array();
 }
 ?>
 

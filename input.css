@@ -1,17 +1,21 @@
+/*!
+Theme Name: Armodafinil Australia
+Theme URI: https://armodafinilaustralia.com.au
+Author: Armodafinil Australia
+Description: Custom Tailwind CSS + ACF Pro Theme for Armodafinil Australia.
+Version: 1.0.0
+Text Domain: armodafinil-australia-direct
+*/
+
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 100 900; font-display: swap; src: url('assets/fonts/inter-latin-wght-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 600; font-display: swap; src: url('assets/fonts/poppins-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 700; font-display: swap; src: url('assets/fonts/poppins-latin-700-normal.woff2') format('woff2'); }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @layer base { html { scroll-behavior: smooth; } }
-/*!
-Theme Name: Armodafinil Australia Direct
-Theme URI: https://armodafinilaustralia.com.au
-Author: Armodafinil Australia
-Description: Custom Tailwind CSS + ACF Pro Theme for Armodafinil Australia Direct.
-Version: 1.0.0
-Text Domain: armodafinil-australia-direct
-*/
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 body {
   margin: 0;
@@ -30,19 +34,19 @@ body {
     --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
-    --primary: 174 84% 26%;
+    --primary: 228 100% 18%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 166 76% 97%;
-    --secondary-foreground: 174 84% 20%;
+    --secondary: 216 100% 96%;
+    --secondary-foreground: 228 100% 18%;
     --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
-    --accent: 166 76% 89%;
-    --accent-foreground: 174 84% 20%;
+    --muted-foreground: 215 19% 35%;
+    --accent: 49 100% 50%;
+    --accent-foreground: 228 100% 18%;
     --destructive: 0 74% 42%;
     --destructive-foreground: 0 0% 100%;
     --border: 214 32% 91%;
     --input: 214 32% 91%;
-    --ring: 173 80% 32%;
+    --ring: 214 69% 34%;
     --radius: 0.75rem;
   }
 }
@@ -50,60 +54,30 @@ body {
 @layer base {
   * { @apply border-border; }
   body { @apply bg-background text-foreground; }
-  h1,h2,h3,h4 { @apply font-serif text-ink-900; }
-}
-/*!
-Theme Name: Armodafinil Australia Direct
-Theme URI: https://armodafinilaustralia.com.au
-Author: Armodafinil Australia
-Description: Custom Tailwind CSS + ACF Pro Theme for Armodafinil Australia Direct.
-Version: 1.0.0
-Text Domain: armodafinil-australia-direct
-*/
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-body {
-  margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: hsl(var(--background));
-  color: hsl(var(--foreground));
+  h1,h2,h3,h4 { @apply font-heading text-primary; }
 }
 
-@layer base {
-  :root {
-    --background: 60 9% 98%;
-    --foreground: 222 47% 11%;
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-    --primary: 174 84% 26%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 166 76% 97%;
-    --secondary-foreground: 174 84% 20%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
-    --accent: 166 76% 89%;
-    --accent-foreground: 174 84% 20%;
-    --destructive: 0 74% 42%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 173 80% 32%;
-    --radius: 0.75rem;
-  }
-}
+@layer components {
+  .container-site { @apply mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8; }
+  .section { @apply py-14 md:py-20; }
+  .section-tint { @apply bg-secondary; }
 
-@layer base {
-  * { @apply border-border; }
-  body { @apply bg-background text-foreground; }
-  h1,h2,h3,h4 { @apply font-serif text-ink-900; }
+  /* Buttons: yellow is only for the main buy action */
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 h-12 text-[15px] font-semibold leading-none transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2; }
+  .btn-buy { @apply btn bg-accent text-primary hover:bg-[#e6bb00]; }
+  .btn-primary { @apply btn bg-primary text-white hover:bg-brand-600; }
+  .btn-outline { @apply btn border border-primary/25 bg-white text-primary hover:border-primary hover:bg-secondary; }
+  .btn-sm { @apply h-10 px-4 text-sm; }
+
+  .badge { @apply inline-flex items-center gap-1.5 rounded-full border border-primary/15 bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-primary; }
+  .section-title { @apply font-heading text-[clamp(1.75rem,1.3rem+2vw,2.75rem)] font-bold leading-[1.15] text-primary; }
+  .section-lead { @apply mx-auto mt-3 max-w-[720px] text-base text-muted-foreground md:text-lg; }
+
+  /* Header and footer links */
+  .armo-nav-link { @apply whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-ink-700 transition-colors hover:bg-secondary hover:text-primary; }
+  .current-menu-item > .armo-nav-link { @apply text-primary bg-secondary; }
+  .armo-drawer-link { @apply block border-b border-border px-1 py-3.5 text-base font-medium text-primary; }
+  .armo-footer-link { @apply text-sm text-white/75 transition-colors hover:text-white; }
 }
 
 /* Custom scrollbars for a polished feel */
@@ -112,7 +86,7 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
 .section-wash {
-  background: linear-gradient(180deg, #e0fbf6 0%, #ffffff 100%);
+  background: linear-gradient(180deg, #eaf2ff 0%, #ffffff 100%);
 }
 
 .mask-fade-x {
@@ -206,7 +180,7 @@ body {
     border-radius: 16px 0 0 0 !important;
 }
 .xoo-wsc-header .xoo-wsc-ch-txt {
-    font-family: "Playfair Display", serif !important;
+    font-family: Poppins, sans-serif !important;
     font-size: 20px !important;
     font-weight: 700 !important;
     color: #09152b !important;
@@ -251,7 +225,7 @@ body {
     font-size: 14px !important;
 }
 .xoo-wsc-product .xoo-wsc-pprice {
-    color: #0d9488 !important;
+    color: #00125e !important;
     font-weight: 700 !important;
 }
 .xoo-wsc-product .xoo-wsc-sm-btn {
@@ -286,16 +260,16 @@ body {
     order: 2 !important;
     margin-bottom: 0 !important;
 
-    background-color: #0d9488 !important;
+    background-color: #00125e !important;
     border-radius: 12px !important;
     font-weight: 700 !important;
     font-size: 16px !important;
     padding: 12px !important;
-    box-shadow: 0 4px 12px rgba(13, 148, 136, 0.2) !important;
+    box-shadow: 0 4px 12px rgba(0, 18, 94, 0.2) !important;
     transition: all 0.2s !important;
 }
 .xoo-wsc-ft-btn-checkout:hover {
-    background-color: #0f766e !important;
+    background-color: #073980 !important;
 }
 .xoo-wsc-ft-btn-cart {
     order: 1 !important;
@@ -617,3 +591,538 @@ body {
   @apply bg-ink-900 border border-ink-900 text-white hover:bg-ink-800 shadow-sm px-6 py-2.5 rounded-full font-semibold transition-colors !important;
 }
 
+
+@layer components {
+  .search-cat.is-active { @apply border-primary bg-primary text-white; }
+}
+
+@layer components {
+  /* Check mark used by armo_content() */
+  .armo-yellow-tick { @apply relative mr-1.5 inline-block h-[1.15em] w-[1.15em] rounded-full bg-accent align-[-0.2em]; }
+  .armo-yellow-tick::after { content: ""; @apply absolute left-[0.38em] top-[0.2em] h-[0.5em] w-[0.28em] rotate-45 border-b-2 border-r-2 border-primary; }
+}
+
+@layer components {
+  .qty-pill.is-active { @apply border-primary bg-primary text-white; }
+}
+
+@layer components {
+  /* Editor content (ACF WYSIWYG). Tables scroll sideways on phones through the wrapper added in assets/js/site.js. */
+  .armo-prose { @apply prose max-w-none text-base text-foreground prose-headings:font-heading prose-headings:font-semibold prose-headings:text-primary prose-a:font-medium prose-a:text-brand-500 prose-a:underline-offset-2 hover:prose-a:text-primary prose-strong:text-primary prose-li:marker:text-brand-500 md:text-[17px]; }
+  .armo-prose table { @apply w-full text-sm; }
+  .armo-prose th { @apply bg-secondary text-left text-primary; }
+  .armo-prose th, .armo-prose td { @apply border border-border px-3 py-2; }
+  .armo-table-wrapper { @apply my-6 w-full overflow-x-auto; }
+}
+
+@layer components {
+  .variant-btn.is-active { @apply border-primary bg-primary text-white; }
+  .variant-btn.is-active .price-label { @apply text-white/80; }
+  .variant-btn:not(.is-active) .price-label { @apply text-muted-foreground; }
+}
+
+/* WooCommerce sets `.woocommerce img { height: auto }` on its pages; keep the logo size. */
+body #site-header img.site-logo, body footer img.site-logo, body header img.site-logo { height: 2.5rem; width: auto; max-width: 220px; }
+
+/* Checkout (moved from woocommerce/checkout/form-checkout.php) */
+/* Hide the summary inside Step 3, so it only appears in sidebar */
+#step-3 .review-order-summary-wrapper {
+    display: none !important;
+}
+/* Strip WooCommerce default grey background from #payment */
+#payment.woocommerce-checkout-payment {
+    background: transparent !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+}
+#payment.woocommerce-checkout-payment ul.payment_methods {
+    border-bottom: 0 !important;
+}
+#payment.woocommerce-checkout-payment div.form-row.place-order {
+    padding: 0 !important;
+    margin: 1.5rem 0 0 !important;
+    background: transparent !important;
+}
+/* Basic styling for WooCommerce fields inside the accordion */
+.step-content .form-row {
+    margin-bottom: 1.25rem;
+}
+.step-content .form-row label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #334155;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+.step-content .form-row .optional {
+    text-transform: lowercase;
+    font-weight: 400;
+    color: #64748b;
+}
+.step-content .form-row input.input-text,
+.step-content .form-row select,
+.step-content .form-row textarea {
+    width: 100%;
+    height: 2.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid hsl(var(--border));
+    padding: 0 0.75rem;
+    font-size: 0.875rem;
+    background: #fff;
+    outline: none;
+    transition: border-color 0.15s;
+}
+.step-content .form-row textarea {
+    height: auto;
+    padding: 0.75rem;
+}
+.step-content .form-row input.input-text:focus,
+.step-content .form-row select:focus,
+.step-content .form-row textarea:focus {
+    border-color: hsl(var(--primary));
+}
+input[type="radio"], input[type="checkbox"] {
+    accent-color: hsl(var(--primary));
+}
+#place_order {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    height: 3rem;
+    padding: 0 2rem;
+    border-radius: 0.5rem;
+    background-color: hsl(var(--accent));
+    color: hsl(var(--primary));
+    font-weight: 600;
+    font-size: 1rem;
+    margin-top: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.15s;
+    width: auto;
+}
+#place_order:hover {
+    background-color: #e6bb00;
+}
+.woocommerce-privacy-policy-text {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-bottom: 1.5rem;
+}
+.wc_payment_methods {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 1px solid hsl(var(--border));
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+.wc_payment_methods li {
+    padding: 1.25rem;
+    margin: 0 !important;
+    border-bottom: 1px solid hsl(var(--border));
+    background: #f8fafc;
+}
+.wc_payment_methods li:last-child {
+    border-bottom: none;
+}
+.wc_payment_methods li input[type="radio"] {
+    margin-right: 0.75rem;
+}
+.wc_payment_methods li label {
+    font-weight: 600;
+    color: hsl(var(--primary));
+    display: inline-block;
+    margin: 0;
+}
+.wc_payment_methods li .payment_box {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 0.5rem;
+    border: 1px solid hsl(var(--border));
+    font-size: 0.875rem;
+    color: #475569;
+    position: relative;
+}
+/* Hide the ugly WooCommerce triangle */
+.wc_payment_methods li .payment_box::before {
+    display: none !important;
+}
+.woocommerce-terms-and-conditions-wrapper {
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    color: #64748b;
+}
+.medical-info-fields-wrapper h3 { font-family: Poppins, sans-serif; font-size: 1.25rem; font-weight: 600; color: hsl(var(--primary)); margin-bottom: 1.25rem; border-bottom: 1px solid hsl(var(--border)); padding-bottom: 0.5rem; } 
+
+/* Thank you page (moved from woocommerce/checkout/thankyou.php) */
+/* Style WooCommerce default hooks content (e.g. BACS Bank details) */
+.woocommerce-thankyou-hooks h2 {
+    font-family: Poppins, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: hsl(var(--primary)); /* ink-900 */
+    margin-bottom: 1rem;
+}
+.woocommerce-thankyou-hooks h3 {
+    font-family: Poppins, sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: hsl(var(--primary));
+    margin-bottom: 0.75rem;
+}
+.woocommerce-thankyou-hooks ul.order_details {
+    background: #fff;
+    border: 1px solid hsl(var(--border)); box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+.woocommerce-thankyou-hooks ul.order_details li {
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+}
+.woocommerce-thankyou-hooks ul.order_details li strong {
+    display: block;
+    color: hsl(var(--primary));
+    font-size: 1rem;
+    margin-top: 0.25rem;
+}
+.woocommerce-thankyou-hooks section.woocommerce-bacs-bank-details {
+    background: hsl(var(--secondary));
+    border: 1px solid hsl(var(--border)); box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* All WooCommerce tables (Order Details, Medical Conditions, etc) */
+.woocommerce-thankyou-hooks table.shop_table {
+    width: 100%;
+    border-collapse: separate; border-spacing: 0;
+    background: #fff;
+    border: 1px solid hsl(var(--border)); box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+.woocommerce-thankyou-hooks table.shop_table thead th {
+    background: hsl(var(--secondary));
+    font-weight: 600;
+    color: hsl(var(--primary));
+    border-bottom: 1px solid hsl(var(--border));
+}
+.woocommerce-thankyou-hooks table.shop_table th,
+.woocommerce-thankyou-hooks table.shop_table td {
+    padding: 1rem 1.5rem;
+    font-size: 0.875rem;
+    color: hsl(var(--foreground));
+    border-bottom: 1px solid hsl(var(--border));
+    vertical-align: top;
+}
+.woocommerce-thankyou-hooks table.shop_table tr:last-child th,
+.woocommerce-thankyou-hooks table.shop_table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Receipt-style alignment for Order Details Table */
+.woocommerce-thankyou-hooks table.shop_table.order_details th:first-child,
+.woocommerce-thankyou-hooks table.shop_table.order_details td:first-child {
+    text-align: left;
+}
+.woocommerce-thankyou-hooks table.shop_table.order_details th:last-child,
+.woocommerce-thankyou-hooks table.shop_table.order_details td:last-child {
+    text-align: right;
+}
+.woocommerce-thankyou-hooks table.shop_table.order_details tfoot th {
+    font-weight: 600;
+    color: hsl(var(--primary));
+}
+.woocommerce-thankyou-hooks table.shop_table.order_details tfoot td {
+    font-weight: 500;
+    color: hsl(var(--primary));
+}
+
+/* Medical Conditions Table specific tweaks */
+.woocommerce-thankyou-hooks table.woocommerce-table--customer-details th {
+    font-weight: 600;
+    color: hsl(var(--primary));
+    width: 40%;
+    text-align: left;
+}
+.woocommerce-thankyou-hooks table.woocommerce-table--customer-details td {
+    text-align: left;
+}
+
+.woocommerce-customer-details {
+    background: #fff;
+    border: 1px solid hsl(var(--border)); box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+.woocommerce-customer-details address {
+    font-style: normal;
+    font-size: 0.875rem;
+    color: hsl(var(--foreground));
+    line-height: 1.6;
+}
+
+.woocommerce-thankyou-hooks section.woocommerce-bacs-bank-details h3 { padding-left: 1rem;
+    font-size: 1.125rem;
+    color: hsl(var(--primary));
+    margin-bottom: 1rem;
+}
+.woocommerce-thankyou-hooks section.woocommerce-bacs-bank-details ul,
+.woocommerce-thankyou-hooks section.woocommerce-bacs-bank-details ul.order_details.bacs_details {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+    padding: 1rem 1.5rem !important; margin: 1rem 0 0 0 !important;
+    list-style: none !important;
+}
+@media (min-width: 640px) {
+    .woocommerce-thankyou-hooks section.woocommerce-bacs-bank-details ul,
+    .woocommerce-thankyou-hooks section.woocommerce-bacs-bank-details ul.order_details.bacs_details {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 2.5rem !important;
+    }
+}
+.woocommerce-thankyou-hooks section.woocommerce-bacs-bank-details ul li,
+.woocommerce-thankyou-hooks section.woocommerce-bacs-bank-details ul.order_details.bacs_details li {
+    float: none !important;
+    text-align: left !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+}
+@media (min-width: 640px) {
+    .woocommerce-thankyou-hooks section.woocommerce-bacs-bank-details ul li,
+    .woocommerce-thankyou-hooks section.woocommerce-bacs-bank-details ul.order_details.bacs_details li {
+        width: auto !important;
+    }
+}
+.woocommerce-thankyou-hooks section.woocommerce-bacs-bank-details ul li strong,
+.woocommerce-thankyou-hooks section.woocommerce-bacs-bank-details ul.order_details.bacs_details li strong {
+    display: block !important;
+    font-size: 1.125rem !important;
+    color: hsl(var(--primary)) !important;
+    font-weight: 700 !important;
+    margin-top: 0.25rem !important;
+}
+
+.medical-upload-dropzone.is-over { border-color: hsl(var(--primary)); background-color: hsl(var(--secondary)); }
+.medical-file-name { margin-top: 0.6rem; font-weight: 700; color: hsl(var(--primary)); }
+
+/* Medical Conditions step (from the live theme) */
+/* ===== CHECKOUT PAGE ===== */
+
+
+
+/* Dark-blue header bars for Billing / Shipping / Medical sections */
+.woocommerce-checkout .woocommerce-billing-fields > h3,
+.woocommerce-checkout .woocommerce-shipping-fields > h3,
+.woocommerce-checkout .checkout-fields-block > h3,
+.woocommerce-checkout .medical-condition-fields > h3,
+.woocommerce-checkout .woocommerce-additional-fields > h3 {
+    background-color: #00104a !important;
+    color: #fff !important;
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.625rem 1rem;
+    margin: 0 !important;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0;
+}
+/* SVG icons in headers */
+.woocommerce-checkout .woocommerce-billing-fields > h3::before,
+.woocommerce-checkout .woocommerce-shipping-fields > h3::before,
+.woocommerce-checkout .medical-condition-fields > h3::before {
+    content: "";
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.woocommerce-checkout .medical-condition-fields > h3::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27none%27 viewBox=%270 0 24 24%27 stroke=%27%23ffffff%27%3E%3Cpath stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%272%27 d=%27M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z%27/%3E%3C/svg%3E");
+}
+/* ===== MEDICAL CONDITIONS SECTION ===== */
+
+/* Form rows: label + input side by side */
+.medical-condition-fields .medical-conditions-body {
+    padding: 0;
+}
+.medical-condition-fields .medical-row {
+    display: flex;
+    align-items: center;
+    padding: 0.625rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+.medical-condition-fields .medical-row:last-of-type {
+    border-bottom: 1px solid #e5e7eb;
+}
+.medical-condition-fields .medical-row > label {
+    width: 40%;
+    flex-shrink: 0;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    color: #111827;
+    margin: 0;
+    padding-right: 0.75rem;
+}
+.medical-condition-fields .medical-input-wrap {
+    width: 60%;
+    flex-grow: 1;
+}
+.medical-condition-fields .medical-input-wrap input.input-text {
+    width: 100%;
+    padding: 0.4rem 0.625rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.25rem;
+    font-size: 0.8125rem;
+    outline: none;
+    box-shadow: none;
+    height: auto;
+    background: #fff;
+}
+.medical-condition-fields .medical-input-wrap input.input-text:focus {
+    border-color: #00125E;
+}
+/* Radio buttons row (Smoke / Drink) */
+.medical-condition-fields .medical-radio-row {
+    display: flex;
+    gap: 0;
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+.medical-condition-fields .medical-radio-group {
+    flex: 1;
+}
+.medical-condition-fields .medical-radio-label {
+    font-weight: 700;
+    font-size: 0.8125rem;
+    color: #00125E;
+    margin: 0 0 0.5rem 0;
+}
+.medical-condition-fields .medical-radio-group ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+.medical-condition-fields .medical-radio-group ul li {
+    margin: 0;
+    padding: 0;
+}
+.medical-condition-fields .medical-radio-group ul li label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    color: #111827;
+    margin: 0;
+}
+.medical-condition-fields .medical-radio-group input[type="radio"] {
+    margin: 0;
+    width: 16px;
+    height: 16px;
+    accent-color: #00125E;
+    cursor: pointer;
+}
+/* Certification Blue Box */
+.medical-condition-fields .medical-certification-box {
+    background-color: #e5edfb;
+    color: #00125E;
+    padding: 1.25rem 1.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin: 1.25rem 0; /* Mobile: no left/right margin */
+}
+@media (min-width: 768px) {
+    .medical-condition-fields .medical-certification-box {
+        margin: 1.25rem 1rem; /* Desktop: restore margin */
+    }
+}
+.medical-condition-fields .medical-certification-box p {
+    margin: 0;
+}
+/* Upload Prescription section */
+.medical-condition-fields .medical-upload-section {
+    padding: 0 1rem 1.25rem;
+}
+.medical-condition-fields .medical-upload-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #111827;
+    margin: 0 0 0.75rem 0;
+    background: none !important;
+    padding: 0 !important;
+}
+.medical-condition-fields .medical-upload-dropzone {
+    border: 2px dashed #cbd5e1;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    text-align: center;
+    background: #fff;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+.medical-condition-fields .medical-upload-dropzone:hover {
+    border-color: #00125E;
+}
+.medical-condition-fields .medical-upload-dropzone .upload-icon {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 auto 0.5rem;
+    color: #9ca3af;
+}
+.medical-condition-fields .medical-upload-dropzone p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+.medical-condition-fields .medical-upload-dropzone .choose-file-link {
+    color: hsl(var(--primary));
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.medical-condition-fields .medical-upload-dropzone .choose-file-link:hover {
+    color: #073980;
+}
+.medical-condition-fields .medical-upload-dropzone input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Shipping method rows: name, price, then the delivery time on its own line */
+#shipping_method li label, .woocommerce-shipping-methods li label { display: flex !important; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.75rem; width: 100%; }
+#shipping_method li label .shipping-title, .woocommerce-shipping-methods li label .shipping-title { flex: 1 1 auto; font-weight: 600; text-align: left; }
+#shipping_method li label .woocommerce-Price-amount, .woocommerce-shipping-methods li label .woocommerce-Price-amount { font-weight: 700; margin-left: auto; }
+#shipping_method li label span.description, .woocommerce-shipping-methods li label span.description { flex: 0 0 100%; font-size: 0.8125rem; font-weight: 400; color: hsl(var(--muted-foreground)); }

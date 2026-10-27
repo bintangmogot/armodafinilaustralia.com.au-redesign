@@ -19,11 +19,11 @@ $query = new WP_Query( $args );
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             <?php while ( $query->have_posts() ) : $query->the_post(); 
                 $p_id = get_the_ID();
-                $p_image = get_the_post_thumbnail_url($p_id, 'medium_large') ?: 'https://placehold.co/600x400/e0f2fe/0369a1?text=Guide';
+                $p_image = get_the_post_thumbnail_url($p_id, 'medium_large');
             ?>
                 <a href="<?php the_permalink(); ?>" class="group bg-white border border-ink-200 rounded-2xl overflow-hidden hover-lift block shadow-sm">
                     <div class="aspect-[16/9] bg-brand-50 overflow-hidden">
-                        <img src="<?php echo esc_url($p_image); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+<?php if ( $p_image ) : ?><img src="<?php echo esc_url($p_image); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" /><?php endif; ?>
                     </div>
                     <div class="p-5">
                         <div class="text-[11px] uppercase tracking-widest text-brand-700 font-semibold">Guide</div>
