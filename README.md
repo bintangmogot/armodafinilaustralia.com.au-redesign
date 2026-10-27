@@ -1,46 +1,69 @@
-# armodafinilaustralia.com.au-redesign
+# Armodafinil Australia theme
 
-Custom WordPress theme based on Armodafinil Australia Direct. Git tracks theme code only. The repository root maps to `wp-content/themes/armodafinilaustralia.com.au-redesign` in WordPress.
+Classic PHP theme for armodafinilaustralia.com.au (Steven Waldberg network): ACF Pro flexible
+content, WooCommerce and Tailwind CSS 3. Design: [docs/DESIGN.md](docs/DESIGN.md). Plan and status:
+[docs/REDESIGN-PLAN.md](docs/REDESIGN-PLAN.md). Project rules: [AGENTS.md](AGENTS.md) and the master SOP
+(`Wordpress Needs/STEVEN-WALDBERG-WP-PROJECT-SOP.md`).
 
-## Setup
+## Rules that apply to every change
 
-Restore the shared UpdraftPlus baseline into your own Laragon site, then clone this repository into the theme directory. Keep wp-config.php, plugins, uploads, and the database outside Git. Activate the theme with ACF Pro and WooCommerce available.
+- No copy, prices, phone numbers, emails or images in PHP. Everything visible comes from ACF (page
+  modules or Theme Settings), WooCommerce data or menus. A module with empty fields prints nothing
+  (`inc/render-modules.php` also drops any module that renders no visible text or media).
+- No emojis, no long dashes, no plugin edits (use hooks and template overrides).
+- Use the component classes in `input.css` (`btn-buy`, `btn-primary`, `btn-outline`, `badge`, `section`,
+  `container-site`, `armo-prose`) and the colour tokens. No raw hex in templates. "Eyebrow" is called
+  "badge" everywhere. No Trustpilot or third-party review badges.
+
+## Development
 
 ```bash
-git clone https://github.com/bintangmogot/armodafinilaustralia.com.au-redesign.git armodafinilaustralia.com.au-redesign
-cd armodafinilaustralia.com.au-redesign
-git switch dev
 npm ci
-npm run build
+npm run build   # input.css -> style.css (commit style.css)
+npm run watch
 ```
 
-## Work with another developer or AI
+PHP is not on PATH on the Laragon machine: use `C:\laragon6\bin\php\php-8.1.10-Win32-vs16-x64\php.exe`.
+Fonts (Inter, Poppins) are self-hosted in `assets/fonts/`.
 
-1. Create or select a GitHub issue with page/module scope, file ownership, and acceptance checks.
-2. Create a feature branch from current dev. Different pages can share header, footer, CSS, functions, and ACF fields, so coordinate those files explicitly.
-3. Implement, test, commit, and push your branch. Open a PR into dev and link the issue.
-4. The other developer reviews the diff and checks. A human merges the PR. InstaWP deploys dev after merge.
-5. Enter final page text, products, prices, and media on the shared InstaWP CMS. Do not replace the shared database with a developer's local database after collaboration starts.
-6. After client approval, open a separate dev-to-main PR for handover. Production deployment needs separate authorization.
+## Where content lives
 
-```bash
-git fetch origin
-git switch -c issue/12-about-page origin/dev
-# Make changes and run checks
-git add <changed-files>
-git commit -m "Improve About page modules"
-git push -u origin issue/12-about-page
-gh pr create --base dev --title "Improve About page modules" --body "Closes #12"
-```
+| What | Where in WP Admin |
+|---|---|
+| Announcement bar, feature bar, header buttons, search wording, logo alt | Theme Settings > Header, Search |
+| Phone, WhatsApp, email, address, social links | Theme Settings > Contact |
+| Footer text, columns headings, medical disclaimer, payment logos | Theme Settings > Footer |
+| Buttons and labels used across the theme (buy button, read more, reviews, cart, checkout, 404) | Theme Settings > Interface Labels |
+| Thank you page wording and steps | Theme Settings > Thank You |
+| Product page notices, trust items, free shipping threshold | Theme Settings > Product Page |
+| Closing call-to-action band | Theme Settings > Closing CTA |
+| Blog heading and intro | Theme Settings > Blog |
+| Google Analytics ID | Theme Settings > Tracking |
+| Page sections (existing content) | Pages > Edit > Modules (field `modules`, drawn by `modules-legacy/`) |
+| Page sections (new layouts) | Pages > Edit > Page Modules (field `page_modules`, drawn by `modules/`) |
+| Product text, price note, tabs | Products > Edit (ACF fields `price_subtext`, `shop_page_text`, `extra_tabs`) |
+| Reviews | Reviews (post type `reviews`, fields `rating`, `name`, `linked_product`) |
+| Menus (primary, mobile, 3 footer columns) | Appearance > Menus |
+| Bank details | WooCommerce > Payments > Direct bank transfer |
 
-The correct sequence is issue, branch, implementation, checks, commit, push, PR, review, merge. A PR needs a pushed commit first. Never have two people push unrelated work directly to dev.
+## Code map
 
-Example cloud request: "Work on issue #12 from origin/dev. Follow AGENTS.md, keep to the issue's files, run the relevant checks, commit and push a feature branch, and open a PR into dev. Do not merge or change CMS data."
+- `inc/render-modules.php` prints both module fields. `inc/live-compat.php` keeps the live site's URLs
+  (`/shop/<product>/`), redirects, review form and review loader working.
+- `inc/product-helpers.php` rating summary, quantity options, star markup. `inc/schema.php` adds
+  aggregateRating and FAQPage to the All in One SEO graph.
+- `inc/checkout-medical.php` stores the Medical Conditions answers on the order.
+  `inc/shipping-label.php` splits shipping method labels into name and delivery time.
+- `template-parts/product-card.php` is the single product card (carousel, grids, shop).
+- `assets/js/*.js` are plain scripts (no build step): site, search, product-card, product-page,
+  reviews, checkout.
 
-## Cloud and staging
+## Git and deployment
 
-Cloud install command: `bash scripts/cloud-setup.sh`. Cloud checks cover theme syntax and CSS compilation. An actual WordPress runtime requires a separate database and plugins; do not publish the golden backup or licensed plugins in this public repository.
-
-InstaWP Git configuration: repository `https://github.com/bintangmogot/armodafinilaustralia.com.au-redesign.git`, branch `dev`, destination `wp-content/themes/armodafinilaustralia.com.au-redesign`. Register the site's webhook in GitHub with push events. Do not publish webhook URLs or credentials in documentation.
-
-Read AGENTS.md for code and content rules. Existing copied theme behavior still requires the audits listed in GitHub Issues; these are acceptance tasks, not confirmed bugs.
+- `dev`: shared staging branch (InstaWP). `main`: production, merged from `dev` only after client approval.
+- Feature work happens on `issue/<n>-...` branches and reaches `dev` through a pull request.
+- Before every push run the SOP checks (php -l, long dashes/mojibake, emojis, `A$`, hardcoded copy).
+- cPanel: Git Version Control, branch `main`, path `public_html/wp-content/themes/<theme folder>`.
+  The built `style.css` is committed, so no build step runs on the server.
+- Switching the live site to this theme: on first activation `inc/navigation.php` copies the menu
+  locations and logo from the old theme (`armodafinil-australia`).

@@ -56,3 +56,21 @@ the image hotlinked from modafinilaustraliadirect.com; update internal `/product
 
 LiteSpeed page cache returns `miss` on every request; check the cache settings and
 vary rules after go-live.
+
+## Status (2026-10-27, local build on branch issue/7-rename-theme-folder)
+
+Done and checked locally (PHP lint, SOP greps, 16 page types at 320/390/768/1440, product add to cart,
+BACS thank you page):
+
+- Foundation: navy and yellow tokens, self-hosted Inter and Poppins, `modules` + `page_modules` rendering,
+  `reviews` post type, live URL logic, security.php, menu and logo carry-over.
+- Header, footer, search dialog, product card, shop and category templates, single product page, cart,
+  checkout (3 steps, medical conditions kept), thank you page, blog index, archives, search, 404.
+- The 21 module layouts used on live pages restyled; fallback copy, fake testimonials, placeholder images,
+  other-site contact details and hardcoded structured data removed.
+- Removed on purpose: passwordless login and the My Account overrides (copy from another site, account
+  creation from an email address), email header and footer overrides (other-site branding), an
+  `admin_init` routine that could delete plugin folders from a query string, HTML sitemap and
+  condition and medical reviewer templates (not on live).
+
+Open items for Bintang and Steven are listed in the hand-over notes of the session report.
